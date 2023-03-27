@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h5>Response Message : {{msg|default:"All think OK"}}</h5>
+    <h1>You are login by user {{user.username}}</h1>
+    <h5>Full Name {{ user.first_name }} {{user.last_name }}</h5>
+    <h5>Email {{user.email}}</h5>
+    {% if not msg %}
+    <h5>displayName {{data.displayName}}</h5>
+    <h5>jobTitle {{data.jobTitle}}</h5>
+    <h5>companyName {{data.companyName}}</h5>
+    {% endif %}
+
+    <h1>ZOHO DATA</h1>
+    <ul>
+        {% for key,value in data_response.items %}
+        <li>{{ key }} : {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
