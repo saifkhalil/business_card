@@ -6,10 +6,19 @@ def get_zoho_data(zoho_token, email):
         data_url = f'https://people.zoho.com/api/forms/employee/getRecords?searchColumn=EMPLOYEEMAILALIAS&searchValue={email}'
         headers = {
             'Content-Type': 'application/json',
-            'Authorization': f'Zoho-oauthtoken 1000.ed6123bc744100c181c2ff751e129d6b.8f7228a4fa22243d780ab807bf2b7875'
+            'Authorization': f'Zoho-oauthtoken 1000.3afcfd20b92ff4b321fbc83b50d7be50.e6d007bb85f7819ea722fce4baac5332'
         }
         response = requests.request("GET", data_url, headers=headers)
         data_response = response.json()
+        if data_response.get('response').get('errors').get('message') == 'The provided OAuth token is invalid.':
+            new_token = zoho_login()
+            data_url = f'https://people.zoho.com/api/forms/employee/getRecords?searchColumn=EMPLOYEEMAILALIAS&searchValue={email}'
+            headers = {
+                'Content-Type': 'application/json',
+                'Authorization': f'Zoho-oauthtoken {new_token}'
+            }
+            response = requests.request("GET", data_url, headers=headers)
+            data_response = response.json()
         return data_response
     except Exception as e:
         return e

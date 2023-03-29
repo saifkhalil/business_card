@@ -17,12 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import path, include
+from allauth.socialaccount.providers.microsoft.views import MicrosoftGraphOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.views import (OAuth2CallbackView)
 
-from core.views import profile
+from core.views import profile,index,logout_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls,name='admin'),
     path('rest-auth/', include('rest_auth.urls')),
     path('accounts/', include('allauth.urls')),
-    path('', login_required(profile)),
+    path('accounts/profile/', login_required(profile),name='profile'),
+    path('', index,name='home'),
+    path('logout/', logout_view,name='logout'),
+    # path('accounts/microsoft/login/', oauth2_login,{'provider': 'microsoft', 'adapter_class': MicrosoftGraphOAuth2Adapter}, name='microsoft_login'),
+    # path('accounts/microsoft/callback/', OAuth2CallbackView.as_view(adapter=MicrosoftGraphOAuth2Adapter),name='microsoft_callback'),
 ]

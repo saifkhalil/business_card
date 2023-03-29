@@ -40,15 +40,17 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
-
+    'phonenumber_field',
     'django.contrib.sites',
+    'oauth2_provider',
     'allauth',
     'allauth.account',
     'rest_auth.registration',
 
     'allauth.socialaccount',
     'allauth.socialaccount.providers.microsoft',
-
+    # 'allauth.socialaccount.providers.google',
+    'businesscard',
 ]
 
 MIDDLEWARE = [
@@ -120,11 +122,20 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+LOGIN_REDIRECT_URL = 'home'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -145,3 +156,11 @@ SITE_ID = 1
 #         }
 #     }
 # }
+
+
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'uatplatform@qi.iq'
+EMAIL_HOST_PASSWORD = 'Noora!!@@##11'
+DEFAULT_FROM_EMAIL = 'Creative Platform <uatplatform@qi.iq>'
