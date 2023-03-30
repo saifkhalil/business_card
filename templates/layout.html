@@ -63,34 +63,6 @@
 
 </div>
 
-<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="{% static 'js/blob.js' %}"></script>
-<script>
-    $('#jobTitleAr').keyup(function() {
-    if ($('#jobTitleAr').val() != '') {
-  $('#ArDesignation').text($('#jobTitleAr').val());
-  } else {
-  $('#ArDesignation').text('العنوان الوظيفي');
-  }
-});
-
-    $('#jobTitle').keyup(function() {
-    if ($('#jobTitle').val() != '') {
-  $('#Designation').text($('#jobTitle').val());
-  } else {
-  $('#Designation').text('Job Title');
-  }
-});
-    $('#phoneNumber').keyup(function() {
-  $('#phoneNumbervalue').text($('#phoneNumber').val());
-  $('#phoneNumberValueAr').text($('#phoneNumber').val());
-});
-
-$('#flipCard').click(function() {
-    $('.flip-card').toggleClass('rotate-card');
-});
-</script>
 <style type="text/css" data-typed-js-css="true">
         .typed-cursor{
           opacity: 1;

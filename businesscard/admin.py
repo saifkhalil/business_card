@@ -1,5 +1,5 @@
 from django.contrib import admin
-from businesscard.models import BusinessRequest
+from businesscard.models import BusinessRequest,ZohoToken
 # Register your models here.
 
 @admin.register(BusinessRequest)
@@ -26,3 +26,6 @@ class BusinessRequestAdmin(admin.ModelAdmin):
         'quantity',
         'status'
     ]
+
+
+admin.site.register(ZohoToken)

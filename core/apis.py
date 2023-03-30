@@ -1,17 +1,23 @@
 import requests
+from businesscard.models import ZohoToken
+from asgiref.sync import async_to_sync
 
 
-def get_zoho_data(zoho_token, email):
+def get_zoho_data(email):
+    zohoToken = ZohoToken.objects.get(id=1)
     try:
         data_url = f'https://people.zoho.com/api/forms/employee/getRecords?searchColumn=EMPLOYEEMAILALIAS&searchValue={email}'
         headers = {
             'Content-Type': 'application/json',
-            'Authorization': f'Zoho-oauthtoken 1000.3afcfd20b92ff4b321fbc83b50d7be50.e6d007bb85f7819ea722fce4baac5332'
+            'Authorization': f'Zoho-oauthtoken {zohoToken.value}'
         }
         response = requests.request("GET", data_url, headers=headers)
         data_response = response.json()
-        if data_response.get('response').get('errors').get('message') == 'The provided OAuth token is invalid.':
+        error = data_response.get('response').get('errors').get('message') if data_response.get('response').get('errors') else None
+        if error == 'The provided OAuth token is invalid.':
             new_token = zoho_login()
+            zohoToken.value = new_token
+            zohoToken.save()
             data_url = f'https://people.zoho.com/api/forms/employee/getRecords?searchColumn=EMPLOYEEMAILALIAS&searchValue={email}'
             headers = {
                 'Content-Type': 'application/json',
