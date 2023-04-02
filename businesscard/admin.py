@@ -24,7 +24,8 @@ class BusinessRequestAdmin(admin.ModelAdmin):
         'job_title_ar',
         'phone',
         'quantity',
-        'status'
+        'status',
+        'created_at',
     ]
 
 

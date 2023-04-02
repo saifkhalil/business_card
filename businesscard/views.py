@@ -90,6 +90,7 @@ def index(request):
     msg: str = None
     data_value: dict = None
     user_requests = None
+    form = None
     if request.method == 'POST':
         form = BusinessRequestForm(request.POST)
         if form.is_valid():
@@ -100,8 +101,22 @@ def index(request):
             messages.add_message(request, messages.SUCCESS,f'Business Card Request successfully submitted with id {BusinessRequestFormResult.id}')
             return redirect('home')
         else:
-            # messages.add_message(request, messages.SUCCESS, 'Business Card Request error in submitted')
+            messages.add_message(request, messages.ERROR, 'Your request not submitted, please check the below error')
             form = form
+            msg='POSTERROR'
+            try:
+                if request.user.is_authenticated:
+                    user_requests = BusinessRequest.objects.filter(user=request.user)
+            except BusinessRequest.DoesNotExist:
+                user_requests = None
+            try:
+                data = SocialAccount.objects.get(user=request.user).extra_data
+                data_response = get_zoho_data(email=request.user.email)
+                result = data_response.get('response').get('result')
+                print(result)
+                data_value = list(result[0].values())[0][0]
+            except Exception as e:
+                messages.add_message(request, messages.ERROR, e)
     elif request.method == 'GET':
         try:
             if request.user.is_authenticated:
@@ -120,7 +135,8 @@ def index(request):
         'data': data,
         'msg': msg,
         'data_response': data_value,
-        'user_requests':user_requests
+        'user_requests':user_requests,
+        'form':form
     }
     return render(request, 'index.html', context)
 

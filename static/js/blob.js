@@ -62,7 +62,7 @@ class Blob {
     ctx.fillStyle = this.color;
     ctx.fill();
     ctx.strokeStyle = '#FFF';
-    // ctx.stroke();
+    //ctx.stroke();
 
 /*
     ctx.fillStyle = '#FFF';
@@ -217,7 +217,7 @@ class Point {
 blob = new Blob;
 
 init = function() {
-  canvas = document.querySelector('#blob');
+  canvas = document.querySelector('#canvas');
   canvas.setAttribute('touch-action', 'none');
 
 //  document.body.appendChild(canvas);
@@ -270,7 +270,7 @@ init = function() {
         let strength = { x: oldMousePoint.x - e.clientX, y: oldMousePoint.y - e.clientY };
         strength = Math.sqrt((strength.x * strength.x) + (strength.y * strength.y)) * 10;
         if(strength > 100) strength = 100;
-        nearestPoint.acceleration = strength / 100 * (hover ? -1 : 1);
+        nearestPoint.acceleration = strength / 200 * (hover ? -1 : 1);
       }
     }
 

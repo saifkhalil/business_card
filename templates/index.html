@@ -2,6 +2,7 @@
 {% block content %}
 {% load static %}
 {% load socialaccount %}
+{% load getnames %}
 <div class="h-full-first-page" id="home">
     <main class="lg:mt-2 x2l:mt-12">
         <div class="my-container">
@@ -15,7 +16,7 @@
             {% endif %}
             <div class="main-container flex flex-col-reverse md:flex-row">
 
-                <div class="main-text flex-1 text-center md:text-start">
+                <div class="main-text flex-1 md:text-start">
                     <h1 class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-5 sm:mt-16">Design</h1>
                     <h1 href="" class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-5 sm:mt-16 typewrite"
                         data-period="2000" data-type='[ "What You Enjoy", "What You Need", "What You Love"]'>
@@ -45,6 +46,7 @@
         </div>
     </main>
 </div>
+<div data-bs-spy="scroll" data-bs-target="#qi-navbar" data-bs-offset="0" class="scrollspy-example" tabindex="0">
 <div class="h-full-page" id="employee">
     <div class="register-page flex-1">
         <div class="my-container lg:flex x2l:block justify-center">
@@ -153,8 +155,9 @@
 
     <section class="bcard-container flex-1">
         <div class="my-container">
-
+{% if user_requests|length > 0 %}
             <div class="sgin-in-section p-2 xl:p-10 lg:flex flex-col justify-center text-center bg-qitext text-white">
+
                 <h3 class="message text-3xl x2l:text-4xl font-extrabold font-roleway">Your orders</h3>
                 </br>
                 <table class="">
@@ -174,6 +177,7 @@
                     {% endfor %}
                 </table>
             </div>
+            {% endif %}
             <div class="bcard-box flex flex-col lg:flex-row gap-14 lg:gap-0 mt-2 mb-10 lg:mt-16">
 
                 <div class="create-form flex-1 text-center mx-0 md:mx-28 lg:mx-0">
@@ -181,21 +185,21 @@
                         <h1 class="font-roleway font-extrabold text-qitext text-3xl xl:text-5xl">Order Your BCard</h1>
                         {% csrf_token %}
                         <input name="full_name_en" type="text" hidden=""
-                               value="{{ data_response.FirstName }} {{ data_response.LastName }}">
+                               value="{% if msg != 'POSTERROR' %}{{ data_response.FirstName }} {{ data_response.LastName|getnames:2 }}{% else %}{{ form.full_name_en.value|getnames:3 }}{% endif %}">
                         <input name="full_name_ar" type="text" hidden=""
-                               value="{{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name }}">
+                               value="{% if msg != 'POSTERROR' %}{{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:2 }}{% else %}{{ form.full_name_ar.value|getnames:3 }}{% endif %}">
                         <p class="font-roleway font-semibold my-3 xl:my-3 font-size-res">Enter The Required
                             Information</p>
                         <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-10 xl:mb-20">
                             <div class="absolute w-1/6 rounded-3xl bg-qitext"
                                  style="top: -50%; transform: translateY(-50%); right: -1px; height: 5px;"></div>
                         </div>
-                        <div class="input-group mx-0 md:mx-12 xl:mx-24">
+                        <div class="row input-group mx-0 md:mx-12 xl:mx-24">
                             <div class="mb-4">
                                 <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
                                     <input name="employee_id" type="text" maxlength="8" placeholder="Card ID"
                                            class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                           value="{{ data_response.EmployeeID }}" readonly>
+                                           value="{% if msg != 'POSTERROR' %}{{ data_response.EmployeeID }}{% else %}{{ form.employee_id.value }}{% endif %}" readonly>
                                     <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10 h-10">
                                         <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
                                              width="26px">
@@ -207,7 +211,7 @@
                                     <input required id="jobTitle" name="job_title" type="text"
                                            placeholder="Job Title In English"
                                            class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                           maxlength="26" value="{{ data_response.Designation }}">
+                                           maxlength="26" value="{% if msg != 'POSTERROR' %}{{ data_response.Designation }}{% else %}{{ form.job_title.value }}{% endif %}">
                                     <div class="input-icon bg-qibg p-2 rounded-full"><img
                                             src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
                                             width="26px">
@@ -219,7 +223,7 @@
                                     <input required id="jobTitleAr" name="job_title_ar" type="text"
                                            placeholder="Job Title In Arabic"
                                            class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                           maxlength="26" value="{{ data_response.Designation }}">
+                                           maxlength="26" value="{% if msg != 'POSTERROR' %}{{ data_response.Designation }}{% else %}{{ form.job_title_ar.value }}{% endif %}">
                                     <div class="input-icon bg-qibg p-2 rounded-full"><img
                                             src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
                                             width="26px">
@@ -230,7 +234,7 @@
                                 <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
                                     <input required id="phoneNumber" name="phone" type="text" placeholder="Phone Number"
                                            class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                           maxlength="15" value="{{ data_response.Work_phone|default:'+964780XXXXXXX' }}">
+                                           maxlength="14" value="{% if msg != 'POSTERROR' %}{{ data_response.Work_phone|default:'+964780XXXXXXX' }}{% else %}{{ form.phone.value }}{% endif %}">
                                     <div class="input-icon bg-qibg p-2 rounded-full"><img
                                             src="{% static 'images/call.png' %}"
                                             alt="Card"
@@ -242,14 +246,14 @@
                                 <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
                                     <input required name="quantity" type="number" min="1" placeholder="Quantity"
                                            class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                           value="100" max="1000">
+                                           value="{% if msg != 'POSTERROR' %}100{% else %}{{ form.quantity.value }}{% endif %}" max="1000">
                                     <div class="input-icon bg-qibg p-2 rounded-full"><img
                                             src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
                                     </div>
                                 </div>
                             </div>
                             {% if form.errors %}
-                            <div class="alert alert-danger mt-3" role="alert">
+                            <div class="alert alert-error mt-3" role="alert">
                                 <p>Please check the below:</p>
                                 <ol>
                                     {% for field in form %}
@@ -441,7 +445,7 @@
 </div>
 {% endif %}
 </div>
-
+</div>
 <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{% static 'js/blob.js' %}"></script>

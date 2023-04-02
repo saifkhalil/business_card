@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.microsoft',
     # 'allauth.socialaccount.providers.google',
     'businesscard',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {
+                'getnames': 'businesscard.templatetags.getnames',
+
+            }
         },
     },
 ]
@@ -122,7 +127,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+AUTH_USER_MODEL = 'accounts.User'
 LOGIN_REDIRECT_URL = 'home'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -147,20 +152,24 @@ AUTHENTICATION_BACKENDS = [
 ]
 SITE_ID = 1
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'microsoft': {
-#         'APP': {
-#             'client_id': '5430cc30-a9e4-4f85-a6b6-21a449c19f0e',
-#             'secret': 'uBH8Q~r4igVDrCILY3HCBCq5P3rhzNlnFxOAfcFJ',
-#             'TENANT': 'ab4a90b3-d153-43a2-9369-bb02a45b89fd',
-#         }
-#     }
-# }
+SOCIALACCOUNT_PROVIDERS = {
+    'microsoft': {
+        'APP': {
+            'client_id': '5430cc30-a9e4-4f85-a6b6-21a449c19f0e',
+            'secret': 'uBH8Q~r4igVDrCILY3HCBCq5P3rhzNlnFxOAfcFJ',
+            'TENANT': 'ab4a90b3-d153-43a2-9369-bb02a45b89fd',
+        }
+    }
+}
 
 
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'uatplatform@qi.iq'
-EMAIL_HOST_PASSWORD = 'Noora!!@@##11'
-DEFAULT_FROM_EMAIL = 'Creative Platform <uatplatform@qi.iq>'
+EMAIL_HOST_USER = 'legal.app@qi.iq'
+EMAIL_HOST_PASSWORD = 'PzWp8pFMhJh3'
+DEFAULT_FROM_EMAIL = 'Creative Platform <legal.app@qi.iq>'
+
+
+
+PHONENUMBER_DEFAULT_REGION = 'IQ'
