@@ -151,22 +151,23 @@
 </div>
 {% if user.is_authenticated %}
 
-<div class="h-full-page" id="bcard">
-
-    <section class="bcard-container flex-1">
-        <div class="my-container">
-{% if user_requests|length > 0 %}
-            <div class="sgin-in-section p-2 xl:p-10 lg:flex flex-col justify-center text-center bg-qitext text-white">
+    {% if user_requests|length > 0 %}
+    <div class="h-full-page" id="orders">
+        <div class="my-container lg:flex x2l:block justify-center">
+            <div class="sgin-in-section pb-3 p-2 xl:p-10 lg:flex flex-col justify-center text-center bg-qitext text-white">
 
                 <h3 class="message text-3xl x2l:text-4xl font-extrabold font-roleway">Your orders</h3>
                 </br>
-                <table class="">
+                <table class="table table-dark table-hover">
+                     <thead>
                     <tr>
                         <th>Request ID</th>
                         <th>Status</th>
                         <th>Quantity</th>
                         <th>Date</th>
                     </tr>
+                     </thead>
+                    <tbody>
                     {% for req in user_requests %}
                     <tr>
                         <td>{{ req.id }}</td>
@@ -175,9 +176,19 @@
                         <td>{{ req.created_at }}</td>
                     </tr>
                     {% endfor %}
+                    </tbody>
                 </table>
             </div>
+        </div>
+    </div>
             {% endif %}
+
+
+<div class="h-full-page" id="bcard">
+
+    <section class="bcard-container flex-1">
+        <div class="my-container">
+
             <div class="bcard-box flex flex-col lg:flex-row gap-14 lg:gap-0 mt-2 mb-10 lg:mt-16">
 
                 <div class="create-form flex-1 text-center mx-0 md:mx-28 lg:mx-0">

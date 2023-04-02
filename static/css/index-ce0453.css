@@ -1490,7 +1490,7 @@ body::-webkit-scrollbar-thumb{
 }
 .active{
     background-color:#232222;
-    color:#fff
+    color:#fff !important;
 }
 .m-active{
     background-color:none;
