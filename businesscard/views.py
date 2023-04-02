@@ -124,11 +124,11 @@ def index(request):
         except BusinessRequest.DoesNotExist:
             user_requests = None
         try:
-            data = SocialAccount.objects.get(user=request.user).extra_data
-            data_response = get_zoho_data(email=request.user.email)
-            result = data_response.get('response').get('result')
-            print(result)
-            data_value = list(result[0].values())[0][0]
+            if request.user.is_authenticated:
+                data = SocialAccount.objects.get(user=request.user).extra_data
+                data_response = get_zoho_data(email=request.user.email)
+                result = data_response.get('response').get('result')
+                data_value = list(result[0].values())[0][0]
         except Exception as e:
             messages.add_message(request, messages.ERROR, e)
     context = {
