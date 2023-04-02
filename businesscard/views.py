@@ -87,6 +87,7 @@ def index(request):
     data: list = None
     msg: str = None
     data_value: dict = None
+    data_response = None
     user_requests = None
     form = None
     if request.method == 'POST':
