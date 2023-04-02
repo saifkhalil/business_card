@@ -3,20 +3,12 @@
 {% load static %}
 {% load socialaccount %}
 {% load getnames %}
+
 <div class="h-full-first-page" id="home">
     <main class="lg:mt-2 x2l:mt-12">
         <div class="my-container">
-            {% if messages %}
-            {% for message in messages %}
-            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                {{ message }}
-            </div>
-            {% endfor %}
-            {% endif %}
-            <div class="main-container flex flex-col-reverse md:flex-row">
-
-                <div class="main-text flex-1 md:text-start">
+            <div class="row">
+                <div class="main-text col-lg-6 col-md-6 col-sm-12">
                     <h1 class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-5 sm:mt-16">Design</h1>
                     <h1 href="" class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-5 sm:mt-16 typewrite"
                         data-period="2000" data-type='[ "What You Enjoy", "What You Need", "What You Love"]'>
@@ -38,7 +30,7 @@
                             <img src="{% static 'images/cost.png' %}" alt="Teller" width="40px" height="40px"></div>
                     </div>
                 </div>
-                <div class="main-blob flex-1 flex justify-center mt-0 md:mt-8">
+                <div class="main-blob col-lg-6 col-md-6 col-sm-12 justify-center">
                     <canvas height="500px" width="500px" class="blob-canvas w-120 h-120 sm:w-auto sm:h-auto"
                             touch-action="none" id="canvas"></canvas>
                 </div>
@@ -49,7 +41,7 @@
 <div data-bs-spy="scroll" data-bs-target="#qi-navbar" data-bs-offset="0" class="scrollspy-example" tabindex="0">
 <div class="h-full-page" id="employee">
     <div class="register-page flex-1">
-        <div class="my-container lg:flex x2l:block justify-center">
+        <div class="my-container justify-center">
             <div class="register-card shadow-lg mt-4 mb-10 md:mt-16 flex bg-white h-auto x2l:h-250 w-auto lg:w-fit x2l:w-auto rounded-bl-4xl rounded-4xl">
                 <div class="sgin-in-section p-2 xl:p-10 lg:flex flex-col justify-center text-center bg-qitext text-white"
                      style="flex: 1 1 0%;">
@@ -171,7 +163,7 @@
                     {% for req in user_requests %}
                     <tr>
                         <td>{{ req.id }}</td>
-                        <td>{{ req.status }}</td>
+                        <td><span class="badge bg-{% if req.status == 'Pending' %}warning{% elif req.status == 'Approved' %}success{% elif req.status == 'Reject' %}danger{% elif req.status == 'In Printing' %}warning{% elif req.status == 'Done' %}info{% endif %}">{{ req.status }}</span></td>
                         <td>{{ req.quantity }}</td>
                         <td>{{ req.created_at }}</td>
                     </tr>

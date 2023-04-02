@@ -2286,3 +2286,8 @@ padding-right: 0px !important
     border-radius: 0px !important;
 
 }
+
+.navbar-toggler {
+    padding: 0px !important;
+    border: 0px !important
+}

@@ -20,8 +20,8 @@
     <div class="bg-qibg text-qitext pt-5">
         <nav class="navbar navbar-expand-lg sticky-top  navbar-light" id="qi-navbar">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#QinavbarToggler" aria-controls="QinavbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                          <span class="navbar-toggler-icon"></span>
+                <button class="navbar-toggler burger" type="button" data-bs-toggle="collapse" data-bs-target="#QinavbarToggler" aria-controls="QinavbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                          <div class="burger__line"></div><div class="burger__line"></div><div class="burger__line"></div>
                 </button>
                 <a class="navbar-brand font-bold text-3xl sm:text-4xl font-bebas hidden xs:block" style="font-size: 2.25rem;letter-spacing: 2px; padding-left:150px;" href="#">
                         <img src="{% static '/images/qi-logo.svg' %}" alt="Logo" height="72px" width="72px" class="d-inline-block" style="margin-right: 20px;">Creative
@@ -37,9 +37,11 @@
                         <li class="nav-item">
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="#services">Services</a>
                         </li>
+                        {% if user_requests|length > 0 %}
                         <li class="nav-item">
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="#orders">Your Orders</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="#bcard">Business Card</a>
                         </li>
@@ -60,6 +62,14 @@
                 </div>
   </div>
 </nav>
+                    {% if messages %}
+            {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
 {% block content %}{% endblock %}
     </div>
 

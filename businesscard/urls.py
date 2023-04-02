@@ -6,12 +6,14 @@ from businesscard.views import (
         BusinessRequestReject,
         BusinessRequestInPrinting,
         BusinessRequestDone,
-        index
+        BusinessRequestList,
+        index,
 )
 
 urlpatterns = [
     path('', index,
          name='home'),
+    path('orders/', BusinessRequestList, name='orders'),
     path('<int:id>/bra/', login_required(BusinessRequestApprove),
          name='BusinessRequestApprove'),
     path('<int:id>/brr/', login_required(BusinessRequestReject),
