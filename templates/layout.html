@@ -42,27 +42,29 @@
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="#orders">Your Orders</a>
                         </li>
                         {% endif %}
-                        {% if user.is_authenticated and ( user.is_superuser or user.is_businesscard_admin ) %}
+                        {% if user.is_authenticated %}
+                        {% if user.is_superuser or user.is_businesscard_admin %}
                         <li class="nav-item">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="#orders">Your Orders</a>
+                            <a class="nav-link link-hover  cursor-pointer text-dark" href="{% url 'orders' %}">All Orders</a>
                         </li>
+                        {% endif %}
                         {% endif %}
                         <li class="nav-item">
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="#bcard">Business Card</a>
                         </li>
-                        <li style="margin-right: 0px;">
-                            <a href="#">
-                                <div class="border-2 border-black flex items-center flex-row-reverse gap-1 px-3 py-1 rounded-full">
-                                    <input type="text" class="w-24 focus-visible:outline-none">
-                                        <button>
-                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="11" cy="11" r="8"></circle>
-                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                            </svg>
-                                        </button>
-                                </div>
-                            </a>
-                        </li>
+<!--                        <li style="margin-right: 0px;">-->
+<!--                            <a href="#">-->
+<!--                                <div class="border-2 border-black flex items-center flex-row-reverse gap-1 px-3 py-1 rounded-full">-->
+<!--                                    <input type="text" class="w-24 focus-visible:outline-none">-->
+<!--                                        <button>-->
+<!--                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">-->
+<!--                                                <circle cx="11" cy="11" r="8"></circle>-->
+<!--                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>-->
+<!--                                            </svg>-->
+<!--                                        </button>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
                     </ul>
                 </div>
   </div>
