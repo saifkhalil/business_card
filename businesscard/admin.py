@@ -13,7 +13,7 @@ class BusinessRequestAdmin(admin.ModelAdmin):
         'status',
         'user'
     ]
-    readonly_fields = ('created_by', 'created_at', 'modified_by', 'modified_at')
+    readonly_fields = ('status_change_by','status_change_at','created_by', 'created_at', 'modified_by', 'modified_at')
 
     list_display = [
         'user',

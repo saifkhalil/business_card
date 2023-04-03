@@ -2,8 +2,6 @@
 {% block content %}
 {% load static %}
 
-<div class="h-full-page" id="bcard">
-
     <section class="bcard-container flex-1">
         <div class="my-container">
 
@@ -11,7 +9,8 @@
 
                 <div class="create-form text-center">
                     <form action="" method="post">
-                        <h1 class="font-roleway font-extrabold text-qitext text-3xl xl:text-5xl">Business Card Order Details</h1>
+                        <h1 class="font-roleway font-extrabold text-qitext text-3xl xl:text-5xl">Business Card Order
+                            Details</h1>
                         {% csrf_token %}
                         <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-10 xl:mb-20">
                             <div class="absolute w-1/6 rounded-3xl bg-qitext"
@@ -97,6 +96,56 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required name="status" type="text" min="1" placeholder="Status"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.status }}" max="1000" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required name="created_by" type="text" min="1" placeholder="Created By"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.created_by }}" max="1000" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required name="created_at" type="text" min="1" placeholder="Created At"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.created_at }}" max="1000" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required name="status_change_by" type="text" min="1" placeholder="Quantity"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.status_change_by }}" max="1000" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required name="status_change_at" type="text" min="1" placeholder="Quantity"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.status_change_at }}" max="1000" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -108,5 +157,4 @@
         </div>
     </section>
 
-</div>
 {% endblock %}
