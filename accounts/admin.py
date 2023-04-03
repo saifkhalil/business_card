@@ -24,7 +24,7 @@ class UserAdmin(admin.ModelAdmin):
     #         obj.created_by = request.user
     #         obj.created_at = timezone.now
     #     obj.save()
-    actions = ['set_password']
+    # actions = ['set_password']
 
     def set_password(self, request, queryset):
         form = SetPasswordForm()
