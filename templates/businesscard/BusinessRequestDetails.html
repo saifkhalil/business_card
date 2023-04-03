@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block content %}
+{% load static %}
+
+<div class="h-full-page" id="bcard">
+
+    <section class="bcard-container flex-1">
+        <div class="my-container">
+
+            <div class="bcard-box">
+
+                <div class="create-form text-center">
+                    <form action="" method="post">
+                        <h1 class="font-roleway font-extrabold text-qitext text-3xl xl:text-5xl">Business Card Order Details</h1>
+                        {% csrf_token %}
+                        <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-10 xl:mb-20">
+                            <div class="absolute w-1/6 rounded-3xl bg-qitext"
+                                 style="top: -50%; transform: translateY(-50%); right: -1px; height: 5px;"></div>
+                        </div>
+                        <div class="row input-group mx-0 md:mx-12 xl:mx-24">
+                            <div class="mb-4">
+                                <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input name="employee_id" type="text" maxlength="8" placeholder="Card ID"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.employee_id }}" readonly>
+                                    <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10 h-10">
+                                        <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
+                                             width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input name="full_name_en" type="text" maxlength="8" placeholder="Card ID"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.full_name_en }}" readonly>
+                                    <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10 h-10">
+                                        <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
+                                             width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input name="full_name_ar" type="text" maxlength="8" placeholder="Card ID"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.full_name_ar }}" readonly>
+                                    <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10 h-10">
+                                        <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
+                                             width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required id="jobTitle" name="job_title" type="text"
+                                           placeholder="Job Title In English"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           maxlength="26" value="{{object.job_title}}" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
+                                            width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required id="jobTitleAr" name="job_title_ar" type="text"
+                                           placeholder="Job Title In Arabic"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           maxlength="26" value="{{ object.job_title_ar }}" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
+                                            width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required id="phoneNumber" name="phone" type="text" placeholder="Phone Number"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           maxlength="14" value="{{ object.phone }}" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/call.png' %}"
+                                            alt="Card"
+                                            height="26px"
+                                            width="26px"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required name="quantity" type="number" min="1" placeholder="Quantity"
+                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                           value="{{ object.quantity }}" max="1000" readonly>
+                                    <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                            src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </section>
+
+</div>
+{% endblock %}

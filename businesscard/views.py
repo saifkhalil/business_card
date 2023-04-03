@@ -6,8 +6,14 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.http import Http404
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
-    CreateView
+    ListView,
+    DetailView,
+    CreateView,
+    UpdateView,
+    DeleteView
 )
 
 from businesscard.forms import BusinessRequestForm
@@ -151,6 +157,18 @@ def BusinessRequestList(request):
     return render(request, 'businesscard/orders.html', context)
 
 
+def BusinessRequestDetails(request, brid):
+    user = request.user
+    br = BusinessRequest.objects.get(id=brid)
+    if user == br.created_by or user.is_superuser or user.is_businesscard_admin:
+        context = {
+            'object': br,
+        }
+        return render(request, 'businesscard/BusinessRequestDetails.html', context)
+    else:
+        return redirect('must_authenticate')
+
+
 def BusinessRequestApprove(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
@@ -165,6 +183,7 @@ def BusinessRequestApprove(request, id):
     else:
         messages.add_message(request, messages.SUCCESS, "You don't have Permission")
     return redirect('orders')
+
 
 def BusinessRequestReject(request, id):
     try:
