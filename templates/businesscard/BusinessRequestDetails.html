@@ -98,6 +98,7 @@
                             </div>
                             <div class="mb-4">
                                 <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <span class="badge bg-{% if object.status == 'Pending' %}warning{% elif object.status == 'Approved' %}success{% elif object.status == 'Reject' %}danger{% elif object.status == 'In Printing' %}warning{% elif object.status == 'Done' %}info{% endif %}">{{ object.status }}</span>
                                     <input required name="status" type="text" min="1" placeholder="Status"
                                            class="w-full pl-5 bg-inherit focus-visible:outline-none"
                                            value="{{ object.status }}" max="1000" readonly>

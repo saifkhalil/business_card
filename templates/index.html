@@ -7,8 +7,26 @@
 <div class="h-full-first-page" id="home">
     <main class="lg:mt-2 x2l:mt-12">
         <div class="my-container">
-            <div class="row">
-                <div class="main-text col-lg-6 col-md-6 col-sm-12">
+            <div class="row ">
+                <div class="main-blob col-lg-6 col-md-6 col-sm-12  order-lg-last order-md-last order-sm-first order-xs-first justify-center">
+                    <div class="blob-flex-container">
+                      <div class="blob-div">
+                        <ul class="main-nav">
+                          <div class="active-highlight"></div>
+                        </ul>
+                        <div class="top-bar">
+                          <div id="barba-wrapper">
+                            <div class="barba-container">
+                              <section>
+                                 <canvas class="blob-canvas" width="300px" height="300px"></canvas>
+                              </section>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="main-text col-lg-6 col-md-6 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last">
                     <h1 class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-5 sm:mt-16">Design</h1>
                     <h1 href="" class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-5 sm:mt-16 typewrite"
                         data-period="2000" data-type='[ "What You Enjoy", "What You Need", "What You Love"]'>
@@ -30,10 +48,7 @@
                             <img src="{% static 'images/cost.png' %}" alt="Teller" width="40px" height="40px"></div>
                     </div>
                 </div>
-                <div class="main-blob col-lg-6 col-md-6 col-sm-12 justify-center">
-                    <canvas height="500px" width="500px" class="blob-canvas w-120 h-120 sm:w-auto sm:h-auto"
-                            touch-action="none" id="canvas"></canvas>
-                </div>
+
             </div>
         </div>
     </main>
@@ -330,7 +345,7 @@
                                         </div>
                                         <div class="card-name my-5 st:my-0 text-start md:pl-4">
                                             <div class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-roleway">
-                                                {{ data_response.FirstName }} {{ data_response.LastName }}
+                                                {{ data_response.FirstName }} {{ data_response.LastName|getnames:2 }}
                                             </div>
                                             <div id="Designation"
                                                  class="job-title overflow-hidden text-small xxs:text-xs xs:text-sm st:text-base xl:text-lg font-medium font-roleway">
@@ -401,7 +416,7 @@
                                         </div>
                                         <div class="card-name my-5 st:my-0 text-end pr-4 sm:pr-6 lg:pr-10">
                                             <div class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-cairo">
-                                                {{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name }}
+                                                {{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:2 }}
                                             </div>
                                             <div id="ArDesignation"
                                                  class="job-title overflow-hidden text-small xxs:text-xs xs:text-sm st:text-base xl:text-lg font-medium font-cairo">
@@ -451,7 +466,7 @@
 </div>
 <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="{% static 'js/blob.js' %}"></script>
+<script src="{% static 'js/blobnew.js' %}"></script>
 <script>
     $('#jobTitleAr').keyup(function() {
     if ($('#jobTitleAr').val() != '') {
