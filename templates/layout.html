@@ -23,7 +23,7 @@
                 <button class="navbar-toggler burger" type="button" data-bs-toggle="collapse" data-bs-target="#QinavbarToggler" aria-controls="QinavbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                           <div class="burger__line"></div><div class="burger__line"></div><div class="burger__line"></div>
                 </button>
-                <a class="navbar-brand font-bold text-3xl sm:text-4xl font-bebas hidden xs:block" style="font-size: 2.25rem;letter-spacing: 2px; padding-left:150px;" href="#">
+                <a class="navbar-brand font-bold text-3xl sm:text-4xl font-bebas hidden xs:block" style="font-size: 2.25rem;letter-spacing: 2px; padding-left:150px;" href="/">
                         <img src="{% static '/images/qi-logo.svg' %}" alt="Logo" height="72px" width="72px" class="d-inline-block" style="margin-right: 20px;">Creative
                 </a>
                 <div class="collapse navbar-collapse bg-white rounded-l-full" id="QinavbarToggler">
@@ -32,19 +32,19 @@
                             <a class="nav-link link-hover text-dark" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="#employee">Employee</a>
+                            <a class="nav-link link-hover  cursor-pointer text-dark" href="/#employee">Employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="#services">Services</a>
+                            <a class="nav-link link-hover  cursor-pointer text-dark" href="/#services">Services</a>
                         </li>
                         {% if user_requests|length > 0 %}
                         <li class="nav-item">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="#orders">Your Orders</a>
+                            <a class="nav-link link-hover  cursor-pointer text-dark" href="/#orders">Your Orders</a>
                         </li>
                         {% endif %}
 
                         <li class="nav-item">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="#bcard">Business Card</a>
+                            <a class="nav-link link-hover  cursor-pointer text-dark" href="/#bcard">Business Card</a>
                         </li>
                          {% if user.is_authenticated %}
                         {% if user.is_superuser or user.is_businesscard_admin %}
