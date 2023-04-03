@@ -217,7 +217,7 @@ class Point {
 blob = new Blob;
 
 init = function() {
-  canvas = document.querySelector('#canvas');
+  canvas = document.querySelector('.blob-canvas');
   canvas.setAttribute('touch-action', 'none');
 
 //  document.body.appendChild(canvas);
