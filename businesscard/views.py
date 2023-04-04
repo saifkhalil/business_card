@@ -257,7 +257,7 @@ def BusinessRequestApprove(request, id):
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
         messages.add_message(request, messages.SUCCESS, "You don't have Permission")
-    return redirect('orders')
+    return redirect('requests')
 
 
 def BusinessRequestReject(request, id):
@@ -273,7 +273,7 @@ def BusinessRequestReject(request, id):
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
         messages.add_message(request, messages.SUCCESS, "You don't have Permission")
-    return redirect('orders')
+    return redirect('requests')
 
 
 def BusinessRequestInPrinting(request, id):
@@ -289,7 +289,7 @@ def BusinessRequestInPrinting(request, id):
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
         messages.add_message(request, messages.SUCCESS, "You don't have Permission")
-    return redirect('orders')
+    return redirect('requests')
 
 
 def BusinessRequestDone(request, id):
@@ -305,4 +305,4 @@ def BusinessRequestDone(request, id):
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
         messages.add_message(request, messages.SUCCESS, "You don't have Permission")
-    return redirect('orders')
+    return redirect('requests')
