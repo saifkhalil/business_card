@@ -3,17 +3,14 @@ from datetime import datetime
 from allauth.socialaccount.models import SocialAccount
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.core.paginator import Paginator
+from django.db.models import Q
+import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.http import Http404
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
-    ListView,
-    DetailView,
-    CreateView,
-    UpdateView,
-    DeleteView
+    CreateView
 )
 
 from businesscard.forms import BusinessRequestForm
@@ -155,6 +152,73 @@ def BusinessRequestList(request):
         'all_requests': all_requests,
     }
     return render(request, 'businesscard/orders.html', context)
+
+
+def request_list(request):
+    if request.method == 'GET':
+        if request.GET.get('status'):
+            status = request.GET.get('status')
+            request.session['status'] = status
+        else:
+            status = ""
+            request.session['status'] = status
+        if request.GET.get('keywords'):
+            keywords = request.GET.get('keywords')
+            request.session['keywords'] = keywords
+        else:
+            keywords = ""
+            request.session['keywords'] = keywords
+        if request.GET.get('number_of_records'):
+            number_of_records = request.GET.get('number_of_records')
+            try:
+                request.session['number_of_records'] = int(number_of_records)
+            except:
+                request.session['number_of_records'] = 50
+        if request.GET.get('clear'):
+            if request.session.get('status'):
+                del request.session['status']
+            if request.session.get('keywords'):
+                del request.session['keywords']
+            if request.session.get('number_of_records'):
+                del request.session['number_of_records']
+    status = request.session.get('status')
+    keywords = request.session.get('keywords')
+    number_of_records = request.session.get('number_of_records')
+    request_list3 = BusinessRequest.objects.all()
+    request_list = BusinessRequest.objects.all()
+    request_list1 = []
+    if number_of_records:
+        number_of_records = int(number_of_records)
+    else:
+        number_of_records = 50
+    if status:
+        request_list = request_list.filter(status=status)
+    if keywords:
+        query_words = str(keywords).split(" ")  # Get the word in a list
+        query = Q()
+        for w in query_words:
+            if len(w) < 2:  # Min length
+                query_words.remove(w)
+        for word in query_words:
+            query = query | Q(employee_id__icontains=word) | Q(
+                full_name_en__icontains=word) | Q(job_title__icontains=word)
+
+        request_list = request_list.filter(query)
+    else:
+        request_list = request_list.order_by('-created_at')
+    session = [keywords, status, number_of_records]
+    # Show 25 contacts per page.
+    paginator = Paginator(request_list, number_of_records)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+    page_range = paginator.get_elided_page_range(number=page_number, on_each_side=2, on_ends=2)
+    context = {
+        'session': json.dumps(session),
+        'page_obj': page_obj,
+        'page_range': page_range,
+        'requests_count': request_list.count(),
+    }
+    return render(request, 'businesscard/request_list.html', context)
 
 
 def BusinessRequestDetails(request, brid):
