@@ -115,9 +115,13 @@ def index(request):
             try:
                 data = SocialAccount.objects.get(user=request.user).extra_data
                 data_response = get_zoho_data(email=request.user.email)
-                result = data_response.get('response').get('result')
-                print(result)
-                data_value = list(result[0].values())[0][0]
+                response_status = data_response.get('response').get('status')
+                if response_status == 0:
+                    result = data_response.get('response').get('result')
+                    data_value = list(result[0].values())[0][0]
+                elif response_status == 1:
+                    messsage = data_response.get('response').get('errors').get('message')
+                    messages.add_message(request, messages.ERROR, messsage)
             except Exception as e:
                 messages.add_message(request, messages.ERROR, e)
     elif request.method == 'GET':
@@ -130,13 +134,19 @@ def index(request):
             if request.user.is_authenticated:
                 data = SocialAccount.objects.get(user=request.user).extra_data
                 data_response = get_zoho_data(email=request.user.email)
-                result = data_response.get('response').get('result')
-                data_value = list(result[0].values())[0][0]
+                response_status = data_response.get('response').get('status')
+                if response_status == 0:
+                    result = data_response.get('response').get('result')
+                    data_value = list(result[0].values())[0][0]
+                elif response_status == 1:
+                    messsage = f"Zoho: {data_response.get('response').get('errors').get('message')}"
+                    messages.add_message(request, messages.ERROR, messsage)
         except Exception as e:
             messages.add_message(request, messages.ERROR, e)
     context = {
         'data': data,
         'msg': msg,
+        'response_status': response_status,
         'data_response': data_value,
         'user_requests': user_requests,
         'form': form
