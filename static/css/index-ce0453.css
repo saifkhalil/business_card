@@ -91,7 +91,6 @@ button,select{
 }
 button,[type=button],[type=reset],[type=submit]{
     -webkit-appearance:button;
-    background-color:transparent;
     background-image:none
 }
 :-moz-focusring{
@@ -1414,7 +1413,8 @@ body::-webkit-scrollbar-thumb{
 }
 .link-button.learn-more{
     width:12rem;
-    height:auto
+    height:auto;
+    background-color:transparent !important
 }
 .link-button.learn-more .circle{
     transition:all .45s cubic-bezier(.65,0,.076,1);
@@ -2241,7 +2241,7 @@ body::-webkit-scrollbar-thumb{
         transform:rotate(360deg)
     }
 }
-canvas { position: absolute; touch-action: none; }
+canvas {  touch-action: none; }
 
 
 
@@ -2294,4 +2294,33 @@ padding-right: 0px !important
 
 .form-floating > label {
     color: black !important;
+}
+
+.orders-section {
+    border-radius: 10px !important;
+    padding-bottom: 1rem !important;
+    padding-top: 1rem !important;
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+}
+
+.bg-qi {
+background-color:#f0cc00;
+}
+
+.bg-qi-dark {
+background-color:#d1b100;
+}
+
+table tr:last-child td:first-child {
+    border: 0px solid black;
+    border-bottom-left-radius: 20px;
+}
+
+table tr:last-child td:last-child {
+    border: 0px solid black;
+    border-bottom-right-radius: 20px;
+}
+.a-underline {
+text-decoration: underline !important;
 }

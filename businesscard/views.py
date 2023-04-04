@@ -196,12 +196,16 @@ def request_list(request):
     keywords = request.session.get('keywords')
     number_of_records = request.session.get('number_of_records')
     request_list3 = BusinessRequest.objects.all()
+    total_requests = request_list3.count()
+    Approved_requests = request_list3.filter(status='Approved').count()
+    InPrinting_requests = request_list3.filter(status='In Printing').count()
+    Done_requests = request_list3.filter(status='Done').count()
     request_list = BusinessRequest.objects.all()
     request_list1 = []
     if number_of_records:
         number_of_records = int(number_of_records)
     else:
-        number_of_records = 50
+        number_of_records = 10
     if status:
         request_list = request_list.filter(status=status)
     if keywords:
@@ -227,6 +231,10 @@ def request_list(request):
         'session': json.dumps(session),
         'page_obj': page_obj,
         'page_range': page_range,
+        'total_requests':total_requests,
+        'Approved_requests':Approved_requests,
+        'InPrinting_requests':InPrinting_requests,
+        'Done_requests':Done_requests,
         'requests_count': request_list.count(),
     }
     return render(request, 'businesscard/request_list.html', context)
