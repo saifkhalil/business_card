@@ -49,7 +49,7 @@
                          {% if user.is_authenticated %}
                         {% if user.is_superuser or user.is_businesscard_admin %}
                         <li class="nav-item">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="{% url 'orders' %}">All Orders</a>
+                            <a class="nav-link link-hover  cursor-pointer text-dark" href="{% url 'requests' %}">All Orders</a>
                         </li>
                         {% endif %}
                         {% endif %}
