@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 
 from allauth.socialaccount.models import SocialAccount
@@ -5,7 +6,6 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.db.models import Q
-import json
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -248,7 +248,8 @@ def BusinessRequestApprove(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        return HttpResponse('Business Request Not Found')
+        messages.add_message(request, messages.ERROR, "Business Request Not found")
+        return redirect('requests')
     if request.user.is_superuser:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Approved')
@@ -256,7 +257,7 @@ def BusinessRequestApprove(request, id):
         SelectedBusinessRequest.update(status_change_by=request.user)
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
-        messages.add_message(request, messages.SUCCESS, "You don't have Permission")
+        messages.add_message(request, messages.ERROR, "You don't have Permission")
     return redirect('requests')
 
 
@@ -264,7 +265,8 @@ def BusinessRequestReject(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        return HttpResponse('Business Request Not Found')
+        messages.add_message(request, messages.ERROR, "Business Request Not found")
+        return redirect('requests')
     if request.user.is_superuser:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Reject')
@@ -272,7 +274,7 @@ def BusinessRequestReject(request, id):
         SelectedBusinessRequest.update(status_change_by=request.user)
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
-        messages.add_message(request, messages.SUCCESS, "You don't have Permission")
+        messages.add_message(request, messages.ERROR, "You don't have Permission")
     return redirect('requests')
 
 
@@ -280,7 +282,8 @@ def BusinessRequestInPrinting(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        return HttpResponse('Business Request Not Found')
+        messages.add_message(request, messages.ERROR, "Business Request Not found")
+        return redirect('requests')
     if request.user.is_superuser:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='In Printing')
@@ -288,7 +291,7 @@ def BusinessRequestInPrinting(request, id):
         SelectedBusinessRequest.update(status_change_by=request.user)
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
-        messages.add_message(request, messages.SUCCESS, "You don't have Permission")
+        messages.add_message(request, messages.ERROR, "You don't have Permission")
     return redirect('requests')
 
 
@@ -296,7 +299,8 @@ def BusinessRequestDone(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        return HttpResponse('Business Request Not Found')
+        messages.add_message(request, messages.ERROR, "Business Request Not found")
+        return redirect('requests')
     if request.user.is_superuser:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Done')
@@ -304,5 +308,5 @@ def BusinessRequestDone(request, id):
         SelectedBusinessRequest.update(status_change_by=request.user)
         messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
     else:
-        messages.add_message(request, messages.SUCCESS, "You don't have Permission")
+        messages.add_message(request, messages.ERROR, "You don't have Permission")
     return redirect('requests')
