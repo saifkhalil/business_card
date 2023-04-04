@@ -41,10 +41,12 @@ class BusinessRequest(models.Model):
 def BusinessRequest_send_email(sender, instance, created, *args, **kwargs):
     CurrentBusinessRequest = instance
     if created:
+        from django.contrib.sites.models import Site
         message = 'text version of HTML message'
         email_subject = f'New Business Card Request #{CurrentBusinessRequest.id}'
         email_body = render_to_string('businesscard/email.html', {
             'user': CurrentBusinessRequest.user,
+            'domain': f'https://s{Site.objects.get_current().domain}',
             'br': CurrentBusinessRequest,
             'msgtype': 'You have been assigned with you below case details'
         })

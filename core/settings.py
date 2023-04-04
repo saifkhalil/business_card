@@ -155,20 +155,34 @@ SITE_ID = 1
 SOCIALACCOUNT_PROVIDERS = {
     'microsoft': {
         'APP': {
+            'TENANT': 'c72a9a68-0c22-46ef-9838-4fb52ac0533d',
             'client_id': '5430cc30-a9e4-4f85-a6b6-21a449c19f0e',
             'secret': 'uBH8Q~r4igVDrCILY3HCBCq5P3rhzNlnFxOAfcFJ',
-            'TENANT': 'ab4a90b3-d153-43a2-9369-bb02a45b89fd',
+
         }
     }
 }
 
 
+# SOCIALACCOUNT_PROVIDERS = {
+#     'microsoft': {
+#         'APP': {
+#             'TENANT': 'c72a9a68-0c22-46ef-9838-4fb52ac0533d',
+#             'client_id': '33ca4dcc-d237-4c9a-852a-dc6d21a663d8',
+#             'secret': '7e063a6e-b00b-44bc-90bb-e3efd7fad06c',
+#
+#         }
+#     }
+# }
+
+
+
 EMAIL_HOST = 'smtp.office365.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'legal.app@qi.iq'
-EMAIL_HOST_PASSWORD = 'PzWp8pFMhJh3'
-DEFAULT_FROM_EMAIL = 'Creative Platform <legal.app@qi.iq>'
+EMAIL_HOST_USER = 'uatplatform@qi.iq'
+EMAIL_HOST_PASSWORD = 'Xad03669@@'
+DEFAULT_FROM_EMAIL = 'Creative Platform <uatplatform@qi.iq>'
 
 
 

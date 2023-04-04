@@ -92,6 +92,7 @@ def index(request):
     data_value: dict = None
     data_response = None
     user_requests = None
+    response_status = 1
     form = None
     if request.method == 'POST':
         form = BusinessRequestForm(request.POST)
