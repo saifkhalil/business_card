@@ -1487,7 +1487,6 @@ body::-webkit-scrollbar-thumb{
     transition:all .25s ease-in-out;
     padding:3px 8px;
     border-radius:25px;
-    font-size: 1.7rem;
 }
 
 .m-active{

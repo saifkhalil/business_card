@@ -83,38 +83,38 @@
   <div class="offcanvas-body">
       <ul class="list-group">
                         <li class="nav-item m-3">
-                            <a class="nav-link link-hover text-dark" href="/">Home</a>
+                            <a class="nav-link text-3xl link-hover text-dark" href="/">Home</a>
                         </li>
                         <li class="nav-item m-3">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="/#services">Services</a>
+                            <a class="nav-link text-3xl link-hover  cursor-pointer text-dark" href="/#services">Services</a>
                         </li>
                         {% if user_requests|length > 0 %}
                         <li class="nav-item m-3">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="/#orders">Your Orders</a>
+                            <a class="nav-link text-3xl link-hover  cursor-pointer text-dark" href="/#orders">Your Orders</a>
                         </li>
                         {% endif %}
                         {% if user.is_authenticated %}
                         <li class="nav-item m-3">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="/#bcard">Business Card</a>
+                            <a class="nav-link text-3xl link-hover  cursor-pointer text-dark" href="/#bcard">Business Card</a>
                         </li>
 
                         {% if user.is_superuser or user.is_businesscard_admin %}
                         <li class="nav-item m-3">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="{% url 'requests' %}">All Orders</a>
+                            <a class="nav-link text-3xl link-hover  cursor-pointer text-dark" href="{% url 'requests' %}">All Orders</a>
                         </li>
                         {% endif %}
                            <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                              <img src="{% static '/images/icons8-person-64.png' %}" alt="Logo" height="32px" width="32px" class="d-inline-block" style="margin-right: 20px;">
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item link-hover  cursor-pointer text-dark" href="{% url 'logout' %}">Logout</a></li>
+                            <li><a class="dropdown-item text-3xl link-hover  cursor-pointer text-dark" href="{% url 'logout' %}">Logout</a></li>
                           </ul>
                         </li>
 
                         {% else %}
                         <li class="nav-item m-3">
-                            <a class="nav-link link-hover  cursor-pointer text-dark" href="{% provider_login_url 'microsoft' process='login'  %}" target="_parent">Login</a>
+                            <a class="nav-link text-3xl link-hover  cursor-pointer text-dark" href="{% provider_login_url 'microsoft' process='login'  %}" target="_parent">Login</a>
                         </li>
                         {% endif %}
 <!--                        <li style="margin-right: 0px;">-->
