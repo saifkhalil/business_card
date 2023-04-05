@@ -10,9 +10,7 @@
     <script>
 
     </script>
-
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{% static 'css/index-ce0453.css' %}">
 </head>
 <body style="background-color: #f0cc00">
@@ -21,10 +19,10 @@
         <nav class="navbar navbar-expand-lg sticky-top  navbar-light" id="qi-navbar">
             <div class="container-fluid">
                 <button class="navbar-toggler burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#QioffcanvasRight" aria-controls="QioffcanvasRight">
-                          <div class="burger__line"></div><div class="burger__line"></div><div class="burger__line"></div>
+                          <img src="{% static '/images/burger_menu.png' %}" alt="Logo" height="52px" width="52px" class="d-inline-block" style="margin-right: 20px;">
                 </button>
                 <a class="navbar-brand font-bold text-3xl sm:text-4xl font-bebas hidden xs:block" style="font-size: 2.25rem;letter-spacing: 2px; padding-left:150px;" href="/">
-                        <img src="{% static '/images/qi-logo.svg' %}" alt="Logo" height="72px" width="72px" class="d-inline-block" style="margin-right: 20px;">Creative
+                        <img src="{% static '/images/qi-logo.svg' %}" alt="Logo" height="52px" width="52px" class="d-inline-block" style="margin-right: 20px;">Creative
                 </a>
                 <div class="collapse navbar-collapse bg-white rounded-l-full" id="QinavbarToggler">
                     <ul class="nav nav-navbar items-center me-auto mb-2 mb-lg-0 ">
@@ -39,17 +37,15 @@
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="/#orders">Your Orders</a>
                         </li>
                         {% endif %}
-{% if user.is_authenticated %}
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="/#bcard">Business Card</a>
                         </li>
-
                         {% if user.is_superuser or user.is_businesscard_admin %}
                         <li class="nav-item">
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="{% url 'requests' %}">All Orders</a>
                         </li>
                         {% endif %}
-
                            <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                              <img src="{% static '/images/icons8-person-64.png' %}" alt="Logo" height="32px" width="32px" class="d-inline-block" style="margin-right: 20px;">
@@ -147,9 +143,7 @@
             {% endif %}
 {% block content %}{% endblock %}
     </div>
-
 </div>
-
 <style type="text/css" data-typed-js-css="true">
         .typed-cursor{
           opacity: 1;
