@@ -14,7 +14,7 @@ __pycache__/
 .idea/**/shelf
 
 # Environments
-.env
+core/.env
 .venv
 env/
 venv/

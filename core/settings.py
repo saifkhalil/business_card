@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+import environ
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-irklsl=w8l+#xa@5%(n&q*=-b3w&$uj-jd3hdxupdy05645#2^'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -156,34 +159,21 @@ SITE_ID = 1
 SOCIALACCOUNT_PROVIDERS = {
     'microsoft': {
         'APP': {
-            'TENANT': 'c72a9a68-0c22-46ef-9838-4fb52ac0533d',
-            'client_id': '5430cc30-a9e4-4f85-a6b6-21a449c19f0e',
-            'secret': 'uBH8Q~r4igVDrCILY3HCBCq5P3rhzNlnFxOAfcFJ',
+            'TENANT': env('microsoft_TENANT'),
+            'client_id': env('microsoft_client_id'),
+            'secret': env('microsoft_secret'),
 
         }
     }
 }
 
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'microsoft': {
-#         'APP': {
-#             'TENANT': 'c72a9a68-0c22-46ef-9838-4fb52ac0533d',
-#             'client_id': '33ca4dcc-d237-4c9a-852a-dc6d21a663d8',
-#             'secret': '7e063a6e-b00b-44bc-90bb-e3efd7fad06c',
-#
-#         }
-#     }
-# }
-
-
-
-EMAIL_HOST = 'smtp.office365.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'uatplatform@qi.iq'
-EMAIL_HOST_PASSWORD = 'Xad03669@@'
-DEFAULT_FROM_EMAIL = 'Creative Platform <uatplatform@qi.iq>'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 
 
