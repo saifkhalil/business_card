@@ -91,7 +91,7 @@ button,select{
 }
 button,[type=button],[type=reset],[type=submit]{
     -webkit-appearance:button;
-    background-image:none
+
 }
 :-moz-focusring{
     outline:auto
@@ -1488,10 +1488,7 @@ body::-webkit-scrollbar-thumb{
     padding:3px 8px;
     border-radius:25px
 }
-.active{
-    background-color:#232222;
-    color:#fff !important;
-}
+
 .m-active{
     background-color:none;
     color:#f0cc00
@@ -2323,4 +2320,32 @@ table tr:last-child td:last-child {
 }
 .a-underline {
 text-decoration: underline !important;
+}
+
+
+@media (max-width: 600px) {
+    .sgin-in-section {
+    border-radius: 30px !important;
+    padding-bottom: 0.1rem !important;
+    padding-top: 2rem !important;
+    padding-right: 0.1rem !important;
+    padding-left: 0.1rem !important;
+}
+
+.blob-canvas {
+width:350px;
+}
+
+.my-5 {
+margin-top: 1.5rem!important;
+    margin-bottom: 1.5rem!important;
+}
+
+.rounded-bl-4xl {
+    border-bottom-left-radius: 22px;
+}
+.h-10 {
+    height: 3.5rem;
+}
+
 }
