@@ -15,7 +15,6 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'email', 'full_name', 'created_by', 'created_at', 'modified_by', 'modified_at')
     readonly_fields = ('created_by', 'created_at', 'modified_by', 'modified_at', 'password')
     search_fields = ('email', 'firstname', 'lastname')
-
     # def save_model(self, request, obj, form, change):
     #     if change:
     #         obj.modified_by = request.user

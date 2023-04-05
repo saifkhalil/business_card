@@ -8,34 +8,34 @@
   href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css" />
 <!-- filter options -->
 <div class="header mb-5">
-<!--    <div class="mb-3">-->
-<!--        <div class="row m-5">-->
-<!--            <div class="col-3 ">-->
-<!--                <div class="row p-3 justify-center text-center bg-qitext text-white">-->
-<!--                    <h1>Total Requests</h1>-->
-<!--                    <h1>{{total_requests}}</h1>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--                        <div class="col-3 ">-->
-<!--                <div class="row p-3 justify-center text-center bg-qitext text-white">-->
-<!--                    <h1>Total Requests</h1>-->
-<!--                    <h1>{{total_requests}}</h1>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--                        <div class="col-3 ">-->
-<!--                <div class="row p-3 justify-center text-center bg-qitext text-white">-->
-<!--                    <h1>Total Requests</h1>-->
-<!--                    <h1>{{total_requests}}</h1>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--                        <div class="col-3">-->
-<!--                <div class="row p-3 justify-center text-center bg-qitext text-white">-->
-<!--                    <h1>Total Requests</h1>-->
-<!--                    <h1>{{total_requests}}</h1>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+    <div class="mb-3">
+        <div class="row justify-content-around justify-content-center my-container">
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
+                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
+                    <h1 class="m-3">Total Requests</h1>
+                    <h1>{{total_requests}}</h1>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
+                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
+                    <h1 class="m-3">Done Requests</h1>
+                    <h1>{{Done_requests}}</h1>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
+                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
+                    <h1 class="m-3">Approved Requests</h1>
+                    <h1>{{Approved_requests}}</h1>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
+                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
+                    <h1 class="m-3">In Printing Requests</h1>
+                    <h1>{{InPrinting_requests}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
     <h3 class="message text-center text-3xl x2l:text-4xl font-extrabold font-roleway mb-5">All Business Card Orders</h3>
     <div class="my-container lg:flex x2l:block justify-center">
         <div class="orders-section pb-3 p-2 xl:p-10 lg:flex flex-col justify-center text-center bg-qitext text-white">
@@ -44,7 +44,7 @@
     <section class="main overlay-black">
       <div class="container wrapper">
 
-        <form method="GET">
+        <form method="GET" id="filterform">
           <div class="row g-3">
               <div class="col-6 mb-3">
                <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
@@ -54,7 +54,8 @@
               <div class="col-2 mb-3">
                   <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
                     <select class="w-full pl-5 bg-inherit focus-visible:outline-none text-dark" placeholder="select status" id="status"
-                      name="status">
+                      name="status" onchange="javascript:this.form.submit()">
+                        <option value=''>All</option>
                       <option value='Pending'>Pending</option>
                       <option value='Approved'>Approved</option>
                       <option value='Reject'>Reject</option>
@@ -153,7 +154,6 @@
   window.addEventListener('load', function () {
     // document.getElementById('cm').classList.add('active');
     document.getElementById('status').value = srchval[1];
-    document.getElementById('number_of_records').value = srchval[2];
     document.getElementById('keywords').value = srchval[0];
   })
 </script>
@@ -167,7 +167,7 @@
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js">
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
     const table = $('#cand_list').DataTable({
@@ -184,4 +184,6 @@
       paging: false,
     });
   });
+
+
 </script>
