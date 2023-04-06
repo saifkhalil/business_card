@@ -2332,7 +2332,9 @@ text-decoration: underline !important;
     padding-right: 0.1rem !important;
     padding-left: 0.1rem !important;
 }
-
+td {
+font-size: 13px;
+}
 .blob-canvas {
 width:350px;
 }
