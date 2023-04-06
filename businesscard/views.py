@@ -98,13 +98,13 @@ def index(request):
         form = BusinessRequestForm(request.POST)
         if form.is_valid():
             BusinessRequestFormResult = form.save(commit=False)
-            data_response = get_zoho_data(email=request.user.email)
-            result = data_response.get('response').get('result')
-            data_value = list(result[0].values())[0][0]
-            fullname_en = f"{data_value.get('FirstName')} {data_value.get('LastName').split()[0]}"
-            fullname_ar = f"{data_value.get('First_Name_Arabic')} {data_value.get('Second_Arabic_Name').split()[0]}"
-            BusinessRequestFormResult.full_name_en = f"{fullname_en} {request.POST.get('full_name_en')}"
-            BusinessRequestFormResult.full_name_ar = f"{fullname_ar} {request.POST.get('full_name_ar')}"
+            # data_response = get_zoho_data(email=request.user.email)
+            # result = data_response.get('response').get('result')
+            # data_value = list(result[0].values())[0][0]
+            # fullname_en = f"{data_value.get('FirstName')} {data_value.get('LastName').split()[0]}"
+            # fullname_ar = f"{data_value.get('First_Name_Arabic')} {data_value.get('Second_Arabic_Name').split()[0]}"
+            # BusinessRequestFormResult.full_name_en = f"{fullname_en} {request.POST.get('full_name_en')}"
+            # BusinessRequestFormResult.full_name_ar = f"{fullname_ar} {request.POST.get('full_name_ar')}"
             BusinessRequestFormResult.user = User.objects.get(email=request.user.email)
             BusinessRequestFormResult.created_by = User.objects.get(email=request.user.email)
             BusinessRequestFormResult.save()

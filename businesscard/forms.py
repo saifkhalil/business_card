@@ -9,7 +9,7 @@ class BusinessRequestForm(ModelForm):
     # phone.error_messages['invalid'] = 'Enter a valid phone number (e.g. 7801000000).'
     class Meta:
         model = BusinessRequest
-        fields = ['user', 'employee_id', 'full_name_en', 'full_name_ar','job_title', 'job_title_ar', 'phone','quantity']
+        fields = ['user', 'employee_id', 'first_name_en','last_name_en', 'first_name_ar','last_name_ar','job_title', 'job_title_ar', 'phone','quantity']
         error_messages = {
             'phone' : {
                 'invalid': "Enter a valid phone number (e.g. +9647801000000)."

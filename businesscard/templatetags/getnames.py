@@ -6,4 +6,4 @@ register = template.Library()
 @register.filter
 @stringfilter
 def getnames(value: str,number: int):
-    return ' '.join(value.split()[:number])
+    return ' '.join(value.split()[number-1:number])

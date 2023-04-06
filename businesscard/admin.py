@@ -18,8 +18,10 @@ class BusinessRequestAdmin(admin.ModelAdmin):
     list_display = [
         'user',
         'employee_id',
-        'full_name_en',
-        'full_name_ar',
+        'first_name_en',
+        'last_name_en',
+        'first_name_ar',
+        'last_name_ar',
         'job_title',
         'job_title_ar',
         'phone',
