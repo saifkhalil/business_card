@@ -183,10 +183,8 @@
                     <form action="" method="post">
                         <h1 class="font-roleway font-extrabold text-qitext text-3xl xl:text-5xl">Order Your BCard</h1>
                         {% csrf_token %}
-                        <input name="full_name_en" type="text" hidden=""
-                               value="{% if msg != 'POSTERROR' %}{{ data_response.FirstName }} {{ data_response.LastName|getnames:2 }}{% else %}{{ form.full_name_en.value|getnames:3 }}{% endif %}">
-                        <input name="full_name_ar" type="text" hidden=""
-                               value="{% if msg != 'POSTERROR' %}{{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:2 }}{% else %}{{ form.full_name_ar.value|getnames:3 }}{% endif %}">
+                        <input name="employee_id" hidden="" id="employee_id" required placeholder="Employee ID" class="bg-inherit focus-visible:outline-none" type="text" value="{{ data_response.EmployeeID }}" readonly>
+
                         <p class="font-roleway font-semibold my-3 xl:my-3 font-size-res">Enter The Required
                             Information</p>
                         <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-10 xl:mb-20">
@@ -196,10 +194,17 @@
                         <div class="row input-group mx-0 md:mx-12 xl:mx-24">
                             <div class="mb-4">
                                 <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                    <input name="employee_id" type="text" maxlength="8" placeholder="Card ID"
-                                           class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                           value="{% if msg != 'POSTERROR' %}{{ data_response.EmployeeID }}{% else %}{{ form.employee_id.value }}{% endif %}" readonly>
-                                    <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10">
+                                     <input name="full_name_en" id="full_name_en" required placeholder="Full Name In English" class="bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.FirstName }} {{ data_response.LastName|getnames:2 }}{% else %}{{ form.full_name_en.value|getnames:3 }}{% endif %}">
+                                    <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 50px;">
+                                        <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
+                                             width="26px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <input required placeholder="Full Name In Arabic" id="full_name_ar" name="full_name_ar" class="bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:2 }}{% else %}{{ form.full_name_ar.value|getnames:3 }}{% endif %}">
+                                    <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 50px;">
                                         <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
                                              width="26px">
                                     </div>
@@ -222,7 +227,7 @@
                                     <input required id="jobTitleAr" name="job_title_ar" type="text"
                                            placeholder="Job Title In Arabic"
                                            class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                           maxlength="26" value="{% if msg != 'POSTERROR' %}{{ data_response.Designation }}{% else %}{{ form.job_title_ar.value }}{% endif %}">
+                                           maxlength="26" value="">
                                     <div class="input-icon bg-qibg p-2 rounded-full"><img
                                             src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
                                             width="26px">
@@ -325,8 +330,8 @@
                                                       height="100px"
                                                       class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
                                         </div>
-                                        <div class="card-name my-5 st:my-0 text-start md:pl-4">
-                                            <div class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-roleway">
+                                        <div  class="card-name my-5 st:my-0 text-start md:pl-4">
+                                            <div  id="card_full_name_en" class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-roleway">
                                                 {{ data_response.FirstName }} {{ data_response.LastName|getnames:2 }}
                                             </div>
                                             <div id="Designation"
@@ -397,7 +402,7 @@
                                                       class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
                                         </div>
                                         <div class="card-name my-5 st:my-0 text-end pr-4 sm:pr-6 lg:pr-10">
-                                            <div class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-cairo">
+                                            <div id="card_full_name_ar" class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-cairo">
                                                 {{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:2 }}
                                             </div>
                                             <div id="ArDesignation"
@@ -478,6 +483,80 @@
 
 $('#flipCard').click(function() {
     $('.flip-card').toggleClass('rotate-card');
+});
+</script>
+
+<script>
+  const fullNameInput = document.getElementById('full_name_en');
+  const fullName = fullNameInput.value;
+  const names = fullName.split(' ');
+  const lastNameAndBeyond = names.slice(2).join(' ');
+
+  // Disable the input field for the first two names
+  const firstNameInput = fullNameInput.cloneNode();
+  firstNameInput.id = 'full_name_en2';
+  firstNameInput.name = 'full_name_en2';
+  firstNameInput.value = names[0] + ' ' + names[1];
+  firstNameInput.disabled = true;
+  fullNameInput.parentNode.insertBefore(firstNameInput, fullNameInput);
+
+  // Replace the value of the original input field with only the last name and beyond
+  fullNameInput.value = lastNameAndBeyond;
+$('#full_name_en').addClass('w-full');
+
+ function getTextWidth(el) {
+  // uses a cached canvas if available
+  var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+  var context = canvas.getContext("2d");
+  // get the full font style property
+  var font = window.getComputedStyle(el, null).getPropertyValue('font');
+  var text = el.value;
+  // set the font attr for the canvas text
+  context.font = font;
+  var textMeasurement = context.measureText(text);
+  return textMeasurement.width;
+}
+
+var eninput = document.getElementById('full_name_en2');
+var enwidth = Math.floor(getTextWidth(eninput));
+var enwidthInPx = (enwidth + 25) + "px";
+  eninput.style.width = enwidthInPx;
+eninput.style.paddingLeft  = '1.25rem';
+
+
+
+ $('#full_name_en').keyup(function() {
+  $('#card_full_name_en').text($('#full_name_en2').val() + ' ' + $('#full_name_en').val());
+});
+
+
+  const arfullNameInput = document.getElementById('full_name_ar');
+  const arfullName = arfullNameInput.value;
+  const arnames = arfullName.split(' ');
+  const arlastNameAndBeyond = arnames.slice(2).join(' ');
+
+  // Disable the input field for the first two names
+  const arfirstNameInput = arfullNameInput.cloneNode();
+  arfirstNameInput.id = 'full_name_ar2';
+  arfirstNameInput.name = 'full_name_ar2';
+  arfirstNameInput.value = arnames[0] + ' ' + arnames[1];
+  arfirstNameInput.disabled = true;
+  arfullNameInput.parentNode.insertBefore(arfirstNameInput, arfullNameInput.nextSibling);
+
+  // Replace the value of the original input field with only the last name and beyond
+  arfullNameInput.value = arlastNameAndBeyond;
+arfullNameInput.style.paddingLeft  = '1.25rem';
+arfullNameInput.dir ='rtl';
+var arinput = document.getElementById('full_name_ar2');
+var arwidth = Math.floor(getTextWidth(arinput));
+var arwidthInPx = (arwidth + 25) + "px";
+  arinput.style.width = arwidthInPx;
+arinput.style.paddingLeft  = '0.25rem';
+
+$('#full_name_ar').addClass('w-full');
+
+ $('#full_name_ar').keyup(function() {
+  $('#card_full_name_ar').text($('#full_name_ar2').val() + ' ' + $('#full_name_ar').val());
 });
 </script>
 {% endblock %}
