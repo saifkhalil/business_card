@@ -13,7 +13,8 @@ from django.shortcuts import render
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'email', 'full_name', 'created_by', 'created_at', 'modified_by', 'modified_at')
-    readonly_fields = ('created_by', 'created_at', 'modified_by', 'modified_at', 'password')
+    readonly_fields = ('last_login','created_by', 'created_at', 'modified_by', 'modified_at', 'password')
+    fields = ('email', 'firstname','lastname','is_businesscard_admin','is_active','is_staff','is_superuser','last_login','created_by', 'created_at', 'modified_by', 'modified_at')
     search_fields = ('email', 'firstname', 'lastname')
     # def save_model(self, request, obj, form, change):
     #     if change:
