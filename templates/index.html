@@ -3,7 +3,7 @@
 {% load static %}
 {% load socialaccount %}
 {% load getnames %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.53">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.54">
 
 <div id="index">
     <div class="section"  id="home">
@@ -209,7 +209,8 @@
                                                placeholder="Job Title In English"
                                                class="w-full pl-5 bg-inherit focus-visible:outline-none"
                                                maxlength="26" value="{% if msg != 'POSTERROR' %}{{ data_response.Designation }}{% else %}{{ form.job_title.value }}{% endif %}">
-                                        <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
+                                            <img
                                                 src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
                                                 width="26px">
                                         </div>
@@ -221,7 +222,7 @@
                                                placeholder="Job Title In Arabic"
                                                class="w-full pl-5 bg-inherit focus-visible:outline-none"
                                                maxlength="26" value="">
-                                        <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
                                                 src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
                                                 width="26px">
                                         </div>
@@ -232,7 +233,7 @@
                                         <input required id="phoneNumber" name="phone" type="text" placeholder="Phone Number"
                                                class="w-full pl-5 bg-inherit focus-visible:outline-none"
                                                maxlength="14" value="{% if msg != 'POSTERROR' %}{{ data_response.Work_phone|default:'+964780XXXXXXX' }}{% else %}{{ form.phone.value }}{% endif %}">
-                                        <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
                                                 src="{% static 'images/call.png' %}"
                                                 alt="Card"
                                                 height="26px"
@@ -244,7 +245,7 @@
                                         <input required name="quantity" type="number" min="1" placeholder="Quantity"
                                                class="w-full pl-5 bg-inherit focus-visible:outline-none"
                                                value="{% if msg != 'POSTERROR' %}100{% else %}{{ form.quantity.value }}{% endif %}" max="1000">
-                                        <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
                                                 src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
                                         </div>
                                     </div>
