@@ -90,9 +90,11 @@ def index(request):
     data: list = None
     msg: str = None
     data_value: dict = None
-    data_response = None
+    page_obj = None
+    page_range = None
     user_requests = None
     response_status = 1
+    page_number = request.GET.get('page', 1)
     form = None
     if request.method == 'POST':
         form = BusinessRequestForm(request.POST)
@@ -133,9 +135,14 @@ def index(request):
             except Exception as e:
                 messages.add_message(request, messages.ERROR, e)
     elif request.method == 'GET':
+
         try:
             if request.user.is_authenticated:
                 user_requests = BusinessRequest.objects.filter(user=request.user)
+                paginator = Paginator(user_requests, 10)
+                page_number = request.GET.get('page', 1)
+                page_obj = paginator.get_page(page_number)
+                page_range = paginator.get_elided_page_range(number=page_number, on_each_side=2, on_ends=2)
         except BusinessRequest.DoesNotExist:
             user_requests = None
         try:
@@ -156,7 +163,8 @@ def index(request):
         'msg': msg,
         'response_status': response_status,
         'data_response': data_value,
-        'user_requests': user_requests,
+        'page_obj': page_obj,
+        'page_range': page_range,
         'form': form
     }
     return render(request, 'index.html', context)
