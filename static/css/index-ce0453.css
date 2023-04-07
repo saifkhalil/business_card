@@ -2378,3 +2378,12 @@ padding-left:50px;
 .nav-text {
 display:inline ;
 }
+
+.fp-tableCell {
+vertical-align: top !important;
+
+}
+
+.carousel .fp-tableCell {
+    vertical-align: middle !important;
+}
