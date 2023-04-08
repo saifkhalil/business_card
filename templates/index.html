@@ -54,7 +54,7 @@
             </div>
         </main>
     </div>
-    <div class="section container" id="services_list">
+    <div class="section" id="services_list">
         <div class="choose-service-page flex-1">
             <div class="my-container">
         <div id="carouselDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
@@ -480,7 +480,20 @@ $('#flipCard').click(function() {
 
 
 </script>
+<script>
+    $('document').ready(function(){
+$('#index').fullpage({
 
+		dropEffect: true,
+			dragAndMove: true,
+
+fadingEffect: true,
+});
+
+
+});
+</script>
+{% if user.is_authenticated %}
 <script>
  function getTextWidth(el) {
   // uses a cached canvas if available
@@ -514,17 +527,7 @@ var arwidthInPx = (arwidth + 25) + "px";
 });
 document.getElementById("last_name_en").maxLength = 26 - $('#first_name_en').val().length;
 document.getElementById("last_name_ar").maxLength = 26 - $('#first_name_ar').val().length;
-$('document').ready(function(){
-$('#index').fullpage({
 
-		dropEffect: true,
-			dragAndMove: true,
-
-fadingEffect: true,
-});
-
-
-});
 
  $('#last_name_en').on('input',function(e){
  var el= $('#card_full_name_en');
@@ -584,5 +587,5 @@ $('#last_name_ar').on('input',function(e){
     }
 });
 </script>
-
+{% endif %}
 {% endblock %}
