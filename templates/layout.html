@@ -11,18 +11,26 @@
 
     </script>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="{% static 'css/index-ce0453.css' %}?v=0.51">
+<link rel="stylesheet" type="text/css" href="{% static 'css/index-ce0453.css' %}?v=0.55">
 </head>
 <body style="background-color: #f0cc00">
 <div id="root">
     <div class="bg-qibg text-qitext pt-2">
         <nav class="navbar navbar-expand-lg sticky-top  navbar-light" id="qi-navbar">
-            <div class="container-fluid">
-                <button class="navbar-toggler burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#QioffcanvasRight" aria-controls="QioffcanvasRight">
-                          <img src="{% static '/images/burger_menu.png' %}" alt="Logo" height="52px" width="52px" class="d-inline-block" style="margin-right: 20px;">
+            <div class="container-fluid" dir="rtl">
+                <div class="navbar-toggler">
+                <button class="btn-transparent" type="button" data-bs-toggle="offcanvas" data-bs-target="#QioffcanvasRight" aria-controls="QioffcanvasRight">
+                          <img src="{% static '/images/Burger_button.svg' %}" alt="Logo" height="20px" width="20px" class="d-inline-block">
                 </button>
+                <button class="btn-transparent" type="button">
+                          <img src="{% static '/images/Search.svg' %}" alt="Logo" height="20px" width="20px" class="d-inline-block" >
+                </button>
+                <button class="btn-transparent" type="button">
+                          <img src="{% static '/images/profile.svg' %}" alt="Profile" height="18px" width="18px" class="d-inline-block">
+                </button>
+                    </div>
                 <a class="navbar-brand font-bold text-3xl sm:text-4xl font-bebas xs:block" href="/">
-                        <img src="{% static '/images/qi-logo.svg' %}" alt="Logo" height="52px" width="52px" class="d-inline-block" style="margin-right: 20px;">
+                        <img src="{% static '/images/qi-logo.svg' %}" alt="Logo" height="48px" width="48px" class="d-inline-block">
                         <p class="nav-text">Creative</p>
                 </a>
                 <div class="collapse navbar-collapse bg-white rounded-l-full" id="QinavbarToggler">
@@ -49,7 +57,7 @@
                         {% endif %}
                            <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                             <img src="{% static '/images/icons8-person-64.png' %}" alt="Logo" height="32px" width="32px" class="d-inline-block" style="margin-right: 20px;">
+                             <img src="{% static '/images/profile.svg' %}" alt="Logo" height="32px" width="32px" class="d-inline-block" style="margin-right: 20px;">
                           </a>
                           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item link-hover  cursor-pointer text-dark" href="{% url 'logout' %}">Logout</a></li>

@@ -2392,3 +2392,11 @@ vertical-align: top !important;
 .carousel .fp-tableCell {
     vertical-align: middle !important;
 }
+
+.navbar-toggler{
+    padding-right: 1.5rem !important;
+}
+
+.btn-transparent {
+background-color:transparent !important;
+}

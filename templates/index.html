@@ -183,8 +183,8 @@
                             </div>
                             <div class="row input-group mx-0 md:mx-12 xl:mx-24">
                                 <div class="mb-2">
-                                    <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                         <input name="first_name_en" readonly  id="first_name_en" placeholder="Full Name In English" class="bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.FirstName }} {{ data_response.LastName|getnames:1 }}{% else %}{{ form.first_name_en.value }}{% endif %}">
+                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                         <input name="first_name_en" readonly  id="first_name_en" placeholder="Full Name In English" class="pl-5 bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.FirstName }} {{ data_response.LastName|getnames:1 }}{% else %}{{ form.first_name_en.value }}{% endif %}">
                                          <input name="last_name_en"  id="last_name_en" required placeholder="Last Name In English" class="w-full bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.LastName|getnames:2 }}{% else %}{{ form.last_name_en.value }}{% endif %}">
 
                                         <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
@@ -194,9 +194,9 @@
                                     </div>
                                 </div>
                                 <div class="mb-2">
-                                    <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
                                         <input dir="rtl" required placeholder="Last Name In Arabic" id="last_name_ar" name="last_name_ar" class="w-full bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.Second_Arabic_Name|getnames:2 }}{% else %}{{ form.last_name_ar.value }}{% endif %}">
-                                        <input dir="rtl"  readonly placeholder="Full Name In Arabic" id="first_name_ar" name="first_name_ar" class="bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:1 }}{% else %}{{ form.first_name_ar.value }}{% endif %}">
+                                        <input dir="rtl"  readonly placeholder="Full Name In Arabic" id="first_name_ar" name="first_name_ar" class="pr-5 bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:1 }}{% else %}{{ form.first_name_ar.value }}{% endif %}">
                                         <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
                                             <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
                                                  width="26px">
@@ -499,7 +499,6 @@ var eninput = document.getElementById('first_name_en');
 var enwidth = Math.floor(getTextWidth(eninput));
 var enwidthInPx = (enwidth + 25) + "px";
   eninput.style.width = enwidthInPx;
-eninput.style.paddingLeft  = '1.25rem';
 
  $('#last_name_en').keyup(function() {
   $('#card_full_name_en').text($('#first_name_en').val() + ' ' + $('#last_name_en').val());
@@ -509,7 +508,6 @@ var arinput = document.getElementById('first_name_ar');
 var arwidth = Math.floor(getTextWidth(arinput));
 var arwidthInPx = (arwidth + 25) + "px";
   arinput.style.width = arwidthInPx;
-arinput.style.paddingRight  = '1.25rem';
 
  $('#last_name_ar').keyup(function() {
   $('#card_full_name_ar').text($('#first_name_ar').val() + ' ' + $('#last_name_ar').val());
