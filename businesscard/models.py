@@ -8,7 +8,9 @@ from core.threading import send_html_mail
 from accounts.models import User
 # Create your models here.
 # User = get_user_model()
-
+from businesscard.pdf import html_to_pdf
+from io import BytesIO
+from django.core.files import File
 
 STATUS = (
     ('Pending','Pending'),
@@ -29,6 +31,7 @@ class BusinessRequest(models.Model):
     job_title_ar = models.CharField(max_length=250, blank=False, null=False, verbose_name='Job Title Ar')
     phone = PhoneNumberField(verbose_name="Phone Number")
     quantity = models.BigIntegerField(blank=False, null=False)
+    pdf = models.FileField(upload_to='pdf/%Y/%m/%d/', verbose_name='PDF')
     created_at = models.DateTimeField(auto_now_add=True,editable=False,verbose_name='Created at')
     status = models.CharField(choices=STATUS,default='Pending', max_length=250, blank=False, null=False, verbose_name='Status')
     status_change_by = models.ForeignKey(User,related_name='%(class)s_status_change_by', null=True, blank=True, on_delete=models.CASCADE)
@@ -43,6 +46,9 @@ class BusinessRequest(models.Model):
 def BusinessRequest_send_email(sender, instance, created, *args, **kwargs):
     CurrentBusinessRequest = instance
     if created:
+        # open(f'businesscard/{CurrentBusinessRequest.id}pdf.html', "w").write(render_to_string('businesscard/results.html', {'data': CurrentBusinessRequest}))
+        # pdf = html_to_pdf(f'{CurrentBusinessRequest.id}pdf.html')
+        # CurrentBusinessRequest.pdf.save(f'{CurrentBusinessRequest.id}_pdf', File(BytesIO(pdf.content)))
         from django.contrib.sites.models import Site
         message = 'text version of HTML message'
         email_subject = f'New Business Card Request #{CurrentBusinessRequest.id}'
@@ -53,6 +59,8 @@ def BusinessRequest_send_email(sender, instance, created, *args, **kwargs):
             'msgtype': 'You have been assigned with you below case details'
         })
         send_html_mail(email_subject, email_body, list(User.objects.filter(is_businesscard_admin=True).values_list('email', flat=True)))
+
+
 
 
 class ZohoToken(models.Model):

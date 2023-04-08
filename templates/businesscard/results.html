@@ -1,0 +1,167 @@
+
+{% load static %}
+    <div class="section fp-auto-height-responsive" id="bcard">
+        <div class="bcard-container flex-1"`>
+            <div class="my-container">
+                <div class="bcard-box flex flex-col">
+                    <div class="card-preview flex flex-col items-center justify-center flex-1">
+                        <div class="flip-card">
+                            <div class="flip-card-inner ">
+                                <div class="flip-card-front">
+                                    <div class="card-box shadow-xl st:w-220 st:h-120 xl:w-250 xl:h-160 rounded-bl-4xl bg-white flex">
+                                        <div class="qi-logo-contact-info flex-left text-small xxs:text-xs xl:text-base st:text-lg flex flex-col items-center justify-between pt-7 pb-3 xxs:pt-5 xxs:pb-5 st:pt-14 st:pb-10">
+                                            <div class="qi-logo"><img src="{% static 'images/qi-logo-yellow.svg' %}"
+                                                                      alt="Qi"
+                                                                      width="112px" height="112px"
+                                                                      class="w-10 h-10 xxs:w-12 xss:h-12 xs:w-16 xs:h-16 xl:h-28 xl:w-28">
+                                            </div>
+                                            <div class="contact-info px-0 pr-0 xs:pr-5 st:px-5 border-none sm:border-solid xs:border-r-1 st:border-r-2 border-gray-500 [&amp;>div]:mb-2">
+                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
+                                                    <div><img src="{% static 'images/email.png' %}" alt="Email" width="20px"
+                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
+                                                    <div>{{ data_response.EmailID }}</div>
+                                                </div>
+                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
+                                                    <div><img src="{% static 'images/web.png' %}" alt="Email" width="20px"
+                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
+                                                    <div>www.qi.iq</div>
+                                                </div>
+                                                <div class="single-info flex flex-row-reverse items-start xs:items-center gap-1 xs:gap-2">
+                                                    <div><img src="{% static 'images/pin.png' %}" alt="Email" width="20px"
+                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
+                                                    <span class="">Iraq - {{ data_response.LocationName|default:'Baghdad' }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="qi-logo-name-and-phone flex-right flex flex-col justify-between pb-5 xs:pb-10">
+                                            <div class="card-qi-header flex w-fit st:w-auto self-end st:self-auto bg-yellow-300 rounded-bl-4xl">
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                            </div>
+                                            <div  class="card-name my-5 st:my-0 text-start md:pl-4">
+                                                <div  id="card_full_name_en" class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-roleway">
+                                                    {{ data_response.FirstName }} {{ data_response.LastName }} {{ data_response.LastName }}
+                                                </div>
+                                                <div id="Designation"
+                                                     class="job-title overflow-hidden text-small xxs:text-xs xs:text-sm st:text-base xl:text-lg font-medium font-roleway">
+                                                    {{ data_response.Designation }}
+                                                </div>
+                                            </div>
+                                            <div class="contact-info text-phone xxs:text-xs st:text-base xl:text-base px-0 xs:px-2 st:px-5 [&amp;>div]:mb-2">
+                                                <div class="single-info flex items-start justify-start gap-1 xs:gap-3">
+                                                    <div class="mt-1 w-3 h-3 xs:w-auto xs:h-auto "><img
+                                                            src="{% static 'images/call.png' %}" alt="Email" width="20px"
+                                                            height="20px"></div>
+                                                    <div>
+                                                        <div id="phoneNumbervalue" class="phone">{{ data_response.Work_phone|default:'+964780XXXXXXX' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-name font-roleway font-medium hidden st:block">
+                                                    International Smart Card<small
+                                                        class="text-xs font-medium mx-1 hidden md:inline">(Semi
+                                                    Goverment)</small></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flip-card-back">
+                                    <div class="card-box shadow-xl st:w-220 st:h-120 xl:w-250 xl:h-160 rounded-bl-4xl bg-white flex">
+                                        <div class="qi-logo-contact-info flex-left text-small xxs:text-xs xl:text-base st:text-lg flex flex-col items-center justify-between pt-7 pb-3 xxs:pt-5 xxs:pb-5 st:pt-14 st:pb-10">
+                                            <div class="qi-logo"><img src="{% static 'images/qi-logo-yellow.svg' %}"
+                                                                      alt="Qi"
+                                                                      width="112px" height="112px"
+                                                                      class="w-10 h-10 xxs:w-12 xss:h-12 xs:w-16 xs:h-16 xl:h-28 xl:w-28">
+                                            </div>
+                                            <div class="contact-info px-0 pr-0 xs:pr-5 st:px-5 border-none sm:border-solid xs:border-r-1 st:border-r-2 border-gray-500 [&amp;>div]:mb-2">
+                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
+                                                    <div><img src="{% static 'images/email.png' %}" alt="Email" width="20px"
+                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
+                                                    <div>{{ data_response.EmailID }}</div>
+                                                </div>
+                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
+                                                    <div><img src="{% static 'images/web.png' %}" alt="Email" width="20px"
+                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
+                                                    <div>www.qi.iq</div>
+                                                </div>
+                                                <div class="single-info flex flex-row-reverse items-start xs:items-center gap-1 xs:gap-2">
+                                                    <div><img src="{% static 'images/pin.png' %}" alt="Email" width="20px"
+                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
+                                                    <span class="font-cairo">العراق - بغداد</span></div>
+                                            </div>
+                                        </div>
+                                        <div class="qi-logo-name-and-phone flex-right flex flex-col justify-between pb-5 xs:pb-10">
+                                            <div class="card-qi-header flex w-fit st:w-auto self-end st:self-auto bg-yellow-300 rounded-bl-4xl">
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
+                                                          width="100px"
+                                                          height="100px"
+                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
+                                            </div>
+                                            <div class="card-name my-5 st:my-0 text-end pr-4 sm:pr-6 lg:pr-10">
+                                                <div id="card_full_name_ar" class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-cairo">
+                                                    {{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name }} {{ data_response.Second_Arabic_Name }}
+                                                </div>
+                                                <div id="ArDesignation"
+                                                     class="job-title overflow-hidden text-small xxs:text-xs xs:text-sm st:text-base xl:text-lg font-medium font-cairo">
+                                                    {{ data_response.Designation }}
+                                                </div>
+                                            </div>
+                                            <div class="contact-info text-phone xxs:text-xs st:text-base xl:text-base px-0 xs:px-2 st:px-5 [&amp;>div]:mb-2">
+                                                <div class="single-info flex items-start justify-start gap-1 xs:gap-3">
+                                                    <div class="mt-1 w-3 h-3 xs:w-auto xs:h-auto "><img
+                                                            src="{% static 'images/call.png' %}" alt="Email" width="20px"
+                                                            height="20px"></div>
+                                                    <div>
+                                                        <div id="phoneNumberValueAr" class="phone">{{ data_response.Work_phone|default:'+964780XXXXXXX' }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-name font-cairo font-medium hidden st:block">
+                                                    العالمية للبطاقة الذكية<small
+                                                        class="text-xs font-medium mx-1 hidden md:inline">(قطاع
+                                                    مختلط)</small></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filp-button">
+                            <div id="flipCard" class="flex items-center flex-col gap-1 cursor-pointer"><img
+                                    src="{% static 'images/360.png' %}"
+                                    alt="Flip"
+                                    width="42px"
+                                    height="42px"><span
+                                    class="font-normal">Click here to flip the card</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

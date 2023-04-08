@@ -12,7 +12,13 @@ from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView
 )
-
+# importing the necessary libraries
+from io import BytesIO
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from django.views.generic import View
+from django.template.loader import render_to_string
 from businesscard.forms import BusinessRequestForm
 from businesscard.models import BusinessRequest
 from core.apis import (
@@ -22,6 +28,20 @@ from core.apis import (
 
 User = get_user_model()
 
+
+
+
+
+class GeneratePdf(View):
+    def get(self, request, *args, **kwargs):
+        data = BusinessRequest.objects.get(id=1)
+        open('templates/businesscard/pdf.html', "w").write(render_to_string('templates/businesscard/result.html', {'data': data}))
+
+        # Converting the HTML template into a PDF file
+        pdf = html_to_pdf('temp.html')
+
+        # rendering the template
+        return HttpResponse(pdf, content_type='application/pdf')
 
 # Create your views here.
 class BusinessRequestCreateView(CreateView):

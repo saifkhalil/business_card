@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from phonenumber_field.formfields import PhoneNumberField
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.widgets import PhoneNumberInternationalFallbackWidget, PhoneNumberPrefixWidget
-
+from businesscard.models import BusinessRequest
 class BusinessRequestForm(ModelForm):
     # phone = PhoneNumberField(widget=PhoneNumberPrefixWidget(initial='IQ'))
     # phone.error_messages['invalid'] = 'Enter a valid phone number (e.g. 7801000000).'
