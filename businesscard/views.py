@@ -27,21 +27,27 @@ from core.apis import (
 )
 
 User = get_user_model()
+from businesscard.pdf import html_to_pdf
 
 
+def GeneratePdf(request, rid):
+    data = BusinessRequest.objects.get(id=rid)
+    open(f'businesscard/temp.html', "w").write(render_to_string('businesscard/results.html', {'data': data}))
+
+    # Converting the HTML template into a PDF file
+    pdf = html_to_pdf(f'businesscard/temp.html')
+    # rendering the template
+    return HttpResponse(pdf, content_type='application/pdf')
 
 
+def GenerateHtml(request, rid):
+    data = BusinessRequest.objects.get(id=rid)
+    # rendering the template
+    context = {
+        'data': data
+    }
+    return render(request, 'businesscard/results.html', context)
 
-class GeneratePdf(View):
-    def get(self, request, *args, **kwargs):
-        data = BusinessRequest.objects.get(id=1)
-        open('templates/businesscard/pdf.html', "w").write(render_to_string('templates/businesscard/result.html', {'data': data}))
-
-        # Converting the HTML template into a PDF file
-        pdf = html_to_pdf('temp.html')
-
-        # rendering the template
-        return HttpResponse(pdf, content_type='application/pdf')
 
 # Create your views here.
 class BusinessRequestCreateView(CreateView):
@@ -266,10 +272,10 @@ def request_list(request):
         'session': json.dumps(session),
         'page_obj': page_obj,
         'page_range': page_range,
-        'total_requests':total_requests,
-        'Approved_requests':Approved_requests,
-        'InPrinting_requests':InPrinting_requests,
-        'Done_requests':Done_requests,
+        'total_requests': total_requests,
+        'Approved_requests': Approved_requests,
+        'InPrinting_requests': InPrinting_requests,
+        'Done_requests': Done_requests,
         'requests_count': request_list.count(),
     }
     return render(request, 'businesscard/request_list.html', context)

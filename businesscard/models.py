@@ -42,13 +42,14 @@ class BusinessRequest(models.Model):
     modified_by = models.ForeignKey(
         User, related_name='%(class)s_modifiedby', null=True, blank=True, on_delete=models.CASCADE,editable=False,verbose_name='Modified by')
 
+
 @receiver(post_save, sender=BusinessRequest)
 def BusinessRequest_send_email(sender, instance, created, *args, **kwargs):
     CurrentBusinessRequest = instance
     if created:
-        # open(f'businesscard/{CurrentBusinessRequest.id}pdf.html', "w").write(render_to_string('businesscard/results.html', {'data': CurrentBusinessRequest}))
-        # pdf = html_to_pdf(f'{CurrentBusinessRequest.id}pdf.html')
-        # CurrentBusinessRequest.pdf.save(f'{CurrentBusinessRequest.id}_pdf', File(BytesIO(pdf.content)))
+        open(f'businesscard/temp.html', "w").write(render_to_string('businesscard/results.html', {'data': CurrentBusinessRequest}))
+        pdf = html_to_pdf(f'businesscard/temp.html')
+        CurrentBusinessRequest.pdf.save(f'{CurrentBusinessRequest.id}_pdf.pdf', File(BytesIO(pdf.content)))
         from django.contrib.sites.models import Site
         message = 'text version of HTML message'
         email_subject = f'New Business Card Request #{CurrentBusinessRequest.id}'

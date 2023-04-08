@@ -9,7 +9,9 @@ from businesscard.views import (
         BusinessRequestList,
         BusinessRequestDetails,
         index,
-        request_list
+        request_list,
+        GeneratePdf,
+        GenerateHtml
 )
 
 urlpatterns = [
@@ -17,6 +19,8 @@ urlpatterns = [
          name='home'),
     path('orders/', BusinessRequestList, name='orders'),
     path('requests/', request_list, name='requests'),
+    path('orders/<int:rid>/pdf/', GeneratePdf, name='pdf'),
+    path('orders/<int:rid>/html/', GenerateHtml, name='html'),
     path('orders/<int:brid>', login_required(BusinessRequestDetails), name='BusinessRequestDetails'),
     path('orders/<int:id>/BusinessRequestApprove/', login_required(BusinessRequestApprove),
          name='BusinessRequestApprove'),

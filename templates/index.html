@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.54">
 
 <div id="index">
-    <div class="section"  id="home">
+    <div class="section" id="home">
         <main class="lg:mt-2 x2l:mt-12">
             <div class="my-container pt-5">
                 <div class="row pt-5">
@@ -481,17 +481,10 @@ $('#flipCard').click(function() {
 
 </script>
 <script>
-    $('document').ready(function(){
-$('#index').fullpage({
+        $('#index').fullpage({
+            scrollBar: true
 
-		dropEffect: true,
-			dragAndMove: true,
-
-fadingEffect: true,
-});
-
-
-});
+        })
 </script>
 {% if user.is_authenticated %}
 <script>
