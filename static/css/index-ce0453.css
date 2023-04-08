@@ -2325,6 +2325,10 @@ text-decoration: underline !important;
 
 
 @media (max-width: 600px) {
+.container-fluid {
+direction:rtl !important;
+}
+
 .input-icon {
 width: 32px !important;
 height: 32px !important;
