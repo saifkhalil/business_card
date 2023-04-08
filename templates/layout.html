@@ -54,32 +54,19 @@
                             <a class="nav-link link-hover  cursor-pointer text-dark" href="{% url 'requests' %}">All Orders</a>
                         </li>
                         {% endif %}
-<!--                           <li class="nav-item dropdown">-->
-<!--                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--                             <img src="{% static '/images/profile.svg' %}" alt="Logo" height="32px" width="32px" class="d-inline-block" style="margin-right: 20px;">-->
-<!--                          </a>-->
-<!--                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                            <li><a class="dropdown-item link-hover  cursor-pointer text-dark" href="{% url 'logout' %}">Logout</a></li>-->
-<!--                          </ul>-->
-<!--                        </li>-->
-<!--                        {% else %}-->
-<!--                        <li class="nav-item">-->
-<!--                            <a class="nav-link link-hover  cursor-pointer text-dark" href="{% provider_login_url 'microsoft' process='login'  %}" target="_parent">Login</a>-->
-<!--                        </li>-->
+                           <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                             <img src="{% static '/images/profile.svg' %}" alt="Logo" height="32px" width="32px" class="d-inline-block" style="margin-right: 20px;">
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item link-hover  cursor-pointer text-dark" href="{% url 'logout' %}">Logout</a></li>
+                          </ul>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link link-hover  cursor-pointer text-dark" href="{% provider_login_url 'microsoft' process='login'  %}" target="_parent">Login</a>
+                        </li>
                         {% endif %}
-<!--                        <li style="margin-right: 0px;">-->
-<!--                            <a href="#">-->
-<!--                                <div class="border-2 border-black flex items-center flex-row-reverse gap-1 px-3 py-1 rounded-full">-->
-<!--                                    <input type="text" class="w-24 focus-visible:outline-none">-->
-<!--                                        <button>-->
-<!--                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                                <circle cx="11" cy="11" r="8"></circle>-->
-<!--                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>-->
-<!--                                            </svg>-->
-<!--                                        </button>-->
-<!--                                </div>-->
-<!--                            </a>-->
-<!--                        </li>-->
                     </ul>
                 </div>
             </div>
@@ -111,33 +98,8 @@
                             <a class="nav-link text-3xl link-hover  cursor-pointer text-dark" href="{% url 'requests' %}">All Orders</a>
                         </li>
                         {% endif %}
-                           <li class="nav-item dropdown">
-                          <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                             <img src="{% static '/images/icons8-person-64.png' %}" alt="Logo" height="32px" width="32px" class="d-inline-block" style="margin-right: 20px;">
-                          </a>
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item text-3xl link-hover  cursor-pointer text-dark" href="{% url 'logout' %}">Logout</a></li>
-                          </ul>
-                        </li>
 
-                        {% else %}
-                        <li class="nav-item m-3">
-                            <a class="nav-link text-3xl link-hover  cursor-pointer text-dark" href="{% provider_login_url 'microsoft' process='login'  %}" target="_parent">Login</a>
-                        </li>
                         {% endif %}
-<!--                        <li style="margin-right: 0px;">-->
-<!--                            <a href="#">-->
-<!--                                <div class="border-2 border-black flex items-center flex-row-reverse gap-1 px-3 py-1 rounded-full">-->
-<!--                                    <input type="text" class="w-24 focus-visible:outline-none">-->
-<!--                                        <button>-->
-<!--                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-xl" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                                <circle cx="11" cy="11" r="8"></circle>-->
-<!--                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>-->
-<!--                                            </svg>-->
-<!--                                        </button>-->
-<!--                                </div>-->
-<!--                            </a>-->
-<!--                        </li>-->
                     </ul>
   </div>
 </div>
