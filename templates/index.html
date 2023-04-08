@@ -512,7 +512,8 @@ var arwidthInPx = (arwidth + 25) + "px";
  $('#last_name_ar').keyup(function() {
   $('#card_full_name_ar').text($('#first_name_ar').val() + ' ' + $('#last_name_ar').val());
 });
-
+document.getElementById("last_name_en").maxLength = 26 - $('#first_name_en').val().length;
+document.getElementById("last_name_ar").maxLength = 26 - $('#first_name_ar').val().length;
 $('document').ready(function(){
 $('#index').fullpage({
 
@@ -523,6 +524,64 @@ fadingEffect: true,
 });
 
 
+});
+
+ $('#last_name_en').on('input',function(e){
+ var el= $('#card_full_name_en');
+   var textLength = $('#first_name_en').val().length + $('#last_name_en').val().length;
+    if (textLength > 30) {
+    if (screen.width > 500) {
+        el.css('font-size', '0.8rem');
+     }
+     else {
+     el.css('font-size', '0.48rem');
+     }
+    }
+    else if (textLength > 20) {
+    if (screen.width > 500) {
+        el.css('font-size', '1.25rem');
+     }
+     else {
+     el.css('font-size', '0.6rem');
+     }
+}
+    else {
+      if (screen.width > 500) {
+        el.css('font-size', '1.5rem');
+     }
+     else {
+     el.css('font-size', '0.825rem');
+     }
+    }
+});
+
+$('#last_name_ar').on('input',function(e){
+ var arel= $('#card_full_name_ar');
+   var artextLength = $('#first_name_ar').val().length + $('#last_name_ar').val().length;
+    if (artextLength > 30) {
+    if (screen.width > 500) {
+        arel.css('font-size', '0.8rem');
+     }
+     else {
+     arel.css('font-size', '0.48rem');
+     }
+    }
+    else if (artextLength > 18) {
+    if (screen.width > 500) {
+        arel.css('font-size', '1.25rem');
+     }
+     else {
+     arel.css('font-size', '0.6rem');
+     }
+}
+    else {
+      if (screen.width > 500) {
+        arel.css('font-size', '1.5rem');
+     }
+     else {
+     arel.css('font-size', '0.825rem');
+     }
+    }
 });
 </script>
 
