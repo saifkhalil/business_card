@@ -1141,6 +1141,9 @@ border-radius : 99999px !important;
     .md\:text-start{
         text-align:start
     }
+    .create-form {
+    max-width: 44rem;
+}
 }
 @media (min-width: 992px){
     .lg\:my-0{
@@ -1222,6 +1225,9 @@ border-radius : 99999px !important;
         font-size:3.75rem;
         line-height:1.5
     }
+    .create-form {
+    max-width: 44rem;
+    }
 }
 @media (min-width: 1280px){
     .xl\:my-3{
@@ -1282,6 +1288,9 @@ border-radius : 99999px !important;
         font-size:1.125rem;
         line-height:1.75rem
     }
+.create-form {
+max-width: 44rem;
+}
 }
 @media (min-width: 1540px){
     .x2l\:my-8{
@@ -1317,6 +1326,9 @@ border-radius : 99999px !important;
         font-size:2.25rem;
         line-height:2.5rem
     }
+    .create-form {
+max-width: 26rem;
+}
 }
 .\[\&\>div\]\:mb-2>div{
     margin-bottom:.5rem
@@ -1366,7 +1378,7 @@ body::-webkit-scrollbar-thumb{
     font-family:Raleway,sans-serif
 }
 .my-container{
-    max-width:1280px;
+    max-width:90vw;
     margin:auto
 }
 @media (max-width: 1340px){
@@ -1375,6 +1387,9 @@ body::-webkit-scrollbar-thumb{
         max-width:none;
         margin:auto
     }
+    .create-form {
+max-width: 44rem;
+}
 }
 @media (max-width: 432px){
     .my-container{
@@ -2323,15 +2338,25 @@ table tr:last-child td:last-child {
 text-decoration: underline !important;
 }
 
+mobile-size {
+zoom: 1 !important;
 
+}
 @media (max-width: 600px) {
 .container-fluid {
 direction:rtl !important;
 }
 
+.no-mobile {
+display: none !important;
+}
+.mobile-size {
+zoom: 0.9 !important;
+}
 .input-icon {
 width: 32px !important;
 height: 32px !important;
+min-width: 32px !important;
 }
 
 
@@ -2404,3 +2429,4 @@ vertical-align: top !important;
 .btn-transparent {
 background-color:transparent !important;
 }
+

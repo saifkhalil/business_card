@@ -50,9 +50,10 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-
+    # 'wkhtmltopdf',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.microsoft',
+    # 'allauth.socialaccount.providers.zoho',
     # 'allauth.socialaccount.providers.google',
     'businesscard',
     'accounts',
@@ -151,7 +152,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
-    # 'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 SITE_ID = 1
@@ -162,6 +163,13 @@ SOCIALACCOUNT_PROVIDERS = {
             'TENANT': env('microsoft_TENANT'),
             'client_id': env('microsoft_client_id'),
             'secret': env('microsoft_secret'),
+
+        }
+    },
+    'zoho': {
+        'APP': {
+            'client_id': '1000.N1NW70D9NXQ6VUFA09AIGJ67000B2Y',
+            'secret': '18e44e8054855307367ae86fe198344e82543eb12f',
 
         }
     }
@@ -176,5 +184,6 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 
 
-
+os.environ["PANGOCAIRO_BACKEND"] = "cairo"
+PANGOCAIRO_BACKEND = "cairo"
 PHONENUMBER_DEFAULT_REGION = 'IQ'

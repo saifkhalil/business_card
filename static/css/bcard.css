@@ -1,0 +1,131 @@
+  @font-face {
+    font-family: 'Araboto';
+    src: url('../font/Araboto-Normal.woff') format('woff'),
+         url('../font/Araboto-Normal.ttf')  format('truetype')
+}
+      body {
+            font-family: 'Araboto', sans-serif;
+        font-size: 12px;
+        margin: 0;
+                padding: 0px;
+      }
+
+      /* Define the page size for the PDF */
+      @page {
+        size: 90mm 50mm;
+        margin: 0;
+      }
+
+      /* Define the content for each page */
+      .page {
+        height: 50mm;
+        width: 90mm;
+        margin: 0;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+
+       img {
+         width: 90mm;
+          height: 50mm;
+       }
+.en_name {
+  position: absolute;
+  left: 42mm;
+  top: 15mm;
+  font-size: 10px;
+}
+.en_job {
+  position: absolute;
+  left: 42.5mm;
+  top: 20mm;
+  font-size: 8.5px;
+}
+.en_phone {
+  position: absolute;
+  left: 46mm;
+  top: 30mm;
+  font-size: 8.5px;
+}
+.en_company {
+  position: absolute;
+  left: 42mm;
+  top: 40.5mm;
+  font-size: 8.5px;
+}
+
+.en_company span {
+  font-size: 6px;
+}
+
+.en_email {
+  position: absolute;
+  left: 15mm;
+  top: 29mm;
+  font-size: 9px;
+}
+.en_website {
+  position: absolute;
+  left: 15mm;
+  top: 34.5mm;
+  font-size: 9px;
+}
+.en_address {
+  position: absolute;
+  left: 15mm;
+  top: 39.5mm;
+  font-size: 9px;
+}
+
+
+.ar_name {
+  position: absolute;
+  right: 44mm;
+  top: 15mm;
+  font-size: 10px;
+  direction: rtl;
+}
+.ar_job {
+  position: absolute;
+  right: 44mm;
+  top: 20mm;
+  font-size: 8.5px;
+  direction: rtl;
+}
+.ar_phone {
+  position: absolute;
+  right: 45mm;
+  top: 30mm;
+  font-size: 8.5px;
+  direction: rtl;
+}
+.ar_company {
+  position: absolute;
+  right: 42mm;
+  top: 40.5mm;
+  font-size: 8.5px;
+  direction: rtl;
+}
+
+.ar_company span {
+  font-size: 6px;
+}
+
+.ar_email {
+  position: absolute;
+  left: 58mm;
+  top: 29mm;
+  font-size: 9px;
+}
+.ar_website {
+  position: absolute;
+  left: 58mm;
+  top: 34.5mm;
+  font-size: 9px;
+}
+.ar_address {
+  position: absolute;
+  left: 58mm;
+  top: 39.5mm;
+  font-size: 9px;
+}

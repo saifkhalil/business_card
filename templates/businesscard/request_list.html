@@ -102,8 +102,8 @@
                               <td>{{ req.quantity }}</td>
                               <td><p data-bs-toggle="tooltip" data-bs-placement="top" title="{{ req.created_at }}">{{ req.created_at|naturalday:'d-m-Y' }}</p></td>
                               <td><p data-bs-toggle="tooltip" data-bs-placement="top" title="{{ req.status_change_at }}">{{ req.status_change_at|naturalday:'d-m-Y'|default:'' }}</p></td>
-                              <td>{% if req.status == 'Pending' %}<div class="btn-group rounded-full" role="group"><a class="btn btn-sm btn-success" href="{% url 'BusinessRequestApprove' req.id %}">Approve</a><a class="btn btn-sm btn-danger" href="{% url 'BusinessRequestReject' req.id %}">Reject</a></div>{% elif req.status == 'Approved' %}<a class="btn btn-sm btn-warning text-white" href="{% url 'BusinessRequestInPrinting' req.id %}">In Printing</a>{% elif req.status == 'In Printing' %}<a class="btn btn-sm btn-info text-white" href="{% url 'BusinessRequestDone' req.id %}">Done</a>{% endif %}</td>
-                              <td><a class="a-underline" href="{% url 'html' req.id %}" target="_blank">Show {{ req.id }}</a></td>
+                              <td>{% if req.status == 'Pending' %}<div class="btn-group rounded-full" role="group"><a class="btn btn-sm btn-outline-success" href="{% url 'BusinessRequestApprove' req.id %}"><i class="bi bi-check-circle"></i></a><a class="btn btn-sm btn-outline-danger" href="{% url 'BusinessRequestReject' req.id %}"><i class="bi bi-slash-circle"></i></a></div>{% elif req.status == 'Approved' %}<a class="btn btn-sm btn-outline-warning text-white" href="{% url 'BusinessRequestInPrinting' req.id %}"><i class="bi bi-printer"></i></a>{% elif req.status == 'In Printing' %}<a class="btn btn-sm btn-outline-info text-white" href="{% url 'BusinessRequestDone' req.id %}"><i class="bi bi-check2-circle"></i></a>{% endif %}</td>
+                              <td><a class="btn btn-sm btn-outline-danger" href="{% url 'pdf' req.id %}" target="_blank"><i class="bi bi-filetype-pdf"></i></a></td>
                           </tr>
                           {% endfor %}
                           </tbody>

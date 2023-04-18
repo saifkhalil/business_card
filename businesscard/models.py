@@ -3,6 +3,7 @@ from django.db.models.signals import post_save, m2m_changed
 from django.template.loader import render_to_string
 from django.dispatch import receiver
 from django.contrib.auth import get_user_model
+from django.utils.text import slugify
 from phonenumber_field.modelfields import PhoneNumberField
 from core.threading import send_html_mail
 from accounts.models import User
@@ -11,7 +12,8 @@ from accounts.models import User
 from businesscard.pdf import html_to_pdf
 from io import BytesIO
 from django.core.files import File
-
+from weasyprint import HTML,CSS
+from django.template.loader import get_template
 STATUS = (
     ('Pending','Pending'),
     ('Approved','Approved'),
@@ -43,14 +45,42 @@ class BusinessRequest(models.Model):
         User, related_name='%(class)s_modifiedby', null=True, blank=True, on_delete=models.CASCADE,editable=False,verbose_name='Modified by')
 
 
+    def generate_pdf(self):
+        # Render the template with the model instance's attributes as context
+        template = get_template('businesscard/bcard.html')
+        context = {'data': self}
+        html_string = template.render(context)
+
+        font_css = CSS(string='''
+                @font-face {
+                    font-family: 'Cairo';
+                    src: url('/static/font/cairo.ttf');
+                }
+                body {
+                    font-family: Cairo,sans-serif;
+                    margin: 0;
+                    padding: 0px;
+                }
+                * {
+                                margin: 0 !important;
+                    padding: 0px !important;
+                }
+            ''')
+        # Generate the PDF from the HTML
+        html = HTML(string=html_string).write_pdf(stylesheets=[font_css])
+        # pdf_bytes = html.write_pdf()
+
+        # Save the PDF to the model's FileField
+        filename = slugify(self.id) + '.pdf'
+        self.pdf.save(filename, BytesIO(html))
 @receiver(post_save, sender=BusinessRequest)
 def BusinessRequest_send_email(sender, instance, created, *args, **kwargs):
     CurrentBusinessRequest = instance
     if created:
-        open(f'businesscard/temp.html', "w").write(render_to_string('businesscard/results.html', {'data': CurrentBusinessRequest}))
-        pdf = html_to_pdf(f'businesscard/temp.html')
-        CurrentBusinessRequest.pdf.save(f'{CurrentBusinessRequest.id}_pdf.pdf', File(BytesIO(pdf.content)))
+        instance.generate_pdf()
         from django.contrib.sites.models import Site
+        pdf_file = instance.pdf
+
         message = 'text version of HTML message'
         email_subject = f'New Business Card Request #{CurrentBusinessRequest.id}'
         email_body = render_to_string('businesscard/email.html', {
@@ -59,7 +89,7 @@ def BusinessRequest_send_email(sender, instance, created, *args, **kwargs):
             'br': CurrentBusinessRequest,
             'msgtype': 'You have been assigned with you below case details'
         })
-        send_html_mail(email_subject, email_body, list(User.objects.filter(is_businesscard_admin=True).values_list('email', flat=True)))
+        send_html_mail(email_subject, email_body, pdf_file, list(User.objects.filter(is_businesscard_admin=True).values_list('email', flat=True)))
 
 
 

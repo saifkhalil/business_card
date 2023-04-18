@@ -1,41 +1,101 @@
 import json
 from datetime import datetime
 
+import weasyprint
 from allauth.socialaccount.models import SocialAccount
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import (
-    CreateView
-)
-# importing the necessary libraries
-from io import BytesIO
+from django.views.generic import CreateView
+from weasyprint import HTML, CSS
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-from django.views.generic import View
-from django.template.loader import render_to_string
 from businesscard.forms import BusinessRequestForm
 from businesscard.models import BusinessRequest
 from core.apis import (
     zoho_login,
     get_zoho_data
 )
+from django.conf import settings
+from businesscard.pdf import html_to_pdf
+from django.templatetags.static import static
+
 
 User = get_user_model()
-from businesscard.pdf import html_to_pdf
+
+
+def render_pdf_view(request, rid):
+    template_path = 'businesscard/pdf.html'
+    data = BusinessRequest.objects.get(id=rid)
+    context = {'data': data}
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+        html, dest=response)
+    # if error then show some funny view
+    if pisa_status.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
+def generate_bcard(request, rid):
+    # Render the HTML template
+    data = BusinessRequest.objects.get(id=rid)
+
+    template = get_template('businesscard/bcard.html')
+    # font_url = request.build_absolute_uri(static('font/Araboto-Normal.ttf')).replace('http://', 'https://')
+    context = {
+        'data': data,
+        # 'font_url': font_url
+    }
+    html = template.render(context)
+    # css = CSS(f"""
+    #     @font-face {{
+    #         font-family: Araboto;
+    #         src: url('{font_url}');
+    #     }}
+    # """)
+
+    # Generate a PDF document from the HTML
+    pdf_file = HTML(string=html,base_url=request.build_absolute_uri(),).write_pdf()
+
+    # Send the PDF file as a response
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="my_pdf.pdf"'
+    return response
 
 
 def GeneratePdf(request, rid):
+    STATIC_ROOT = settings.STATIC_ROOT
     data = BusinessRequest.objects.get(id=rid)
-    open(f'businesscard/temp.html', "w").write(render_to_string('businesscard/results.html', {'data': data}))
-
+    context = {
+        'data': data,
+        'STATIC_ROOT': STATIC_ROOT
+    }
     # Converting the HTML template into a PDF file
-    pdf = html_to_pdf(f'businesscard/temp.html')
+    pdf = html_to_pdf(f'businesscard/pdf.html', context)
+    # rendering the template
+    return HttpResponse(pdf, content_type='application/pdf')
+
+def Generatebcard(request, rid):
+    STATIC_ROOT = settings.STATIC_ROOT
+    data = BusinessRequest.objects.get(id=rid)
+    context = {
+        'data': data,
+        'STATIC_ROOT': STATIC_ROOT
+    }
+    # Converting the HTML template into a PDF file
+    pdf = html_to_pdf(f'businesscard/bcard.html', context)
     # rendering the template
     return HttpResponse(pdf, content_type='application/pdf')
 
@@ -46,7 +106,7 @@ def GenerateHtml(request, rid):
     context = {
         'data': data
     }
-    return render(request, 'businesscard/results.html', context)
+    return render(request, 'businesscard/bcard.html', context)
 
 
 # Create your views here.
@@ -79,9 +139,9 @@ class BusinessRequestCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
-        data: list = None
-        msg: str = None
-        data_value: dict = None
+        data: list = []
+        msg: str = ''
+        data_value: dict = {}
         user_requests = None
         try:
             if self.request.user.is_authenticated:
@@ -96,7 +156,7 @@ class BusinessRequestCreateView(CreateView):
             print(data_response)
             data_value = list(result[0].values())[0][0]
         except Exception as e:
-            msg = e
+            msg = str(e)
         context = {
             'cuser': self.request.user,
             'data': data,
@@ -112,10 +172,17 @@ class BusinessRequestCreateView(CreateView):
         return reverse_lazy('home')
 
 
+def pdf_preview(request):
+    context = {
+
+    }
+    return render(request, 'businesscard/bcard.html', context)
+
+
 def index(request):
-    data: list = None
-    msg: str = None
-    data_value: dict = None
+    data: list = []
+    msg: str = ''
+    data_value: dict = {}
     page_obj = None
     page_range = None
     user_requests = None
@@ -257,7 +324,7 @@ def request_list(request):
                 query_words.remove(w)
         for word in query_words:
             query = query | Q(employee_id__icontains=word) | Q(
-                full_name_en__icontains=word) | Q(job_title__icontains=word)
+                first_name_en__icontains=word) | Q(job_title__icontains=word) | Q(last_name_en__icontains=word)
 
         request_list = request_list.filter(query)
     else:
@@ -299,7 +366,7 @@ def BusinessRequestApprove(request, id):
     except BusinessRequest.DoesNotExist:
         messages.add_message(request, messages.ERROR, "Business Request Not found")
         return redirect('requests')
-    if request.user.is_superuser:
+    if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Approved')
         SelectedBusinessRequest.update(status_change_at=datetime.now())
@@ -316,7 +383,7 @@ def BusinessRequestReject(request, id):
     except BusinessRequest.DoesNotExist:
         messages.add_message(request, messages.ERROR, "Business Request Not found")
         return redirect('requests')
-    if request.user.is_superuser:
+    if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Reject')
         SelectedBusinessRequest.update(status_change_at=datetime.now())
@@ -333,7 +400,7 @@ def BusinessRequestInPrinting(request, id):
     except BusinessRequest.DoesNotExist:
         messages.add_message(request, messages.ERROR, "Business Request Not found")
         return redirect('requests')
-    if request.user.is_superuser:
+    if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='In Printing')
         SelectedBusinessRequest.update(status_change_at=datetime.now())
@@ -350,7 +417,7 @@ def BusinessRequestDone(request, id):
     except BusinessRequest.DoesNotExist:
         messages.add_message(request, messages.ERROR, "Business Request Not found")
         return redirect('requests')
-    if request.user.is_superuser:
+    if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Done')
         SelectedBusinessRequest.update(status_change_at=datetime.now())

@@ -1,0 +1,40 @@
+     canvas {
+        aspect-ratio: unset;
+        height: 550px;
+        width: 550px;
+      }
+
+      .blob-flex-container {
+        margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      @media (max-width: 992px) {
+        .blob-flex-container {
+          flex-direction: column-reverse;
+        }
+
+        h1 {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 560px) {
+        canvas {
+          height: 350px;
+          width: 350px;
+        }
+
+        h1 {
+          font-size: 42px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        canvas {
+          height: 300px;
+          width: 300px;
+        }
+      }
