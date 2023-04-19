@@ -3,6 +3,7 @@
 *.pot
 *.pyc
 db.sqlite3
+*.sqllist3
 db_old.sqlite3
 *pdf.html
 __pycache__/

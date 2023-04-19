@@ -29,6 +29,11 @@ html{
     padding-right: 5rem !important;
     padding-left: 5rem !important;
 }
+
+.responsive-section{
+padding: 10vw !important;
+}
+
 body{
     margin:0;
     line-height:inherit
@@ -892,6 +897,10 @@ border-radius : 99999px !important;
     }
 }
 @media (min-width: 432px){
+.res-p {
+
+padding-top: 0px;
+}
     .xs\:block{
         display:block
     }
@@ -949,6 +958,10 @@ border-radius : 99999px !important;
     }
 }
 @media (min-width: 532px){
+..res-p {
+
+padding-top: 0px;
+}
     .sm\:my-5{
         margin-top:1.25rem;
         margin-bottom:1.25rem
@@ -1048,6 +1061,10 @@ border-radius : 99999px !important;
     }
 }
 @media (min-width: 580px){
+.res-p {
+
+padding-top: 10px;
+}
     .st\:my-0{
         margin-top:0;
         margin-bottom:0
@@ -1100,6 +1117,10 @@ border-radius : 99999px !important;
     }
 }
 @media (min-width: 768px){
+.res-p {
+
+padding-top: 200px;
+}
     .md\:mx-28{
         margin-left:7rem;
         margin-right:7rem
@@ -1146,6 +1167,10 @@ border-radius : 99999px !important;
 }
 }
 @media (min-width: 992px){
+.res-p {
+
+padding-top: 250px;
+}
     .lg\:my-0{
         margin-top:0;
         margin-bottom:0
@@ -1230,6 +1255,10 @@ border-radius : 99999px !important;
     }
 }
 @media (min-width: 1280px){
+.res-p {
+
+padding-top: 230px;
+}
     .xl\:my-3{
         margin-top:.75rem;
         margin-bottom:.75rem
@@ -1249,7 +1278,7 @@ border-radius : 99999px !important;
         height:500px
     }
     .xl\:h-160{
-        height:400px
+        height:330px
     }
     .xl\:h-28{
         height:7rem
@@ -1261,7 +1290,7 @@ border-radius : 99999px !important;
         width:500px
     }
     .xl\:w-250{
-        width:650px
+        width:550px
     }
     .xl\:w-28{
         width:7rem
@@ -1293,6 +1322,19 @@ max-width: 44rem;
 }
 }
 @media (min-width: 1540px){
+
+.res-p {
+
+padding-top: 270px;
+}
+
+    .xl\:w-250{
+        width:650px
+    }
+
+    .xl\:h-160{
+        height:400px
+    }
     .x2l\:my-8{
         margin-top:2rem;
         margin-bottom:2rem
