@@ -3842,11 +3842,11 @@
             .scale(devicePixelRatio, devicePixelRatio);
       },
       i = function () {
-        window.removeEventListener("hello", o),
-          window.removeEventListener("hello", E),
+        window.removeEventListener("resize", o),
+          window.removeEventListener("resize", E),
           g.elements.blobCanvas &&
             (o(),
-            window.addEventListener("hello", o),
+            window.addEventListener("resize", o),
             (function () {
               var o,
                 e,
@@ -4126,7 +4126,7 @@
                       (this.ctx.lineCap = "round"),
                       (this.ctx.lineJoin = "round"),
                       (this.opts = new d()),
-                      window.addEventListener("hello", E),
+                      window.addEventListener("resize", E),
                       E();
                   }
                   return (
@@ -4725,7 +4725,7 @@
       E = !1,
       o = function () {
         window.removeEventListener("scroll", O),
-          window.removeEventListener("hello", s),
+          window.removeEventListener("resize", s),
           w.elements.zoomScroller &&
             (w.elements.zoomControlIn.addEventListener("click", i),
             w.elements.zoomControlOut.addEventListener("click", a),
@@ -4733,7 +4733,7 @@
               w.elements.zoomContent.offsetWidth + "px"),
             (y = w.elements.zoomContainer.getBoundingClientRect()),
             window.addEventListener("scroll", O),
-            window.addEventListener("hello", s),
+            window.addEventListener("resize", s),
             w.elements.zoomContainer.addEventListener(
               "transitionend",
               function () {
@@ -7726,7 +7726,7 @@
                     this.state.eventsEnabled ||
                       (this.state = (function (t, e, n, r) {
                         (n.updateBound = r),
-                          P(t).addEventListener("hello", n.updateBound, {
+                          P(t).addEventListener("resize", n.updateBound, {
                             passive: !0,
                           });
                         var o = h(t);
@@ -7763,7 +7763,7 @@
                       (this.state =
                         ((t = this.reference),
                         (e = this.state),
-                        P(t).removeEventListener("hello", e.updateBound),
+                        P(t).removeEventListener("resize", e.updateBound),
                         e.scrollParents.forEach(function (t) {
                           t.removeEventListener("scroll", e.updateBound);
                         }),
@@ -9835,7 +9835,7 @@
                         e.move();
                       });
                     }),
-                      window.addEventListener("hello", function () {
+                      window.addEventListener("resize", function () {
                         e.setImgWidth();
                       });
                   },
@@ -9952,7 +9952,7 @@
                         })(),
                         b(),
                         n &&
-                          (window.addEventListener("hello", h), (n = !1), y());
+                          (window.addEventListener("resize", h), (n = !1), y());
                     },
                     m = function (t) {
                       var e = t.getAttribute("data-rellax-percentage"),
@@ -10064,7 +10064,7 @@
                       );
                     },
                     g = function () {
-                      window.removeEventListener("hello", g),
+                      window.removeEventListener("resize", g),
                         window.removeEventListener("orientationchange", g),
                         (E.options.wrapper
                           ? E.options.wrapper
@@ -10080,7 +10080,7 @@
                       v() && !1 === n
                         ? (b(), (o = r(y)))
                         : ((o = null),
-                          window.addEventListener("hello", g),
+                          window.addEventListener("resize", g),
                           window.addEventListener("orientationchange", g),
                           (E.options.wrapper
                             ? E.options.wrapper
@@ -10141,7 +10141,7 @@
                     (E.destroy = function () {
                       for (var t = 0; t < E.elems.length; t++)
                         E.elems[t].style.cssText = l[t].style;
-                      n || (window.removeEventListener("hello", h), (n = !0)),
+                      n || (window.removeEventListener("resize", h), (n = !0)),
                         s(o),
                         (o = null);
                     }),
@@ -10990,7 +10990,7 @@
             (this.adapter = new this.Adapter(t)),
             (this.key = "waypoint-context-" + e),
             (this.didScroll = !1),
-            (this.didhello = !1),
+            (this.didResize = !1),
             (this.oldScroll = {
               x: this.adapter.scrollLeft(),
               y: this.adapter.scrollTop(),
@@ -11005,7 +11005,7 @@
             v.windowContext ||
               ((v.windowContext = !0), (v.windowContext = new n(window))),
             this.createThrottledScrollHandler(),
-            this.createThrottledhelloHandler();
+            this.createThrottledResizeHandler();
         }
         (n.prototype.add = function (t) {
           var e = t.options.horizontal ? "horizontal" : "vertical";
@@ -11020,13 +11020,13 @@
               !n &&
               (this.adapter.off(".waypoints"), delete r[this.key]);
           }),
-          (n.prototype.createThrottledhelloHandler = function () {
+          (n.prototype.createThrottledResizeHandler = function () {
             var t = this;
             function e() {
-              t.handlehello(), (t.didhello = !1);
+              t.handleResize(), (t.didResize = !1);
             }
-            this.adapter.on("hello.waypoints", function () {
-              t.didhello || ((t.didhello = !0), v.requestAnimationFrame(e));
+            this.adapter.on("resize.waypoints", function () {
+              t.didResize || ((t.didResize = !0), v.requestAnimationFrame(e));
             });
           }),
           (n.prototype.createThrottledScrollHandler = function () {
@@ -11039,7 +11039,7 @@
                 ((t.didScroll = !0), v.requestAnimationFrame(e));
             });
           }),
-          (n.prototype.handlehello = function () {
+          (n.prototype.handleResize = function () {
             v.Context.refreshAll();
           }),
           (n.prototype.handleScroll = function () {

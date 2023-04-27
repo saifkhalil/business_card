@@ -3,62 +3,100 @@
 {% load static %}
 {% load socialaccount %}
 {% load getnames %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.71">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.99">
 <link rel="stylesheet" type="text/css" href="{% static 'css/bubble.css' %}?v=0.23">
+<style>
+          *,
+      *::after,
+      *::before {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
 
+      h1 {
+        font-size: 42px;
+        margin-bottom: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .w-full {
+        width: 100%;
+      }
+
+      .h-full {
+        height: 93vh;
+      }
+
+      .blob-section {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+      }
+
+      .content-container {
+        position: relative;
+        z-index: 10;
+      }
+
+      .content-container p {
+        width: 50%;
+      }
+
+      .blob-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        max-height: 100%;
+      }
+</style>
 <div id="index">
-    <div class="section" id="home">
-        <main class="lg:mt-2 x2l:mt-12">
-            <div class="my-container pt-5">
-                <div class="row pt-5 align-items-center">
-                    <div class="main-blob col-lg-6 col-md-6 col-sm-12  order-lg-last order-md-last order-sm-first order-xs-first justify-center">
-                        <div class="blob-flex-container">
-                            <div class="blob-div">
-                              <ul class="main-nav">
-                                <div class="active-highlight"></div>
-                              </ul>
-                              <div class="top-bar">
-                                <div id="barba-wrapper">
-                                  <div class="barba-container">
-                                    <section>
-                                      <canvas
-                                        class="blob-canvas"
-                                        width="550px"
-                                        height="550px"
-                                      ></canvas>
-                                    </section>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+    <div class="section fp-section fp-table active fp-completely" id="home" >
+        <div class="container">
+          <div class="blob-div">
+            <ul class="main-nav">
+              <div class="active-highlight no-active"></div>
+            </ul>
+            <div class="top-bar bg-beige transparent">
+              <div id="barba-wrapper" aria-live="polite">
+                <div class="barba-container">
+                  <section class="blob-section">
+                    <div class="content-container">
+                        <div class="main-text">
+                            <h1 class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-3 sm:mt-16">Design</h1>
+                            <h1 href="" class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-2 sm:mt-16 typewrite" data-period="2000" data-type="[ &quot;What You Enjoy&quot;, &quot;What You Need&quot;, &quot;What You Love&quot;]"><span class="wrap">What Y</span></h1>
+
+                            <a href="#services_list" class="link-button learn-more mb-5 mt-2"><span class="circle" aria-hidden="true"><span class="icon arrow"></span></span><span class="button-text">Get Started</span>
+                            </a>
+    <!--                        <div class="main-options flex items-center justify-center md:justify-start mb-3 md:mb-0 gap-6">-->
+    <!--                            <div class="money bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
+    <!--                                <img src="/static/images/teller.png" alt="Teller" width="40px" height="40px"></div>-->
+    <!--                            <div class="business bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
+    <!--                                <img src="/static/images/businessman.png" alt="Teller" width="40px" height="40px">-->
+    <!--                            </div>-->
+    <!--                            <div class="advertising bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
+    <!--                                <img src="/static/images/cost.png" alt="Teller" width="40px" height="40px"></div>-->
+    <!--                        </div>-->
                         </div>
                     </div>
-                    <div class="main-text col-lg-6 col-md-6 col-sm-12 order-lg-first order-md-first order-sm-last order-xs-last">
-                        <h1 class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-3 sm:mt-16">Design</h1>
-                        <h1 href="" class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-2 sm:mt-16 typewrite"
-                            data-period="2000" data-type='[ "What You Enjoy", "What You Need", "What You Love"]'>
-                            <span class="wrap"></span>
-                        </h1>
-
-                        <a href="#services_list" class="link-button learn-more mb-5 mt-2"><span class="circle"
-                                                                                aria-hidden="true"><span
-                                class="icon arrow"></span></span><span class="button-text">Get Started</span>
-                        </a>
-<!--                        <div class="main-options flex items-center justify-center md:justify-start mb-3 md:mb-0 gap-6">-->
-<!--                            <div class="money bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
-<!--                                <img src="{% static 'images/teller.png' %}" alt="Teller" width="40px" height="40px"></div>-->
-<!--                            <div class="business bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
-<!--                                <img src="{% static 'images/businessman.png' %}" alt="Teller" width="40px" height="40px">-->
-<!--                            </div>-->
-<!--                            <div class="advertising bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
-<!--                                <img src="{% static 'images/cost.png' %}" alt="Teller" width="40px" height="40px"></div>-->
-<!--                        </div>-->
+                    <div class="blob-container">
+                      <canvas class="blob-canvas w-full h-full" style="cursor: grab;" width="1065" height="862"></canvas>
                     </div>
-
+                  </section>
                 </div>
+              </div>
             </div>
-        </main>
-    </div>
+          </div>
+        </div>
+</div>
     <div class="section" id="services_list">
         <div class="choose-service-page flex-1">
             <div class="my-container">

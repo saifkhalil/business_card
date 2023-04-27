@@ -23,7 +23,7 @@ from core.apis import (
 from django.conf import settings
 from businesscard.pdf import html_to_pdf
 from django.templatetags.static import static
-
+from django.utils.text import slugify
 
 User = get_user_model()
 
@@ -51,27 +51,20 @@ def render_pdf_view(request, rid):
 def generate_bcard(request, rid):
     # Render the HTML template
     data = BusinessRequest.objects.get(id=rid)
-
+    filename = slugify(data.id) + '.pdf'
     template = get_template('businesscard/bcard.html')
-    # font_url = request.build_absolute_uri(static('font/Araboto-Normal.ttf')).replace('http://', 'https://')
     context = {
+        'filename': filename,
         'data': data,
-        # 'font_url': font_url
     }
     html = template.render(context)
-    # css = CSS(f"""
-    #     @font-face {{
-    #         font-family: Araboto;
-    #         src: url('{font_url}');
-    #     }}
-    # """)
 
     # Generate a PDF document from the HTML
     pdf_file = HTML(string=html,base_url=request.build_absolute_uri(),).write_pdf()
 
     # Send the PDF file as a response
     response = HttpResponse(pdf_file, content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="my_pdf.pdf"'
+    response['Content-Disposition'] = f'filename="{filename}"'
     return response
 
 

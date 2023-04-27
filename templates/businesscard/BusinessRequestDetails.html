@@ -1,154 +1,96 @@
 {% extends "layout.html" %}
 {% block content %}
 {% load static %}
-
-    <section class="bcard-container flex-1">
-        <div class="my-container  pb-5">
-
-            <div class="bcard-box">
-
-                <div class="create-form">
-                    <form action="" method="post">
-                        <h1 class="font-roleway text-center font-extrabold justify-center text-qitext text-3xl xl:text-5xl">Business Card Order
-                            Details</h1>
-                        {% csrf_token %}
-                        <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-10 xl:mb-20">
-                            <div class="absolute w-1/6 rounded-3xl bg-qitext"
-                                 style="top: -50%; transform: translateY(-50%); right: -1px; height: 5px;"></div>
-                        </div>
-                        <div class="row input-group mx-0 md:mx-12 xl:mx-24">
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="employee_id">Employee ID</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input name="employee_id" type="text" maxlength="8" placeholder="Card ID"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2"
-                                           value="{{ object.employee_id }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="full_name_en">Full Name En</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input name="full_name_en" type="text" maxlength="8" placeholder="Full Name En"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2"
-                                           value="{{ object.first_name_en }} {{ object.last_name_en|default:'' }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="full_name_ar">Full Name Ar</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input name="full_name_ar" type="text" maxlength="8" placeholder="Full Name Ar"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2"
-                                           value="{{ object.first_name_ar }} {{ object.last_name_ar|default:'' }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="job_title">Job Title En</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required id="jobTitle" name="job_title" type="text"
-                                           placeholder="Job Title En"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2"
-                                           maxlength="26" value="{{object.job_title}}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label"class="flex" for="job_title_ar">Job Title Ar</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required id="jobTitleAr" name="job_title_ar" type="text"
-                                           placeholder="Job Title Ar"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2"
-                                           maxlength="26" value="{{ object.job_title_ar }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="phone">Phone Number</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required id="phoneNumber" name="phone" type="text" placeholder="Phone Number"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2"
-                                           maxlength="14" value="{{ object.phone }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="quantity">Quantity</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required name="quantity" type="number" min="1" placeholder="Quantity"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2"
-                                           value="{{ object.quantity }}" max="1000" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="status">Status</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required id="status" name="status" type="text" min="1" placeholder="Status"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2 "
-                                           value="{{ object.status }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="created_by">Created By</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input name="created_by" type="text" min="1" placeholder="Created By"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2 "
-                                           value="{{ object.created_by }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="created_at">Created At</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required name="created_at" type="text" min="1" placeholder="Created At"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2 "
-                                           value="{{ object.created_at }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="status_change_by">Status Changed By</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required name="status_change_by" type="text" min="1" placeholder="Status Changed By"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2 "
-                                           value="{{ object.status_change_by }}" readonly>
-                                </div>
-                            </div>
-                            <div class="row g-3">
-                                <div class="col">
-                                    <label class="col-form-label" for="status_change_at">Status Changed At</label>
-                                </div>
-                                <div class="col-sm-10">
-                                    <input required name="status_change_at" type="text" min="1" placeholder="Status Changed At"
-                                           class="form-control pl-5 focus-visible:outline-none shadow-sm flex rounded-full px-2 py-2 "
-                                           value="{{ object.status_change_at }}" readonly>
-                                    </div>
-                                </div>
+<section class="bcard-container flex-1">
+    <div class="my-container  pb-5">
+        <div class="bcard-box">
+            <div class="row responsive-section align-items-center">
+                <form action="" method="post">
+                    <h1 class="font-roleway text-center font-extrabold justify-center text-qitext text-3xl xl:text-5xl">
+                        Business Card Order
+                        Details</h1>
+                    {% csrf_token %}
+                    <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-10 xl:mb-20">
+                        <div class="absolute w-1/6 rounded-3xl bg-qitext"
+                             style="top: -50%; transform: translateY(-50%); right: -1px; height: 5px;"></div>
+                    </div>
+                    <div class="row input-group">
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="employee_id">Employee ID</label>
+                                <input class="form-control rounded-full shadow-sm" id="staticEmail" name="employee_id" readonly type="text" value="{{ object.employee_id }}">
                             </div>
                         </div>
-                    </form>
-                </div>
-
-
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="full_name_en">Full Name En</label>
+                                <input class="form-control rounded-full shadow-sm" name="full_name_en" readonly type="text" value="{{ object.first_name_en }} {{ object.last_name_en|default:'' }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="full_name_ar">Full Name Ar</label>
+                                <input class="form-control rounded-full shadow-sm" name="full_name_en" readonly type="text" value="{{ object.first_name_ar }} {{ object.last_name_ar|default:'' }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="job_title">Job Title En</label>
+                                <input class="form-control rounded-full shadow-sm" name="job_title" readonly type="text" value="{{object.job_title}}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="job_title_ar">Job Title Ar</label>
+                                <input class="form-control rounded-full shadow-sm" id="jobTitleAr" name="job_title_ar" readonly type="text" value="{{ object.job_title_ar }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="phone">Phone Number</label>
+                                <input class="form-control rounded-full shadow-sm" id="phoneNumber" name="phone" readonly type="text" value="{{ object.phone }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="quantity">Quantity</label>
+                                <input class="form-control rounded-full shadow-sm" name="quantity" readonly type="number" value="{{ object.quantity }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="status">Status</label>
+                                <input class="form-control rounded-full shadow-sm" id="status" name="status" readonly type="text" value="{{ object.status }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="created_by">Created By</label>
+                                <input class="form-control rounded-full shadow-sm" name="created_by" readonly type="text" value="{{ object.created_by }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="created_at">Created At</label>
+                                <input class="form-control rounded-full shadow-sm" name="created_at" readonly type="text" value="{{ object.created_at }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="status_change_by">Status Changed By</label>
+                                <input class="form-control rounded-full shadow-sm" name="status_change_by" readonly type="text" value="{{ object.status_change_by }}">
+                            </div>
+                        </div>
+                        <div class="mb-3 row justify-content-md-center">
+                            <div class="col-sm-10">
+                                <label class="col-form-label" for="status_change_at">Status Changed At</label>
+                                <input class="form-control rounded-full shadow-sm" name="status_change_at" readonly type="text" value="{{ object.status_change_at }}">
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-
         </div>
-    </section>
-
+    </div>
+</section>
 {% endblock %}
