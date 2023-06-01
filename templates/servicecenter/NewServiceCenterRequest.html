@@ -1,0 +1,270 @@
+{% extends "layout.html" %} {% block content %} {% load static %} {% load socialaccount %} {% load getnames %}
+
+
+{% if user.is_authenticated %}
+    <div class="section h-screen position-relative justify-center items-center flex" id="bcard">
+        <div class="bcard-container flex-1">
+            <div class="my-container">
+                <div class="bcard-box res-bcard row justify-content-between res-p">
+                    <div data-aos="fade-up" data-aos-duration="1500" class="col-lg-4 col-md-4 col-sm-12 col-12">
+                        <form action="" class="bform" method="post">
+                            {% csrf_token %}
+                            <p class="font-roleway font-semibold m-1 xl:my-3 font-size-res text-center">Enter The Required
+                                Information</p>
+                            <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-3 xl:mb-20">
+                                <div class="absolute w-1/6 rounded-3xl bg-qitext"
+                                     style="top: -50%; transform: translateY(-50%); right: -1px; height: 5px;"></div>
+                            </div>
+                            <div class="row input-group">
+                                <div class="mb-2">
+                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                        <input required id="service_center_name" name="service_center_name" type="text"
+                                               placeholder="Service Center Name"
+                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                               maxlength="26" value="{{ form.service_center_name.value|default:'' }}">
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
+                                            <img
+                                                src="{% static 'images/card-text.png' %}" alt="Card" height="26px"
+                                                width="26px">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                        <input required id="full_address" name="full_address" type="text"
+                                               placeholder="Full Address"
+                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                               maxlength="26" value="{{ form.full_address.value|default:'' }}">
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
+                                            <img
+                                                src="{% static 'images/pin-map.png' %}" alt="Card" height="26px"
+                                                width="26px">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-2">
+                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                        <input required id="height" name="height" type="number"
+                                               placeholder="Service center front height"
+                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                               max="100" min="1" value="{{ form.height.value|default:1 }}">
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
+                                                src="{% static 'images/height.png' %}" alt="Card" height="26px"
+                                                width="26px">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-8 col-8 p-0">
+                                     <div class="mb-2">
+                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
+                                        <input required id="width" name="width" type="number" placeholder="Service center front width"
+                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
+                                               max="100" min="1" value="{{ form.width.value|default:3 }}">
+                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
+                                                src="{% static 'images/width.png' %}"
+                                                alt="Card"
+                                                height="26px"
+                                                width="26px"></div>
+                                    </div>
+                                </div>
+                                    </div>
+                                </div>
+
+
+                                {% if form.errors %}
+                                <div class="alert alert-error mt-3" role="alert">
+                                    <p>Please check the below:</p>
+                                    <ol>
+                                        {% for field in form %}
+                                        {% for error in field.errors %}
+                                        <li>{{field.label}} : {{ error }}</li>
+                                        {% endfor %}
+                                        {% endfor %}
+                                    </ol>
+                                </div>
+                                {% endif %}
+
+                                <div class="mb-2">
+                                    <button type="submit"
+                                            class="input-field mb-2 mt-2 shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-qitext text-white scale-hover">
+                                        <div class="button-text w-full font-light">Submit</div>
+                                        <div class="input-icon bg-qibg p-2 rounded-full"><img
+                                                src="{% static 'images/right-arrow.png' %}" alt="Card" height="26px"
+                                                width="26px">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                            </div>
+                    
+                    <div data-aos="zoom-in-up" data-aos-duration="1500" class="col-lg-7 col-md-7 col-sm-12 col-12 flex items-center flex-col">
+                        <div class="service_design w-full">
+                            <div class="card-text text-center"><p class="card-width-text text-white">3M</p></div>
+                            <div class="card-box shadow-xl rounded-3xl flex bg-qibg border-black border-2">
+                                <div class="row justify-content-around justify-center items-center w-full">
+                                <div class="col-3 qi-logo text-center justify-center items-center flex"><img src="{% static 'images/qi-logo.svg' %}" alt="Qi" width="112px" height="112px" class="res-img">
+                                </div>
+                                <div class="col-8 qi-service-name text-center">
+                                    <div class="card-name font-roleway font-medium res-text hidden st:block">Customer Care Center</div>
+                                </div>
+                            </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if page_obj|length > 0 %}
+    <div data-aos="zoom-in-up" data-aos-duration="1500" class="section h-screen position-relative" id="orders">
+        <div class="row responsive-section align-items-center res-bcard">
+                <div class="col-12 align-items-center orders-section justify-center text-center bg-qitext text-white">
+                <h3 class="message text-3xl x2l:text-4xl font-extrabold font-roleway">Your orders</h3>
+                </br>
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>Status</th>
+                            <th class="no-mobile">Size</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for req in page_obj %}
+                        <tr>
+                            <td><a onclick="redirect('{% url 'ServiceCenterDetails' req.id %}')">{{ req.id }}</a></td>
+                            <td><span class="badge bg-{% if req.status == 'Pending' %}warning{% elif req.status == 'Approved' %}success{% elif req.status == 'Reject' %}danger{% elif req.status == 'In Printing' %}warning{% elif req.status == 'Done' %}info{% endif %}">{{ req.status }}</span></td>
+                            <td  class="no-mobile">{{ req.height }} X {{ req.width }}</td>
+                            <td>{{ req.created_at|date:"d-m-Y" }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                                  <div class="row justify-content-center mt30 ">
+                    <nav aria-label="Page navigation ">
+                      <ul class="pagination justify-content-center flex-wrap mt-2 mb-4">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ page_obj.previous_page_number }}">«</a></li>
+                        {% else %}
+                            <li class="disabled page-item"><span class="btn btn-sm btn-light">&laquo;</span></li>
+                        {% endif %}
+                        {% for i in page_range|default_if_none:page_obj.paginator.get_elided_page_range %}
+                            {% if page_obj.number == i %}
+                                <li class="active page-item"><span class="btn btn-sm btn-light">{{ i }}</span>
+                                </li>
+                            {% else %}
+                                {% if i == page_obj.paginator.ELLIPSIS %}
+                                    <li class="page-item"><span class="btn btn-sm btn-light">{{ i }}</span></li>
+                                {% else %}
+                                    <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ page_obj.next_page_number }}">»</a></li>
+                        {% else %}
+                            <li class="disabled page-item"><span class="btn btn-sm btn-light">&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                    </nav>
+                  </div>
+            </div>
+            </div>
+
+
+        </div>
+
+    {% endif %}
+{% endif %}
+
+<script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+
+<script>
+    
+    function card_size(){
+        let window_ac = 1;
+        if (window.innerWidth > 1100){
+            window_ac = 1;
+        }
+        else if ( window.innerWidth < 1100 && window.innerWidth > 767) {
+            window_ac = 0.7;
+        }
+        else if (window.innerWidth <= 767 && window.innerWidth >= 460){
+            window_ac = 0.7
+        }
+        else if (window.innerWidth < 460){
+            window_ac = 0.6
+        }
+        let height = parseInt($('#height').val());
+        let width=parseInt($('#width').val());
+        if (height <= 5 && width <= 6){
+            width = width*100*window_ac;
+            height = height*100*window_ac
+        }
+        else if (height <= 5 && width > 6){
+            ar = width / 6;
+            width=600*window_ac;
+            height=(height / ar) * 100*window_ac;
+        }
+        else if (height > 5 && width <= 5){
+            ar = height / 5;
+            width=(width / ar )*100*window_ac;
+            height=500*window_ac;
+        }
+        else if (height > 5 && width > 5){
+            if (height > width){
+                ar = height / 5;
+                width = (width / ar )*100*window_ac;
+                height = 500*window_ac;
+            }
+            else {
+                ar = width / 6;
+                width = 600*window_ac;
+                height = (height / ar) * 100*window_ac;
+            }
+            }
+
+            $('.card-width-text').text($('#width').val() + "M");
+            $('.card-text').width(width);
+            $('.card-box').width(width);
+            $('.card-box').height(height);
+        }
+        $(window).resize(card_size()); 
+        $(document).ready(function(){
+            $(window).trigger('resize'); 
+        });
+    $('#height').keyup(function() {
+        if ($('#height').val() != '') {
+                card_size();
+        } else {
+            $('.card-box').height(1);
+        }
+    });
+
+    $('#width').keyup(function() {
+        if ($('#width').val() != '') {
+            card_size();
+        } else {
+            $('.card-box').width(1);
+        }
+    });
+    $('#phoneNumber').keyup(function() {
+        if ($('#phoneNumber').val() != '') {
+            $('#phoneNumbervalue').text($('#phoneNumber').val());
+            $('#phoneNumberValueAr').text($('#phoneNumber').val());
+        } else {
+            $('#phoneNumbervalue').text({{data_response.Work_phone}});
+            $('#phoneNumberValueAr').text({{data_response.Work_phone}});
+        }
+    });
+
+    $('#flipCard').click(function() {
+        $('.flip-card').toggleClass('rotate-card');
+    });
+</script>
+ {% endblock %}
