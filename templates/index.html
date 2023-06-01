@@ -3,7 +3,8 @@
 {% load static %}
 {% load socialaccount %}
 {% load getnames %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.99">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.99.8">
+
 <link rel="stylesheet" type="text/css" href="{% static 'css/bubble.css' %}?v=0.23">
 <style>
           *,
@@ -57,9 +58,11 @@
         height: 100%;
         max-height: 100%;
       }
+
 </style>
-<div id="index">
-    <div class="section fp-section fp-table active fp-completely" id="home" >
+<div id="index" class="row">
+
+    <div class="col-12 section" id="home" >
         <div class="container">
           <div class="blob-div">
             <ul class="main-nav">
@@ -76,15 +79,6 @@
 
                             <a href="#services_list" class="link-button learn-more mb-5 mt-2"><span class="circle" aria-hidden="true"><span class="icon arrow"></span></span><span class="button-text">Get Started</span>
                             </a>
-    <!--                        <div class="main-options flex items-center justify-center md:justify-start mb-3 md:mb-0 gap-6">-->
-    <!--                            <div class="money bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
-    <!--                                <img src="/static/images/teller.png" alt="Teller" width="40px" height="40px"></div>-->
-    <!--                            <div class="business bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
-    <!--                                <img src="/static/images/businessman.png" alt="Teller" width="40px" height="40px">-->
-    <!--                            </div>-->
-    <!--                            <div class="advertising bg-qitext w-fit p-2 rounded-full hover-up-transform cursor-pointer">-->
-    <!--                                <img src="/static/images/cost.png" alt="Teller" width="40px" height="40px"></div>-->
-    <!--                        </div>-->
                         </div>
                     </div>
                     <div class="blob-container">
@@ -97,38 +91,41 @@
           </div>
         </div>
 </div>
-    <div class="section" id="services_list">
-        <div class="choose-service-page flex-1">
+    <div  class="col-12 section" id="services_list">
+        <div class="choose-service-page">
             <div class="my-container">
                 <div class="carousel carousel-dark slide" data-bs-ride="carousel" id="carouselDark">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a onclick="redirect('{% if user.is_authenticated %}#bcard{% else %}{% provider_login_url 'microsoft' process='login'  %}{% endif %}')">
+                            <a onclick="redirect('{% if user.is_authenticated %}{% url 'new_bc' %}{% else %}{% provider_login_url 'microsoft' process='login'  %}{% endif %}')">
                                 <div class="service flex flex-col items-center gap-4">
-                                    <div class="service-img bg-qitext w-fit p-8 rounded-full">
-                                        <img alt="Letter Head" class="w-20 h-20 sm:w-36 sm:h-36" height="150px" src="{% static 'images/business-card.png' %}" width="150px">
+                                    <div class="service-img bg-white w-fit p-8 rounded-30 shadow-service">
+                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/business-card.png' %}" width="100px">
+                                        <div class="text-2xl sm:text-3xl font-medium">Business Card</div>
                                     </div>
-                                    <div class="text-2xl sm:text-3xl font-medium">Business Card</div>
+
                                 </div>
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="#">
                                 <div class="service flex flex-col items-center gap-4">
-                                    <div class="service-img bg-qitext w-fit p-8 rounded-full">
-                                        <img alt="Letter Head" class="w-20 h-20 sm:w-36 sm:h-36" height="150px" src="{% static 'images/copy.png' %}" width="150px">
+                                    <div class="service-img bg-white w-fit p-8 rounded-30 shadow-service">
+                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/copy.png' %}" width="100px">
+                                        <div class="text-2xl sm:text-3xl font-medium">Letter Head</div>
                                     </div>
-                                    <div class="text-2xl sm:text-3xl font-medium">Letter Head</div>
+
                                 </div>
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="#">
                                 <div class="service flex flex-col items-center gap-4">
-                                    <div class="service-img bg-qitext w-fit p-8 rounded-full">
-                                        <img alt="Letter Head" class="w-20 h-20 sm:w-36 sm:h-36" height="150px" src="{% static 'images/presentation.png' %}" width="150px">
+                                    <div class="service-img bg-white w-fit p-8 rounded-30 shadow-service">
+                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/presentation.png' %}" width="100px">
+                                        <div class="text-2xl sm:text-3xl font-medium">Presentation</div>
                                     </div>
-                                    <div class="text-2xl sm:text-3xl font-medium">Presentation</div>
+
                                 </div>
                             </a>
                         </div>
@@ -147,495 +144,19 @@
             </div>
         </div>
     </div>
-{% if user.is_authenticated %}
-    {% if page_obj|length > 0 %}
-    <div class="section fp-scrollable" id="orders">
-        <div class="row responsive-section align-items-center">
-                <div class="col-12 align-items-center orders-section justify-center text-center bg-qitext text-white">
-                <h3 class="message text-3xl x2l:text-4xl font-extrabold font-roleway">Your orders</h3>
-                </br>
-                <table class="table table-dark table-hover">
-                    <thead>
-                        <tr>
-                            <th>Request ID</th>
-                            <th>Status</th>
-                            <th class="no-mobile">Quantity</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for req in page_obj %}
-                        <tr>
-                            <td><a onclick="redirect('{% url 'BusinessRequestDetails' req.id %}')">{{ req.id }}</a></td>
-                            <td><span class="badge bg-{% if req.status == 'Pending' %}warning{% elif req.status == 'Approved' %}success{% elif req.status == 'Reject' %}danger{% elif req.status == 'In Printing' %}warning{% elif req.status == 'Done' %}info{% endif %}">{{ req.status }}</span></td>
-                            <td  class="no-mobile">{{ req.quantity }}</td>
-                            <td>{{ req.created_at|date:"d-m-Y" }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-                                  <div class="row justify-content-center mt30 ">
-                    <nav aria-label="Page navigation ">
-                      <ul class="pagination justify-content-center flex-wrap mt-2 mb-4">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ page_obj.previous_page_number }}">«</a></li>
-                        {% else %}
-                            <li class="disabled page-item"><span class="btn btn-sm btn-light">&laquo;</span></li>
-                        {% endif %}
-                        {% for i in page_range|default_if_none:page_obj.paginator.get_elided_page_range %}
-                            {% if page_obj.number == i %}
-                                <li class="active page-item"><span class="btn btn-sm btn-light">{{ i }}</span>
-                                </li>
-                            {% else %}
-                                {% if i == page_obj.paginator.ELLIPSIS %}
-                                    <li class="page-item"><span class="btn btn-sm btn-light">{{ i }}</span></li>
-                                {% else %}
-                                    <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ i }}">{{ i }}</a></li>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if page_obj.has_next %}
-                            <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ page_obj.next_page_number }}">»</a></li>
-                        {% else %}
-                            <li class="disabled page-item"><span class="btn btn-sm btn-light">&raquo;</span></li>
-                        {% endif %}
-                    </ul>
-                    </nav>
-                  </div>
-            </div>
-            </div>
-
-
-        </div>
-
-    {% endif %}
-
-    {% if response_status == 0 %}
-    <div class="section" id="bcard">
-        <div class="bcard-container flex-1">
-            <div class="my-container">
-                <div class="bcard-box res-bcard row res-p">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="col-lg-6 col-md-8 col-sm-12 col-12">
-                        <form action="" method="post">
-                            <h1 class="font-roleway font-extrabold text-qitext text-3xl xl:text-5xl">Order Your BCard</h1>
-                            {% csrf_token %}
-                            <input name="employee_id" hidden="" id="employee_id" required placeholder="Employee ID" class="bg-inherit focus-visible:outline-none" type="text" value="{{ data_response.EmployeeID }}" readonly>
-
-                            <p class="font-roleway font-semibold m-1 xl:my-3 font-size-res">Enter The Required
-                                Information</p>
-                            <div class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-3 xl:mb-20">
-                                <div class="absolute w-1/6 rounded-3xl bg-qitext"
-                                     style="top: -50%; transform: translateY(-50%); right: -1px; height: 5px;"></div>
-                            </div>
-                            <div class="row input-group">
-                                <div class="mb-2">
-                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                         <input name="first_name_en" readonly  id="first_name_en" placeholder="Full Name In English" class="pl-5 bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.FirstName }} {{ data_response.LastName|getnames:1 }}{% else %}{{ form.first_name_en.value }}{% endif %}">
-                                         <input name="last_name_en"  id="last_name_en"  placeholder="Last Name In English" class="w-full bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.LastName|getnames:2 }}{% else %}{{ form.last_name_en.value }}{% endif %}">
-
-                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
-                                            <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
-                                                 width="26px">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-2">
-                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                        <input dir="rtl"  placeholder="Last Name In Arabic" id="last_name_ar" name="last_name_ar" class="w-full bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.Second_Arabic_Name|getnames:2 }}{% else %}{{ form.last_name_ar.value }}{% endif %}">
-                                        <input dir="rtl"  readonly placeholder="Full Name In Arabic" id="first_name_ar" name="first_name_ar" class="pr-5 bg-inherit focus-visible:outline-none" type="text" value="{% if msg != 'POSTERROR' %}{{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:1 }}{% else %}{{ form.first_name_ar.value }}{% endif %}">
-                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
-                                            <img src="{% static 'images/id-card.png' %}" alt="Card" height="26px"
-                                                 width="26px">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-2">
-                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                        <input required id="jobTitle" name="job_title" type="text"
-                                               placeholder="Job Title In English"
-                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                               maxlength="26" value="{% if msg != 'POSTERROR' %}{{ data_response.Designation }}{% else %}{{ form.job_title.value }}{% endif %}">
-                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
-                                            <img
-                                                src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
-                                                width="26px">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mb-2">
-                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                        <input required id="jobTitleAr" name="job_title_ar" type="text"
-                                               placeholder="Job Title In Arabic"
-                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                               maxlength="26" value="">
-                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
-                                                src="{% static 'images/portfolio.png' %}" alt="Card" height="26px"
-                                                width="26px">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-8 col-8 p-0">
-                                     <div class="mb-2">
-                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                        <input required id="phoneNumber" name="phone" type="text" placeholder="Phone Number"
-                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                               maxlength="14" value="{% if msg != 'POSTERROR' %}{{ data_response.Work_phone|default:'' }}{% else %}{{ form.phone.value }}{% endif %}">
-                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
-                                                src="{% static 'images/call.png' %}"
-                                                alt="Card"
-                                                height="26px"
-                                                width="26px"></div>
-                                    </div>
-                                </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-4 col-4 p-0">
-                                        <div class="mb-2">
-                                    <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                                        <input required name="quantity" type="number" min="1" placeholder="Quantity"
-                                               class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                               value="{% if msg != 'POSTERROR' %}100{% else %}{{ form.quantity.value }}{% endif %}" max="1000">
-                                        <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
-                                                src="{% static 'images/money.png' %}" alt="Card" height="26px" width="26px">
-                                        </div>
-                                    </div>
-                                </div>
-                                    </div>
-                                </div>
-
-
-                                {% if form.errors %}
-                                <div class="alert alert-error mt-3" role="alert">
-                                    <p>Please check the below:</p>
-                                    <ol>
-                                        {% for field in form %}
-                                        {% for error in field.errors %}
-                                        <li>{{field.label}} : {{ error }}</li>
-                                        {% endfor %}
-                                        {% endfor %}
-                                    </ol>
-                                </div>
-                                {% endif %}
-
-                                <div class="mb-2">
-                                    <button type="submit"
-                                            class="input-field mb-2 mt-2 shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-qitext text-white scale-hover">
-                                        <div class="button-text w-full font-light">Submit</div>
-                                        <div class="input-icon bg-qibg p-2 rounded-full"><img
-                                                src="{% static 'images/right-arrow.png' %}" alt="Card" height="26px"
-                                                width="26px">
-                                        </div>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                            </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-
-                        <div class="flip-card row">
-                            <div class="flip-card-inner ">
-                                <div class="flip-card-front">
-                                    <div class="card-box shadow-xl st:w-220 st:h-120 xl:w-250 xl:h-160 rounded-bl-4xl bg-white flex">
-                                        <div class="qi-logo-contact-info flex-left text-small xxs:text-xs xl:text-base st:text-lg flex flex-col items-center justify-between pt-7 pb-3 xxs:pt-5 xxs:pb-5 st:pt-14 st:pb-10">
-                                            <div class="qi-logo"><img src="{% static 'images/qi-logo-yellow.svg' %}"
-                                                                      alt="Qi"
-                                                                      width="112px" height="112px"
-                                                                      class="w-10 h-10 xxs:w-12 xss:h-12 xs:w-16 xs:h-16 xl:h-28 xl:w-28">
-                                            </div>
-                                            <div class="contact-info px-0 pr-0 xs:pr-5 st:px-5 border-none sm:border-solid xs:border-r-1 st:border-r-2 border-gray-500 [&amp;>div]:mb-2">
-                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
-                                                    <div><img src="{% static 'images/email.png' %}" alt="Email" width="20px"
-                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
-                                                    <div>{{ data_response.EmailID }}</div>
-                                                </div>
-                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
-                                                    <div><img src="{% static 'images/web.png' %}" alt="Email" width="20px"
-                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
-                                                    <div>www.qi.iq</div>
-                                                </div>
-                                                <div class="single-info flex flex-row-reverse items-start xs:items-center gap-1 xs:gap-2">
-                                                    <div><img src="{% static 'images/pin.png' %}" alt="Email" width="20px"
-                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
-                                                    <span class="">Iraq - {{ data_response.LocationName|default:'Baghdad' }}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="qi-logo-name-and-phone flex-right flex flex-col justify-between pb-5 xs:pb-10">
-                                            <div class="card-qi-header flex w-fit st:w-auto self-end st:self-auto bg-yellow-300 rounded-bl-4xl">
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                            </div>
-                                            <div  class="card-name my-5 st:my-0 text-start md:pl-4">
-                                                <div  id="card_full_name_en" class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-roleway">
-                                                    {{ data_response.FirstName }} {{ data_response.LastName|getnames:1 }} {{ data_response.LastName|getnames:2 }}
-                                                </div>
-                                                <div id="Designation"
-                                                     class="job-title overflow-hidden text-small xxs:text-xs xs:text-sm st:text-base xl:text-lg font-medium font-roleway">
-                                                    {{ data_response.Designation }}
-                                                </div>
-                                            </div>
-                                            <div class="contact-info text-phone xxs:text-xs st:text-base xl:text-base px-0 xs:px-2 st:px-5 [&amp;>div]:mb-2">
-                                                <div class="single-info flex items-start justify-start gap-1 xs:gap-3">
-                                                    <div class="mt-1 w-3 h-3 xs:w-auto xs:h-auto "><img
-                                                            src="{% static 'images/call.png' %}" alt="Email" width="20px"
-                                                            height="20px"></div>
-                                                    <div>
-                                                        <div id="phoneNumbervalue" class="phone">{{ data_response.Work_phone|default:'+964780XXXXXXX' }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-name font-roleway font-medium hidden st:block">
-                                                    International Smart Card<small
-                                                        class="text-xs font-medium mx-1 hidden md:inline">(Semi
-                                                    Goverment)</small></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flip-card-back">
-                                    <div class="card-box shadow-xl st:w-220 st:h-120 xl:w-250 xl:h-160 rounded-bl-4xl bg-white flex">
-                                        <div class="qi-logo-contact-info flex-left text-small xxs:text-xs xl:text-base st:text-lg flex flex-col items-center justify-between pt-7 pb-3 xxs:pt-5 xxs:pb-5 st:pt-14 st:pb-10">
-                                            <div class="qi-logo"><img src="{% static 'images/qi-logo-yellow.svg' %}"
-                                                                      alt="Qi"
-                                                                      width="112px" height="112px"
-                                                                      class="w-10 h-10 xxs:w-12 xss:h-12 xs:w-16 xs:h-16 xl:h-28 xl:w-28">
-                                            </div>
-                                            <div class="contact-info px-0 pr-0 xs:pr-5 st:px-5 border-none sm:border-solid xs:border-r-1 st:border-r-2 border-gray-500 [&amp;>div]:mb-2">
-                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
-                                                    <div><img src="{% static 'images/email.png' %}" alt="Email" width="20px"
-                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
-                                                    <div>{{ data_response.EmailID }}</div>
-                                                </div>
-                                                <div class="single-info flex flex-row-reverse items-center gap-1 xs:gap-2">
-                                                    <div><img src="{% static 'images/web.png' %}" alt="Email" width="20px"
-                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
-                                                    <div>www.qi.iq</div>
-                                                </div>
-                                                <div class="single-info flex flex-row-reverse items-start xs:items-center gap-1 xs:gap-2">
-                                                    <div><img src="{% static 'images/pin.png' %}" alt="Email" width="20px"
-                                                              height="20px" class="w-3 xxs:w-4 xs:w-5"></div>
-                                                    <span class="font-cairo">العراق - بغداد</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="qi-logo-name-and-phone flex-right flex flex-col justify-between pb-5 xs:pb-10">
-                                            <div class="card-qi-header flex w-fit st:w-auto self-end st:self-auto bg-yellow-300 rounded-bl-4xl">
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                                <div><img src="{% static 'images/qi-logo-yellow.svg' %}" alt="Qi"
-                                                          width="100px"
-                                                          height="100px"
-                                                          class="w-14  st:w-20 st:h-20 xl:h-24 xl:w-24"></div>
-                                            </div>
-                                            <div class="card-name my-5 st:my-0 text-end pr-4 sm:pr-6 lg:pr-10">
-                                                <div id="card_full_name_ar" class="person-name text-xs xxs:text-sm xs:text-lg st:text-xl xl:text-2xl font-extrabold font-cairo">
-                                                    {{ data_response.First_Name_Arabic }} {{ data_response.Second_Arabic_Name|getnames:1 }} {{ data_response.Second_Arabic_Name|getnames:2 }}
-                                                </div>
-                                                <div id="ArDesignation"
-                                                     class="job-title overflow-hidden text-small xxs:text-xs xs:text-sm st:text-base xl:text-lg font-medium font-cairo">
-                                                    {{ data_response.Designation }}
-                                                </div>
-                                            </div>
-                                            <div class="contact-info text-phone xxs:text-xs st:text-base xl:text-base px-0 xs:px-2 st:px-5 [&amp;>div]:mb-2">
-                                                <div class="single-info flex items-start justify-start gap-1 xs:gap-3">
-                                                    <div class="mt-1 w-3 h-3 xs:w-auto xs:h-auto "><img
-                                                            src="{% static 'images/call.png' %}" alt="Email" width="20px"
-                                                            height="20px"></div>
-                                                    <div>
-                                                        <div id="phoneNumberValueAr" class="phone">{{ data_response.Work_phone|default:'+964780XXXXXXX' }}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="card-name font-cairo font-medium hidden st:block">
-                                                    العالمية للبطاقة الذكية<small
-                                                        class="text-xs font-medium mx-1 hidden md:inline">(قطاع
-                                                    مختلط)</small></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="filp-button row">
-                            <div id="flipCard" class="flex items-center flex-col gap-1 cursor-pointer"><img
-                                    src="{% static 'images/360.png' %}"
-                                    alt="Flip"
-                                    width="42px"
-                                    height="42px"><span
-                                    class="font-normal">Click here to flip the card</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-{% endif %}
 </div>
 
 <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
 <script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
-<!--<script src="{% static 'js/blob.js' %}"></script>-->
-<!--<script type="text/javascript" src="{% static 'js/scrolloverflow.js' %}"></script>-->
-
 <script src="{% static 'js/jquery.fullPage.js' %}"></script>
 <script src="{% static 'js/bubble.js' %}"></script>
-<script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.1/vendors/scrolloverflow.js"></script>
 
-    $('#jobTitleAr').keyup(function() {
-    if ($('#jobTitleAr').val() != '') {
-  $('#ArDesignation').text($('#jobTitleAr').val());
-  } else {
-  $('#ArDesignation').text('{{ data_response.Designation }}');
-  }
-});
-
-    $('#jobTitle').keyup(function() {
-    if ($('#jobTitle').val() != '') {
-  $('#Designation').text($('#jobTitle').val());
-  } else {
-  $('#Designation').text('{{ data_response.Designation }}');
-  }
-});
-    $('#phoneNumber').keyup(function() {
-     if ($('#phoneNumber').val() != '') {
-  $('#phoneNumbervalue').text($('#phoneNumber').val());
-  $('#phoneNumberValueAr').text($('#phoneNumber').val());
-  }else {
-   $('#phoneNumbervalue').text({{ data_response.Work_phone }});
-  $('#phoneNumberValueAr').text({{ data_response.Work_phone }});
-  }
-});
-
-$('#flipCard').click(function() {
-    $('.flip-card').toggleClass('rotate-card');
-});
-
-
-</script>
 <script>
         $('#index').fullpage({
-
-        })
-</script>
-{% if user.is_authenticated %}
-<script>
- function getTextWidth(el) {
-  // uses a cached canvas if available
-  var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-  var context = canvas.getContext("2d");
-  // get the full font style property
-  var font = window.getComputedStyle(el, null).getPropertyValue('font');
-  var text = el.value;
-  // set the font attr for the canvas text
-  context.font = font;
-  var textMeasurement = context.measureText(text);
-  return textMeasurement.width;
-}
-
-var eninput = document.getElementById('first_name_en');
-var enwidth = Math.floor(getTextWidth(eninput));
-var enwidthInPx = (enwidth + 25) + "px";
-  eninput.style.width = enwidthInPx;
-
- $('#last_name_en').keyup(function() {
-  $('#card_full_name_en').text($('#first_name_en').val() + ' ' + $('#last_name_en').val());
-});
-
-var arinput = document.getElementById('first_name_ar');
-var arwidth = Math.floor(getTextWidth(arinput));
-var arwidthInPx = (arwidth + 25) + "px";
-  arinput.style.width = arwidthInPx;
-
- $('#last_name_ar').keyup(function() {
-  $('#card_full_name_ar').text($('#first_name_ar').val() + ' ' + $('#last_name_ar').val());
-});
-document.getElementById("last_name_en").maxLength = 26 - $('#first_name_en').val().length;
-document.getElementById("last_name_ar").maxLength = 26 - $('#first_name_ar').val().length;
-
-
- $('#last_name_en').on('input',function(e){
- var el= $('#card_full_name_en');
-   var textLength = $('#first_name_en').val().length + $('#last_name_en').val().length;
-    if (textLength > 30) {
-    if (screen.width > 500) {
-        el.css('font-size', '0.8rem');
-     }
-     else {
-     el.css('font-size', '0.48rem');
-     }
-    }
-    else if (textLength > 20) {
-    if (screen.width > 500) {
-        el.css('font-size', '1.25rem');
-     }
-     else {
-     el.css('font-size', '0.6rem');
-     }
-}
-    else {
-      if (screen.width > 500) {
-        el.css('font-size', '1.5rem');
-     }
-     else {
-     el.css('font-size', '0.825rem');
-     }
-    }
-});
-
-$('#last_name_ar').on('input',function(e){
- var arel= $('#card_full_name_ar');
-   var artextLength = $('#first_name_ar').val().length + $('#last_name_ar').val().length;
-    if (artextLength > 30) {
-    if (screen.width > 500) {
-        arel.css('font-size', '0.8rem');
-     }
-     else {
-     arel.css('font-size', '0.48rem');
-     }
-    }
-    else if (artextLength > 18) {
-    if (screen.width > 500) {
-        arel.css('font-size', '1.25rem');
-     }
-     else {
-     arel.css('font-size', '0.6rem');
-     }
-}
-    else {
-      if (screen.width > 500) {
-        arel.css('font-size', '1.5rem');
-     }
-     else {
-     arel.css('font-size', '0.825rem');
-     }
-    }
+        afterLoad: function(){
+	$('.fp-table.active .aos-init').addClass('aos-animate');
+},
 });
 </script>
-{% endif %}
 {% endblock %}

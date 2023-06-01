@@ -1,6 +1,5 @@
 import json
-from datetime import datetime
-
+from django.utils import timezone
 import weasyprint
 from allauth.socialaccount.models import SocialAccount
 from django.contrib import messages
@@ -24,6 +23,7 @@ from django.conf import settings
 from businesscard.pdf import html_to_pdf
 from django.templatetags.static import static
 from django.utils.text import slugify
+from django.db.models import Count
 
 User = get_user_model()
 
@@ -60,7 +60,8 @@ def generate_bcard(request, rid):
     html = template.render(context)
 
     # Generate a PDF document from the HTML
-    pdf_file = HTML(string=html,base_url=request.build_absolute_uri(),).write_pdf()
+    pdf_file = HTML(
+        string=html, base_url=request.build_absolute_uri(),).write_pdf()
 
     # Send the PDF file as a response
     response = HttpResponse(pdf_file, content_type='application/pdf')
@@ -79,6 +80,7 @@ def GeneratePdf(request, rid):
     pdf = html_to_pdf(f'businesscard/pdf.html', context)
     # rendering the template
     return HttpResponse(pdf, content_type='application/pdf')
+
 
 def Generatebcard(request, rid):
     STATIC_ROOT = settings.STATIC_ROOT
@@ -111,8 +113,10 @@ class BusinessRequestCreateView(CreateView):
     # error_message = "Error saving the Bussiness Request, check fields below."
     def form_valid(self, form):
         BusinessRequestFormResult = form.save(commit=False)
-        BusinessRequestFormResult.user = User.objects.get(email=self.request.user.email)
-        BusinessRequestFormResult.created_by = User.objects.get(email=self.request.user.email)
+        BusinessRequestFormResult.user = User.objects.get(
+            email=self.request.user.email)
+        BusinessRequestFormResult.created_by = User.objects.get(
+            email=self.request.user.email)
         BusinessRequestFormResult.save()
         # html_message = render_to_string('mail_template.html', {'BusinessRequest': BusinessRequestFormResult})
         # send_mail(
@@ -138,13 +142,15 @@ class BusinessRequestCreateView(CreateView):
         user_requests = None
         try:
             if self.request.user.is_authenticated:
-                user_requests = BusinessRequest.objects.filter(user=self.request.user)
+                user_requests = BusinessRequest.objects.filter(
+                    user=self.request.user)
         except BusinessRequest.DoesNotExist:
             user_requests = None
         try:
             data = SocialAccount.objects.get(user=self.request.user).extra_data
             zoho_token = zoho_login()
-            data_response = get_zoho_data(zoho_token, email=self.request.user.email)
+            data_response = get_zoho_data(
+                zoho_token, email=self.request.user.email)
             result = data_response.get('response').get('result')
             print(data_response)
             data_value = list(result[0].values())[0][0]
@@ -172,7 +178,7 @@ def pdf_preview(request):
     return render(request, 'businesscard/bcard.html', context)
 
 
-def index(request):
+def NewBusinessRequest(request):
     data: list = []
     msg: str = ''
     data_value: dict = {}
@@ -181,6 +187,7 @@ def index(request):
     user_requests = None
     response_status = 1
     page_number = request.GET.get('page', 1)
+    all_orders_count = None
     form = None
     if request.method == 'POST':
         form = BusinessRequestForm(request.POST)
@@ -193,19 +200,23 @@ def index(request):
             # fullname_ar = f"{data_value.get('First_Name_Arabic')} {data_value.get('Second_Arabic_Name').split()[0]}"
             # BusinessRequestFormResult.full_name_en = f"{fullname_en} {request.POST.get('full_name_en')}"
             # BusinessRequestFormResult.full_name_ar = f"{fullname_ar} {request.POST.get('full_name_ar')}"
-            BusinessRequestFormResult.user = User.objects.get(email=request.user.email)
-            BusinessRequestFormResult.created_by = User.objects.get(email=request.user.email)
+            BusinessRequestFormResult.user = User.objects.get(
+                email=request.user.email)
+            BusinessRequestFormResult.created_by = User.objects.get(
+                email=request.user.email)
             BusinessRequestFormResult.save()
             messages.add_message(request, messages.SUCCESS,
                                  f'Business Card Request successfully submitted with id {BusinessRequestFormResult.id}')
             return redirect('home')
         else:
-            messages.add_message(request, messages.ERROR, 'Your request not submitted, please check the below error')
+            messages.add_message(
+                request, messages.ERROR, 'Your request not submitted, please check the below error')
             form = form
             msg = 'POSTERROR'
             try:
                 if request.user.is_authenticated:
-                    user_requests = BusinessRequest.objects.filter(user=request.user)
+                    user_requests = BusinessRequest.objects.filter(
+                        user=request.user)
             except BusinessRequest.DoesNotExist:
                 user_requests = None
             try:
@@ -216,19 +227,28 @@ def index(request):
                     result = data_response.get('response').get('result')
                     data_value = list(result[0].values())[0][0]
                 elif response_status == 1:
-                    messsage = data_response.get('response').get('errors').get('message')
+                    messsage = data_response.get(
+                        'response').get('errors').get('message')
                     messages.add_message(request, messages.ERROR, messsage)
             except Exception as e:
                 messages.add_message(request, messages.ERROR, e)
     elif request.method == 'GET':
-
         try:
             if request.user.is_authenticated:
-                user_requests = BusinessRequest.objects.filter(user=request.user)
+                all_orders_count = BusinessRequest.objects.filter(
+                    status='Pending').count()
+        except BusinessRequest.DoesNotExist:
+            all_orders_count = None
+        try:
+            if request.user.is_authenticated:
+
+                user_requests = BusinessRequest.objects.filter(
+                    user=request.user).order_by('-id')
                 paginator = Paginator(user_requests, 10)
                 page_number = request.GET.get('page', 1)
                 page_obj = paginator.get_page(page_number)
-                page_range = paginator.get_elided_page_range(number=page_number, on_each_side=2, on_ends=2)
+                page_range = paginator.get_elided_page_range(
+                    number=page_number, on_each_side=2, on_ends=2)
         except BusinessRequest.DoesNotExist:
             user_requests = None
         try:
@@ -251,9 +271,10 @@ def index(request):
         'data_response': data_value,
         'page_obj': page_obj,
         'page_range': page_range,
-        'form': form
+        'form': form,
+        'allorderscount': all_orders_count,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'businesscard/NewBusinessRequest.html', context)
 
 
 def BusinessRequestList(request):
@@ -327,7 +348,8 @@ def request_list(request):
     paginator = Paginator(request_list, number_of_records)
     page_number = request.GET.get('page', 1)
     page_obj = paginator.get_page(page_number)
-    page_range = paginator.get_elided_page_range(number=page_number, on_each_side=2, on_ends=2)
+    page_range = paginator.get_elided_page_range(
+        number=page_number, on_each_side=2, on_ends=2)
     context = {
         'session': json.dumps(session),
         'page_obj': page_obj,
@@ -357,65 +379,77 @@ def BusinessRequestApprove(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        messages.add_message(request, messages.ERROR, "Business Request Not found")
-        return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "Business Request Not found")
+        return redirect('business_requests')
     if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Approved')
-        SelectedBusinessRequest.update(status_change_at=datetime.now())
+        SelectedBusinessRequest.update(status_change_at=timezone.now())
         SelectedBusinessRequest.update(status_change_by=request.user)
-        messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
+        messages.add_message(request, messages.SUCCESS,
+                             'Order Request Updated')
     else:
-        messages.add_message(request, messages.ERROR, "You don't have Permission")
-    return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "You don't have Permission")
+    return redirect('business_requests')
 
 
 def BusinessRequestReject(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        messages.add_message(request, messages.ERROR, "Business Request Not found")
-        return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "Business Request Not found")
+        return redirect('business_requests')
     if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Reject')
-        SelectedBusinessRequest.update(status_change_at=datetime.now())
+        SelectedBusinessRequest.update(status_change_at=timezone.now())
         SelectedBusinessRequest.update(status_change_by=request.user)
-        messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
+        messages.add_message(request, messages.SUCCESS,
+                             'Order Request Updated')
     else:
-        messages.add_message(request, messages.ERROR, "You don't have Permission")
-    return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "You don't have Permission")
+    return redirect('business_requests')
 
 
 def BusinessRequestInPrinting(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        messages.add_message(request, messages.ERROR, "Business Request Not found")
-        return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "Business Request Not found")
+        return redirect('business_requests')
     if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='In Printing')
-        SelectedBusinessRequest.update(status_change_at=datetime.now())
+        SelectedBusinessRequest.update(status_change_at=timezone.now())
         SelectedBusinessRequest.update(status_change_by=request.user)
-        messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
+        messages.add_message(request, messages.SUCCESS,
+                             'Order Request Updated')
     else:
-        messages.add_message(request, messages.ERROR, "You don't have Permission")
-    return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "You don't have Permission")
+    return redirect('business_requests')
 
 
 def BusinessRequestDone(request, id):
     try:
         SelectedBusinessRequest = BusinessRequest.objects.get(id=id)
     except BusinessRequest.DoesNotExist:
-        messages.add_message(request, messages.ERROR, "Business Request Not found")
-        return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "Business Request Not found")
+        return redirect('business_requests')
     if request.user.is_superuser or request.user.is_businesscard_admin:
         SelectedBusinessRequest = BusinessRequest.objects.filter(id=id)
         SelectedBusinessRequest.update(status='Done')
-        SelectedBusinessRequest.update(status_change_at=datetime.now())
+        SelectedBusinessRequest.update(status_change_at=timezone.now())
         SelectedBusinessRequest.update(status_change_by=request.user)
-        messages.add_message(request, messages.SUCCESS, 'Order Request Updated')
+        messages.add_message(request, messages.SUCCESS,
+                             'Order Request Updated')
     else:
-        messages.add_message(request, messages.ERROR, "You don't have Permission")
-    return redirect('requests')
+        messages.add_message(request, messages.ERROR,
+                             "You don't have Permission")
+    return redirect('business_requests')

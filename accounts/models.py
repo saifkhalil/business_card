@@ -45,6 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=30, unique=True, verbose_name=_('Username'))
     last_login = models.DateTimeField(verbose_name=_('last login'), auto_now=True)
     is_businesscard_admin = models.BooleanField(default=False, verbose_name=_('Is Business Card admin'))
+    is_servicecenter_admin = models.BooleanField(default=False, verbose_name=_('Is Service Center admin'))
     is_active = models.BooleanField(default=True, verbose_name=_('Is active'))
     is_staff = models.BooleanField(default=False, verbose_name=_('Is staff'))
     is_superuser = models.BooleanField(default=False, verbose_name=_('Is superuser'))

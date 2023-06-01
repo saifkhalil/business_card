@@ -1,0 +1,155 @@
+{% extends "layout.html" %} {% block content %} {% load static %}
+<section class="bcard-container flex-1">
+  <div class="my-container pb-5">
+    <div class="bcard-box">
+      <div class="row responsive-section align-items-center">
+        <form action="" method="post">
+          <h1
+            class="font-roleway text-center font-extrabold justify-center text-qitext text-3xl xl:text-5xl"
+          >
+            Service Center Order Details
+          </h1>
+          {% csrf_token %}
+          <div
+            class="border-1 relative border-qitext mx-16 sm:mx-28 xl:mx-28 mb-10 xl:mb-20"
+          >
+            <div
+              class="absolute w-1/6 rounded-3xl bg-qitext"
+              style="
+                top: -50%;
+                transform: translateY(-50%);
+                right: -1px;
+                height: 5px;
+              "
+            ></div>
+          </div>
+          <div class="row input-group">
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="service_center_name"
+                  >Service Center Name</label
+                >
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  id="staticEmail"
+                  name="service_center_name"
+                  readonly
+                  type="text"
+                  value="{{ object.service_center_name }}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="full_address"
+                  >Full Address</label
+                >
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  name="full_address"
+                  readonly
+                  type="text"
+                  value="{{ object.full_address }} {{ object.last_name_en|default:'' }}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="height">Height</label>
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  name="height"
+                  readonly
+                  type="text"
+                  value="{{ object.height }} {{ object.last_name_ar|default:'' }}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="width">Width</label>
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  name="width"
+                  readonly
+                  type="text"
+                  value="{{object.width}}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="status">Status</label>
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  id="status"
+                  name="status"
+                  readonly
+                  type="text"
+                  value="{{ object.status }}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="created_by"
+                  >Created By</label
+                >
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  name="created_by"
+                  readonly
+                  type="text"
+                  value="{{ object.created_by }}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="created_at"
+                  >Created At</label
+                >
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  name="created_at"
+                  readonly
+                  type="text"
+                  value="{{ object.created_at }}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="status_change_by"
+                  >Status Changed By</label
+                >
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  name="status_change_by"
+                  readonly
+                  type="text"
+                  value="{{ object.status_change_by }}"
+                />
+              </div>
+            </div>
+            <div class="mb-3 row justify-content-md-center">
+              <div class="col-sm-10">
+                <label class="col-form-label" for="status_change_at"
+                  >Status Changed At</label
+                >
+                <input
+                  class="form-control rounded-full shadow-sm"
+                  name="status_change_at"
+                  readonly
+                  type="text"
+                  value="{{ object.status_change_at }}"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

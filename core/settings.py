@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import logging
 import os
 from pathlib import Path
 import environ
@@ -28,7 +29,8 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.18.223.248', 'localhost','saifk.pythonanywhere.com']
+ALLOWED_HOSTS = ['172.18.223.248', 'localhost',
+                 'saifk.pythonanywhere.com', '127.0.0.1']
 
 # Application definition
 
@@ -53,9 +55,11 @@ INSTALLED_APPS = [
     # 'wkhtmltopdf',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.microsoft',
+    'log_viewer',
     # 'allauth.socialaccount.providers.zoho',
     # 'allauth.socialaccount.providers.google',
     'businesscard',
+    'servicecenter',
     'accounts',
 ]
 
@@ -98,8 +102,12 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
@@ -187,3 +195,111 @@ DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL')
 os.environ["PANGOCAIRO_BACKEND"] = "cairo"
 PANGOCAIRO_BACKEND = "cairo"
 PHONENUMBER_DEFAULT_REGION = 'IQ'
+
+
+class IPAddressFilter(logging.Filter):
+
+    def filter(self, record):
+        if hasattr(record, 'request'):
+            x_forwarded_for = record.request.META.get('HTTP_X_FORWARDED_FOR')
+            if x_forwarded_for:
+                record.ip = x_forwarded_for.split(',')[0]
+            else:
+                record.ip = record.request.META.get('REMOTE_ADDR')
+        return True
+
+
+LOGGING = {
+
+    'version': 1,
+    # 'filters': {
+    #     # Add an unbound RequestFilter.
+    #     'request': {
+    #         '()': 'django_requestlogging.logging_filters.RequestFilter',
+    #     },
+    # },
+    'loggers': {
+        'django': {
+            'handlers': ['log', 'info', 'warning', 'error', 'critical'],
+            'level': 'DEBUG',
+            # 'filters': ['request'],
+        }
+    },
+    'handlers': {
+        'log': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': './logs/log.log',
+            'formatter': 'verbose',
+            'when': 'D',  # specifies the interval
+            'interval': 1,  # defaults to 1, only necessary for other values
+            'backupCount': 5,  # how many backup file to keep, 5 days
+        },
+        'info': {
+            'level': 'INFO',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': './logs/info.log',
+            'formatter': 'verbose',
+            'when': 'D',  # specifies the interval
+            'interval': 1,  # defaults to 1, only necessary for other values
+            'backupCount': 5,  # how many backup file to keep, 5 days
+        },
+        'warning': {
+            'level': 'WARNING',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': './logs/warning.log',
+            'formatter': 'verbose',
+            'when': 'D',  # specifies the interval
+            'interval': 1,  # defaults to 1, only necessary for other values
+            'backupCount': 5,  # how many backup file to keep, 5 days
+        },
+        'error': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': './logs/error.log',
+            'formatter': 'verbose',
+            'when': 'D',  # specifies the interval
+            'interval': 1,  # defaults to 1, only necessary for other values
+            'backupCount': 5,  # how many backup file to keep, 5 days
+        },
+        'critical': {
+            'level': 'CRITICAL',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': './logs/critical.log',
+            'formatter': 'verbose',
+            'when': 'D',  # specifies the interval
+            'interval': 1,  # defaults to 1, only necessary for other values
+            'backupCount': 5,  # how many backup file to keep, 5 days
+        }
+
+    },
+    'formatters': {
+        'verbose': {
+            'format': '{name} {levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        # 'request_format': {
+        #     'format': '%(remote_addr)s %(username)s "%(request_method)s '
+        #     '%(path_info)s %(server_protocol)s" %(http_user_agent)s '
+        #     '%(message)s %(asctime)s',
+        # },
+
+    },
+}
+
+
+LOG_VIEWER_FILES = ['critical', 'error', 'info', 'log', 'warning']
+LOG_VIEWER_FILES_PATTERN = '*.log*'
+LOG_VIEWER_FILES_DIR = './logs/'
+LOG_VIEWER_PAGE_LENGTH = 25       # total log lines per-page
+LOG_VIEWER_MAX_READ_LINES = 1000  # total log lines will be read
+# Max log files loaded in Datatable per page
+LOG_VIEWER_FILE_LIST_MAX_ITEMS_PER_PAGE = 25
+LOG_VIEWER_PATTERNS = ['[INFO]', '[DEBUG]',
+                       '[WARNING]', '[ERROR]', '[CRITICAL]']
+# String regex expression to exclude the log from line
+LOG_VIEWER_EXCLUDE_TEXT_PATTERN = None
+
+# Optionally you can set the next variables in order to customize the admin:
+# LOG_VIEWER_FILE_LIST_TITLE = "Custom title"
+# LOG_VIEWER_FILE_LIST_STYLES = "/static/css/my-custom.css"

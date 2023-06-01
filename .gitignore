@@ -20,9 +20,10 @@ __pycache__/
 # Environments
 core/.env
 .venv
+uvenv/
 env/
 venv/
-
+**/migrations/
 
 # Visual Studio Code #
 .vscode/*

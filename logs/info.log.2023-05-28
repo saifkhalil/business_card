@@ -1,0 +1,676 @@
+django.utils.autoreload INFO 2023-05-28 10:24:42,634 autoreload 50892 61596 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 10:26:40,446 autoreload 50892 61596 D:\GithubApps\django_allauth\businesscard\urls.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:26:58,693 autoreload 68068 23136 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 10:27:08,341 autoreload 68068 23136 D:\GithubApps\django_allauth\businesscard\views.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:27:18,493 autoreload 24132 45408 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 10:30:17,927 autoreload 24132 45408 D:\GithubApps\django_allauth\core\settings.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:31:10,610 autoreload 39556 9012 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 10:31:21,165 autoreload 39556 9012 D:\GithubApps\django_allauth\core\settings.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:31:35,328 autoreload 53300 47084 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 11:41:12,345 autoreload 50584 71436 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:22:46,824 autoreload 1033 140721771317056 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:25:07,124 autoreload 1059 139996984772416 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:26:49,292 autoreload 1059 139996984772416 /mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/rest_auth/urls.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 09:27:06,290 autoreload 1066 139802812483392 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:27:45,131 autoreload 1071 140520612890432 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:28:18,052 autoreload 1076 139889691592512 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:29:07,058 autoreload 1081 140415706924864 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 09:29:37,009 basehttp 1081 140415576180480 "GET / HTTP/1.1" 200 47056
+django.server INFO 2023-05-28 09:29:37,108 basehttp 1081 140415576180480 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 304 0
+django.server INFO 2023-05-28 09:29:37,126 basehttp 1081 140415499962112 "GET /static/css/aos.css HTTP/1.1" 304 0
+django.server INFO 2023-05-28 09:29:37,235 basehttp 1081 140415499962112 "GET /static/js/aos.js HTTP/1.1" 304 0
+django.server INFO 2023-05-28 09:29:43,929 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 36360
+django.server INFO 2023-05-28 09:29:49,112 basehttp 1081 140415499962112 "GET / HTTP/1.1" 200 47056
+django.server INFO 2023-05-28 09:29:52,002 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 36360
+django.server INFO 2023-05-28 09:29:54,167 basehttp 1081 140415499962112 "GET / HTTP/1.1" 200 47056
+django.server INFO 2023-05-28 09:29:56,830 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 36360
+django.server INFO 2023-05-28 09:30:00,693 basehttp 1081 140415499962112 "GET / HTTP/1.1" 200 47056
+django.server INFO 2023-05-28 09:30:04,284 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 36360
+django.request ERROR 2023-05-28 09:34:22,758 log 1081 140415499962112 Internal Server Error: /orders/new/
+Traceback (most recent call last):
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/mnt/d/GithubApps/django_allauth/businesscard/views.py", line 356, in NewBusinessRequest
+    return render(request, 'businesscard/NewBusinessRequest.html', context)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/shortcuts.py", line 24, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/defaulttags.py", line 953, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 417: 'endblock', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+django.server ERROR 2023-05-28 09:34:22,778 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 500 261324
+django.server INFO 2023-05-28 09:35:26,967 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 32975
+django.server INFO 2023-05-28 09:35:55,219 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 32975
+django.server INFO 2023-05-28 09:39:54,782 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 37129
+django.server INFO 2023-05-28 09:40:01,228 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 37129
+django.server INFO 2023-05-28 09:40:06,000 basehttp 1081 140415499962112 "GET / HTTP/1.1" 200 47056
+django.server INFO 2023-05-28 09:40:08,725 basehttp 1081 140415499962112 "GET /orders/new/ HTTP/1.1" 200 37129
+django.request ERROR 2023-05-28 09:40:27,533 log 1081 140415499962112 Internal Server Error: /orders/new/
+Traceback (most recent call last):
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 56, in inner
+    response = get_response(request)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/mnt/d/GithubApps/django_allauth/businesscard/views.py", line 292, in NewBusinessRequest
+    BusinessRequestFormResult.save()
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/db/models/base.py", line 812, in save
+    self.save_base(
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/db/models/base.py", line 878, in save_base
+    post_save.send(
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/dispatch/dispatcher.py", line 176, in send
+    return [
+  File "/mnt/d/GithubApps/django_allauth/uvenv/lib/python3.8/site-packages/django/dispatch/dispatcher.py", line 177, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "/mnt/d/GithubApps/django_allauth/businesscard/models.py", line 76, in BusinessRequest_send_email
+    instance.generate_pdf()
+AttributeError: 'BusinessRequest' object has no attribute 'generate_pdf'
+django.server ERROR 2023-05-28 09:40:27,548 basehttp 1081 140415499962112 "POST /orders/new/ HTTP/1.1" 500 107425
+django.utils.autoreload INFO 2023-05-28 09:40:54,039 autoreload 1081 140415706924864 /mnt/d/GithubApps/django_allauth/businesscard/models.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 09:41:25,041 autoreload 1114 140178806802240 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:43:40,408 autoreload 1114 140178806802240 /mnt/d/GithubApps/django_allauth/businesscard/models.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 09:44:27,564 autoreload 1171 140156661532480 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 09:44:36,003 basehttp 1171 140156459747072 "POST /orders/new/ HTTP/1.1" 302 0
+django.server INFO 2023-05-28 09:44:37,809 basehttp 1171 140156459747072 "GET / HTTP/1.1" 200 51644
+django.server INFO 2023-05-28 09:44:37,926 basehttp 1171 140156459747072 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 304 0
+django.server INFO 2023-05-28 09:44:44,809 basehttp 1171 140156459747072 "GET /requests/ HTTP/1.1" 200 17826
+django.server INFO 2023-05-28 09:44:47,484 basehttp 1171 140156459747072 "GET /orders/new/ HTTP/1.1" 200 40111
+django.server INFO 2023-05-28 09:46:20,824 basehttp 1171 140156459747072 "GET /orders/new/ HTTP/1.1" 200 40097
+django.server INFO 2023-05-28 09:46:26,247 basehttp 1171 140156459747072 "GET /orders/new/ HTTP/1.1" 200 40097
+django.server INFO 2023-05-28 09:46:34,208 basehttp 1171 140156459747072 "GET /orders/new/ HTTP/1.1" 200 40097
+django.server INFO 2023-05-28 09:46:47,868 basehttp 1171 140156459747072 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:46:48,149 basehttp 1171 140156451292928 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.utils.autoreload INFO 2023-05-28 09:47:30,987 autoreload 1230 140560280782656 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 09:47:35,934 basehttp 1230 140560151348992 "GET /orders/new/ HTTP/1.1" 200 40107
+django.server INFO 2023-05-28 09:47:36,130 basehttp 1230 140560142894848 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:47:36,136 basehttp 1230 140560134178560 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:47:36,200 basehttp 1230 140560151348992 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:47:36,466 basehttp 1230 140560142894848 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:47:36,485 basehttp 1230 140560151348992 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:47:36,501 basehttp 1230 140560134178560 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:47:36,579 basehttp 1230 140560134178560 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:47:36,599 basehttp 1230 140560142894848 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:47:36,606 basehttp 1230 140560151348992 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:47:36,701 basehttp 1230 140560151348992 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:47:36,713 basehttp 1230 140560142894848 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:47:36,717 basehttp 1230 140559901329152 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:47:36,721 basehttp 1230 140559909783296 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 09:47:36,750 basehttp 1230 140559918237440 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:47:36,815 basehttp 1230 140559901329152 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:47:36,818 basehttp 1230 140559909783296 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:47:36,829 basehttp 1230 140560134178560 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:47:36,835 basehttp 1230 140559918237440 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:47:36,855 basehttp 1230 140560142894848 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:47:37,027 basehttp 1230 140559901329152 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:47:37,066 basehttp 1230 140559918237440 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:47:37,115 basehttp 1230 140560142894848 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:47:37,148 basehttp 1230 140560151348992 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:47:37,949 basehttp 1230 140560151348992 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:47:40,138 basehttp 1230 140560151348992 "GET /orders/new/ HTTP/1.1" 200 40107
+django.server INFO 2023-05-28 09:47:40,603 basehttp 1230 140559901329152 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:47:40,634 basehttp 1230 140559909783296 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:47:40,639 basehttp 1230 140560134178560 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:47:40,650 basehttp 1230 140559901329152 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:47:40,659 basehttp 1230 140559901329152 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:47:40,782 basehttp 1230 140559918237440 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:47:40,791 basehttp 1230 140559909783296 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:47:40,817 basehttp 1230 140559909783296 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:47:40,843 basehttp 1230 140559901329152 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:47:40,885 basehttp 1230 140559918237440 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:47:40,888 basehttp 1230 140560134178560 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:47:40,917 basehttp 1230 140560142894848 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:47:40,921 basehttp 1230 140559901329152 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:47:41,082 basehttp 1230 140559901329152 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:47:41,105 basehttp 1230 140559909783296 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:47:41,113 basehttp 1230 140559918237440 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:47:41,116 basehttp 1230 140560151348992 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:47:41,125 basehttp 1230 140560142894848 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:47:41,131 basehttp 1230 140559901329152 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:47:41,149 basehttp 1230 140559918237440 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:47:41,154 basehttp 1230 140560142894848 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:47:41,170 basehttp 1230 140560134178560 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 09:47:41,607 basehttp 1230 140560134178560 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:47:42,647 basehttp 1230 140560134178560 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:48:23,040 basehttp 1230 140560134178560 "GET /orders/new/ HTTP/1.1" 200 40107
+django.server INFO 2023-05-28 09:48:23,810 basehttp 1230 140559901329152 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:48:24,143 basehttp 1230 140560151348992 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:48:24,152 basehttp 1230 140559901329152 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:48:24,166 basehttp 1230 140559909783296 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:48:24,234 basehttp 1230 140560134178560 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:48:24,311 basehttp 1230 140560142894848 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:48:24,343 basehttp 1230 140559918237440 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:48:24,386 basehttp 1230 140560151348992 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:48:24,467 basehttp 1230 140559901329152 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:48:24,695 basehttp 1230 140559918237440 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:48:24,699 basehttp 1230 140559909783296 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:48:24,911 basehttp 1230 140559909783296 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:48:24,950 basehttp 1230 140559918237440 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:48:24,961 basehttp 1230 140560142894848 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:48:24,970 basehttp 1230 140559901329152 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:48:25,078 basehttp 1230 140560134178560 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 09:48:25,149 basehttp 1230 140559918237440 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:48:25,151 basehttp 1230 140559901329152 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:48:25,331 basehttp 1230 140559909783296 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:48:25,344 basehttp 1230 140560142894848 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:48:25,458 basehttp 1230 140560151348992 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:48:25,469 basehttp 1230 140559918237440 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:48:25,582 basehttp 1230 140560134178560 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:48:26,502 basehttp 1230 140560134178560 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.utils.autoreload INFO 2023-05-28 09:49:59,614 autoreload 1291 140544138479424 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 09:50:04,816 basehttp 1291 140543941609216 "GET /orders/new/ HTTP/1.1" 200 40098
+django.server INFO 2023-05-28 09:50:05,098 basehttp 1291 140543924045568 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:50:05,112 basehttp 1291 140543941609216 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:50:05,114 basehttp 1291 140543933155072 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:50:05,200 basehttp 1291 140543924045568 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 09:50:05,204 basehttp 1291 140543933155072 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:50:05,245 basehttp 1291 140543941609216 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:50:05,247 basehttp 1291 140543933155072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:50:05,259 basehttp 1291 140543924045568 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:50:05,399 basehttp 1291 140543933155072 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:50:05,403 basehttp 1291 140543941609216 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:50:05,451 basehttp 1291 140543924045568 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:50:05,463 basehttp 1291 140543941609216 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:50:05,487 basehttp 1291 140543924045568 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:50:05,499 basehttp 1291 140543924045568 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:50:05,502 basehttp 1291 140543924045568 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:50:05,529 basehttp 1291 140543924045568 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:50:05,601 basehttp 1291 140543905826560 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:50:05,630 basehttp 1291 140543924045568 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:50:05,633 basehttp 1291 140543933155072 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:50:05,715 basehttp 1291 140543933155072 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:50:05,715 basehttp 1291 140543914280704 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:50:05,763 basehttp 1291 140543897372416 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:50:06,049 basehttp 1291 140543941609216 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:50:06,930 basehttp 1291 140543941609216 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.utils.autoreload INFO 2023-05-28 09:51:21,214 autoreload 1352 140661165131584 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 09:52:06,005 autoreload 1407 139867395327808 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 09:52:09,889 basehttp 1407 139867265894144 "GET /orders/new/ HTTP/1.1" 200 39802
+django.server INFO 2023-05-28 09:52:10,857 basehttp 1407 139867256784640 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:52:10,994 basehttp 1407 139867265894144 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:52:11,124 basehttp 1407 139867247019776 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:52:11,190 basehttp 1407 139867230111488 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:52:11,193 basehttp 1407 139867247019776 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:52:11,213 basehttp 1407 139867265894144 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:52:11,244 basehttp 1407 139867265894144 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:52:11,254 basehttp 1407 139867230111488 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:52:11,258 basehttp 1407 139867256784640 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:52:11,262 basehttp 1407 139867238565632 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:52:11,296 basehttp 1407 139867238565632 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:52:11,301 basehttp 1407 139866884998912 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:52:11,343 basehttp 1407 139867247019776 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:52:11,372 basehttp 1407 139867247019776 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:52:11,392 basehttp 1407 139867230111488 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:52:11,397 basehttp 1407 139867247019776 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:52:11,402 basehttp 1407 139867256784640 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:52:11,412 basehttp 1407 139866884998912 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:52:11,412 basehttp 1407 139867238565632 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:52:11,419 basehttp 1407 139867265894144 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:52:11,461 basehttp 1407 139867247019776 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:52:11,820 basehttp 1407 139867247019776 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:52:12,740 basehttp 1407 139867247019776 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.utils.autoreload INFO 2023-05-28 09:53:16,670 autoreload 1468 139660477073216 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 09:53:22,372 basehttp 1468 139660347377408 "GET /orders/new/ HTTP/1.1" 200 39849
+django.server INFO 2023-05-28 09:53:22,498 basehttp 1468 139660338923264 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:53:22,507 basehttp 1468 139660347377408 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:53:22,556 basehttp 1468 139660122588928 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:53:22,734 basehttp 1468 139660347377408 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:53:22,747 basehttp 1468 139660338923264 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:53:22,802 basehttp 1468 139660122588928 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:53:22,952 basehttp 1468 139660347377408 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:53:22,961 basehttp 1468 139660338923264 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:53:22,963 basehttp 1468 139660122588928 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:53:23,127 basehttp 1468 139660347377408 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:53:23,128 basehttp 1468 139660338923264 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:53:23,131 basehttp 1468 139660114134784 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:53:23,210 basehttp 1468 139660105680640 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:53:23,446 basehttp 1468 139660097226496 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:53:23,447 basehttp 1468 139660114134784 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:53:23,449 basehttp 1468 139660338923264 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:53:23,461 basehttp 1468 139660122588928 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:53:23,515 basehttp 1468 139660347377408 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:53:23,528 basehttp 1468 139660105680640 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:53:23,565 basehttp 1468 139660114134784 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:53:23,630 basehttp 1468 139660097226496 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:53:23,791 basehttp 1468 139660338923264 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:53:24,202 basehttp 1468 139660338923264 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.utils.autoreload INFO 2023-05-28 09:54:57,129 autoreload 1468 139660477073216 /mnt/d/GithubApps/django_allauth/businesscard/views.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 09:55:14,579 autoreload 1502 140383303042880 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 09:55:19,123 basehttp 1502 140383173347072 "GET /orders/new/ HTTP/1.1" 200 39849
+django.server INFO 2023-05-28 09:55:19,393 basehttp 1502 140383164892928 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:55:19,414 basehttp 1502 140382952163072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:55:19,417 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:55:19,448 basehttp 1502 140383164892928 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:55:19,511 basehttp 1502 140382952163072 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:55:19,628 basehttp 1502 140383173347072 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:55:19,744 basehttp 1502 140382935254784 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:55:19,761 basehttp 1502 140382943708928 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:55:19,792 basehttp 1502 140383173347072 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:55:19,817 basehttp 1502 140383173347072 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:55:19,848 basehttp 1502 140382943708928 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:55:19,860 basehttp 1502 140382926800640 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:55:19,881 basehttp 1502 140383173347072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:55:19,902 basehttp 1502 140382943708928 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:55:19,956 basehttp 1502 140382952163072 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:55:19,958 basehttp 1502 140382926800640 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:55:20,047 basehttp 1502 140383164892928 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:55:20,048 basehttp 1502 140383173347072 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:55:20,050 basehttp 1502 140382952163072 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:55:20,076 basehttp 1502 140382943708928 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:55:20,169 basehttp 1502 140382926800640 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:55:20,247 basehttp 1502 140382935254784 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:55:20,866 basehttp 1502 140382935254784 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:55:24,716 basehttp 1502 140382935254784 "GET /orders/new/ HTTP/1.1" 200 39849
+django.server INFO 2023-05-28 09:55:24,851 basehttp 1502 140382943708928 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:55:24,990 basehttp 1502 140383164892928 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:55:25,129 basehttp 1502 140383164892928 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:55:25,133 basehttp 1502 140383164892928 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:55:25,204 basehttp 1502 140382926800640 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:55:25,218 basehttp 1502 140382935254784 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:55:25,223 basehttp 1502 140382943708928 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:55:25,241 basehttp 1502 140383164892928 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:55:25,271 basehttp 1502 140383173347072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:55:25,305 basehttp 1502 140382943708928 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:55:25,320 basehttp 1502 140382926800640 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:55:25,339 basehttp 1502 140382943708928 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:55:25,353 basehttp 1502 140382952163072 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:55:25,357 basehttp 1502 140383173347072 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:55:25,370 basehttp 1502 140382943708928 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:55:25,398 basehttp 1502 140382926800640 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:55:25,414 basehttp 1502 140382935254784 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:55:25,415 basehttp 1502 140383164892928 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:55:25,418 basehttp 1502 140382952163072 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:55:25,450 basehttp 1502 140382935254784 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:55:25,451 basehttp 1502 140383173347072 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:55:25,767 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:55:26,221 basehttp 1502 140383173347072 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:55:37,849 basehttp 1502 140383173347072 "GET / HTTP/1.1" 200 50416
+django.server INFO 2023-05-28 09:55:38,144 basehttp 1502 140382952163072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:55:38,201 basehttp 1502 140382935254784 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:55:38,209 basehttp 1502 140382926800640 "GET /static/css/bubble.css?v=0.23 HTTP/1.1" 200 652
+django.server INFO 2023-05-28 09:55:38,213 basehttp 1502 140383164892928 "GET /static/css/jquery.fullPage.css?v=0.99.8 HTTP/1.1" 200 5057
+django.server INFO 2023-05-28 09:55:38,228 basehttp 1502 140382952163072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:55:38,314 basehttp 1502 140383164892928 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:55:38,336 basehttp 1502 140382935254784 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:55:38,429 basehttp 1502 140382926800640 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:55:38,537 basehttp 1502 140382926800640 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:55:38,544 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:55:38,547 basehttp 1502 140382943708928 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:55:38,591 basehttp 1502 140382935254784 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:55:38,621 basehttp 1502 140382952163072 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 09:55:38,678 basehttp 1502 140382935254784 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:55:38,701 basehttp 1502 140382943708928 "GET /static/images/copy.png HTTP/1.1" 200 9123
+django.server INFO 2023-05-28 09:55:38,711 basehttp 1502 140382952163072 "GET /static/images/presentation.png HTTP/1.1" 200 10545
+django.server INFO 2023-05-28 09:55:38,713 basehttp 1502 140382926800640 "GET /static/images/business-card.png HTTP/1.1" 200 22344
+django.server INFO 2023-05-28 09:55:38,879 basehttp 1502 140383164892928 "GET /static/js/bubble.js HTTP/1.1" 200 397659
+django.server INFO 2023-05-28 09:55:38,978 basehttp 1502 140382926800640 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:55:39,783 basehttp 1502 140382926800640 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:55:42,415 basehttp 1502 140382926800640 "GET /orders/new/ HTTP/1.1" 200 39849
+django.server INFO 2023-05-28 09:55:43,036 basehttp 1502 140382943708928 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:55:43,069 basehttp 1502 140382935254784 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:55:43,083 basehttp 1502 140382952163072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:55:43,089 basehttp 1502 140382943708928 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:55:43,100 basehttp 1502 140383173347072 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:55:43,186 basehttp 1502 140383173347072 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:55:43,220 basehttp 1502 140383164892928 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:55:43,226 basehttp 1502 140382952163072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:55:43,252 basehttp 1502 140382935254784 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:55:43,256 basehttp 1502 140382952163072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:55:43,257 basehttp 1502 140382943708928 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:55:43,288 basehttp 1502 140382935254784 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:55:43,324 basehttp 1502 140382943708928 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:55:43,355 basehttp 1502 140383164892928 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:55:43,367 basehttp 1502 140382935254784 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:55:43,371 basehttp 1502 140382943708928 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:55:43,373 basehttp 1502 140383173347072 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:55:43,403 basehttp 1502 140383173347072 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:55:43,406 basehttp 1502 140382952163072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:55:43,421 basehttp 1502 140383164892928 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:55:43,425 basehttp 1502 140382926800640 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:55:43,675 basehttp 1502 140382926800640 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:55:44,215 basehttp 1502 140382926800640 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:58:58,197 basehttp 1502 140382926800640 "GET /orders/new/ HTTP/1.1" 200 39657
+django.server INFO 2023-05-28 09:58:58,682 basehttp 1502 140382926800640 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:58:58,756 basehttp 1502 140383173347072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:58:58,789 basehttp 1502 140382943708928 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:58:58,868 basehttp 1502 140383164892928 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:58:58,913 basehttp 1502 140382952163072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:58:58,924 basehttp 1502 140382935254784 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:58:59,287 basehttp 1502 140383173347072 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:58:59,288 basehttp 1502 140382952163072 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:58:59,310 basehttp 1502 140382926800640 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:58:59,399 basehttp 1502 140382935254784 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:58:59,408 basehttp 1502 140383164892928 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:58:59,412 basehttp 1502 140382943708928 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:58:59,420 basehttp 1502 140382952163072 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:58:59,425 basehttp 1502 140382926800640 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:58:59,485 basehttp 1502 140383164892928 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:58:59,580 basehttp 1502 140382943708928 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:58:59,620 basehttp 1502 140382935254784 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:58:59,621 basehttp 1502 140383173347072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:58:59,627 basehttp 1502 140382926800640 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:58:59,645 basehttp 1502 140382952163072 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:58:59,920 basehttp 1502 140382926800640 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:58:59,932 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:59:00,161 basehttp 1502 140382952163072 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:59:36,733 basehttp 1502 140382952163072 "POST /orders/new/ HTTP/1.1" 302 0
+django.server INFO 2023-05-28 09:59:37,975 basehttp 1502 140382952163072 "GET / HTTP/1.1" 200 52042
+django.server INFO 2023-05-28 09:59:38,806 basehttp 1502 140382935254784 "GET /static/css/jquery.fullPage.css?v=0.99.8 HTTP/1.1" 200 5057
+django.server INFO 2023-05-28 09:59:38,951 basehttp 1502 140382943708928 "GET /static/css/bubble.css?v=0.23 HTTP/1.1" 200 652
+django.server INFO 2023-05-28 09:59:39,199 basehttp 1502 140383173347072 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:59:39,210 basehttp 1502 140382926800640 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:59:39,304 basehttp 1502 140382943708928 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 09:59:39,326 basehttp 1502 140383164892928 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:59:39,374 basehttp 1502 140382952163072 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:59:39,425 basehttp 1502 140383173347072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:59:39,451 basehttp 1502 140383173347072 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:59:39,470 basehttp 1502 140382952163072 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:59:39,482 basehttp 1502 140382943708928 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:59:39,494 basehttp 1502 140383164892928 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:59:39,500 basehttp 1502 140383173347072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:59:39,519 basehttp 1502 140383164892928 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:59:39,531 basehttp 1502 140382943708928 "GET /static/images/copy.png HTTP/1.1" 200 9123
+django.server INFO 2023-05-28 09:59:39,553 basehttp 1502 140382952163072 "GET /static/images/business-card.png HTTP/1.1" 200 22344
+django.server INFO 2023-05-28 09:59:39,584 basehttp 1502 140382926800640 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:59:39,588 basehttp 1502 140383173347072 "GET /static/images/presentation.png HTTP/1.1" 200 10545
+django.server INFO 2023-05-28 09:59:39,619 basehttp 1502 140382935254784 "GET /static/js/bubble.js HTTP/1.1" 200 397659
+django.server INFO 2023-05-28 09:59:39,839 basehttp 1502 140382935254784 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:59:40,152 basehttp 1502 140382935254784 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:59:50,286 basehttp 1502 140383173347072 "GET /orders/new/ HTTP/1.1" 200 40006
+django.server INFO 2023-05-28 09:59:50,968 basehttp 1502 140382943708928 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:59:51,042 basehttp 1502 140383164892928 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:59:51,073 basehttp 1502 140382943708928 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 09:59:51,164 basehttp 1502 140382935254784 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 09:59:51,281 basehttp 1502 140382952163072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:59:51,370 basehttp 1502 140383164892928 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 09:59:51,381 basehttp 1502 140382943708928 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:59:51,411 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:59:51,413 basehttp 1502 140382926800640 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:59:51,418 basehttp 1502 140382935254784 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 09:59:51,459 basehttp 1502 140382952163072 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:59:51,907 basehttp 1502 140383164892928 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 09:59:51,978 basehttp 1502 140382935254784 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:59:52,019 basehttp 1502 140383173347072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:59:52,068 basehttp 1502 140382926800640 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:59:52,074 basehttp 1502 140383164892928 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 09:59:52,096 basehttp 1502 140382952163072 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 09:59:52,252 basehttp 1502 140382935254784 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 09:59:52,258 basehttp 1502 140383173347072 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 09:59:52,451 basehttp 1502 140383164892928 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 09:59:52,490 basehttp 1502 140382943708928 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:59:53,208 basehttp 1502 140382935254784 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:59:53,631 basehttp 1502 140383173347072 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 09:59:58,196 basehttp 1502 140383173347072 "GET /orders/3 HTTP/1.1" 200 15567
+django.server INFO 2023-05-28 09:59:58,279 basehttp 1502 140382935254784 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 09:59:58,430 basehttp 1502 140383164892928 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 09:59:58,456 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 09:59:58,526 basehttp 1502 140382926800640 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 09:59:58,539 basehttp 1502 140382952163072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 09:59:58,553 basehttp 1502 140382943708928 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 09:59:58,578 basehttp 1502 140383164892928 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 09:59:58,580 basehttp 1502 140383173347072 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 09:59:58,586 basehttp 1502 140382952163072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 09:59:58,592 basehttp 1502 140382935254784 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 09:59:58,690 basehttp 1502 140382935254784 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 09:59:59,055 basehttp 1502 140382935254784 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 10:00:04,536 basehttp 1502 140382935254784 "GET /orders/new/ HTTP/1.1" 200 40006
+django.server INFO 2023-05-28 10:00:05,095 basehttp 1502 140382926800640 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 10:00:05,201 basehttp 1502 140382943708928 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 10:00:05,216 basehttp 1502 140382943708928 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 10:00:05,314 basehttp 1502 140383164892928 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 10:00:05,358 basehttp 1502 140383173347072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 10:00:05,515 basehttp 1502 140383164892928 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 10:00:05,566 basehttp 1502 140382926800640 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 10:00:05,570 basehttp 1502 140382926800640 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 10:00:05,602 basehttp 1502 140382943708928 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 10:00:05,626 basehttp 1502 140382952163072 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 10:00:05,629 basehttp 1502 140383173347072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:00:05,652 basehttp 1502 140382935254784 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 10:00:05,677 basehttp 1502 140382943708928 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 10:00:05,893 basehttp 1502 140382952163072 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 10:00:05,951 basehttp 1502 140383173347072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 10:00:06,115 basehttp 1502 140382926800640 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 10:00:06,129 basehttp 1502 140382943708928 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 10:00:06,130 basehttp 1502 140382935254784 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:00:06,186 basehttp 1502 140383164892928 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 10:00:06,211 basehttp 1502 140383173347072 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 10:00:06,213 basehttp 1502 140382952163072 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 10:00:06,916 basehttp 1502 140382952163072 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 10:00:07,677 basehttp 1502 140383173347072 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 10:00:13,120 basehttp 1502 140383173347072 "GET / HTTP/1.1" 200 50814
+django.server INFO 2023-05-28 10:00:13,310 basehttp 1502 140383164892928 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 10:00:13,317 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 10:00:13,340 basehttp 1502 140382952163072 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 10:00:13,348 basehttp 1502 140382935254784 "GET /static/css/bubble.css?v=0.23 HTTP/1.1" 200 652
+django.server INFO 2023-05-28 10:00:13,355 basehttp 1502 140382926800640 "GET /static/css/jquery.fullPage.css?v=0.99.8 HTTP/1.1" 200 5057
+django.server INFO 2023-05-28 10:00:13,511 basehttp 1502 140382926800640 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 10:00:13,537 basehttp 1502 140382935254784 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 10:00:13,549 basehttp 1502 140383173347072 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 10:00:13,566 basehttp 1502 140382943708928 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 10:00:13,593 basehttp 1502 140382952163072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:00:13,616 basehttp 1502 140382943708928 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 10:00:13,652 basehttp 1502 140383164892928 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 10:00:13,657 basehttp 1502 140383173347072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 10:00:13,673 basehttp 1502 140383173347072 "GET /static/images/presentation.png HTTP/1.1" 200 10545
+django.server INFO 2023-05-28 10:00:13,694 basehttp 1502 140382926800640 "GET /static/js/bubble.js HTTP/1.1" 200 397659
+django.server INFO 2023-05-28 10:00:13,709 basehttp 1502 140382935254784 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 10:00:13,711 basehttp 1502 140382943708928 "GET /static/images/copy.png HTTP/1.1" 200 9123
+django.server INFO 2023-05-28 10:00:13,711 basehttp 1502 140382952163072 "GET /static/images/business-card.png HTTP/1.1" 200 22344
+django.server INFO 2023-05-28 10:00:13,960 basehttp 1502 140382926800640 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 10:00:14,442 basehttp 1502 140382926800640 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 10:01:32,226 basehttp 1502 140382926800640 "GET / HTTP/1.1" 200 50814
+django.server INFO 2023-05-28 10:01:33,136 basehttp 1502 140382952163072 "GET /static/css/jquery.fullPage.css?v=0.99.8 HTTP/1.1" 200 5057
+django.server INFO 2023-05-28 10:01:33,251 basehttp 1502 140382935254784 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 10:01:33,456 basehttp 1502 140383173347072 "GET /static/css/bubble.css?v=0.23 HTTP/1.1" 200 652
+django.server INFO 2023-05-28 10:01:33,492 basehttp 1502 140382935254784 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 10:01:33,598 basehttp 1502 140382943708928 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 10:01:33,599 basehttp 1502 140383164892928 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 10:01:33,627 basehttp 1502 140382952163072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 10:01:33,628 basehttp 1502 140383173347072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:01:33,636 basehttp 1502 140382926800640 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 10:01:33,770 basehttp 1502 140382952163072 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 10:01:33,897 basehttp 1502 140383173347072 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 10:01:33,906 basehttp 1502 140383164892928 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 10:01:34,079 basehttp 1502 140382935254784 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 10:01:34,090 basehttp 1502 140383164892928 "GET /static/images/copy.png HTTP/1.1" 200 9123
+django.server INFO 2023-05-28 10:01:34,095 basehttp 1502 140382926800640 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 10:01:34,109 basehttp 1502 140383173347072 "GET /static/images/presentation.png HTTP/1.1" 200 10545
+django.server INFO 2023-05-28 10:01:34,113 basehttp 1502 140382952163072 "GET /static/images/business-card.png HTTP/1.1" 200 22344
+django.server INFO 2023-05-28 10:01:34,207 basehttp 1502 140382943708928 "GET /static/js/bubble.js HTTP/1.1" 200 397659
+django.server INFO 2023-05-28 10:01:34,549 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 10:01:34,989 basehttp 1502 140383173347072 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 10:01:39,792 basehttp 1502 140383173347072 "GET /orders/new/ HTTP/1.1" 200 40006
+django.server INFO 2023-05-28 10:01:40,036 basehttp 1502 140382926800640 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 10:01:40,039 basehttp 1502 140382952163072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 10:01:40,053 basehttp 1502 140382943708928 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 10:01:40,056 basehttp 1502 140382935254784 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 10:01:40,059 basehttp 1502 140383164892928 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 10:01:40,073 basehttp 1502 140383173347072 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 10:01:40,074 basehttp 1502 140382943708928 "GET /static/images/call.png HTTP/1.1" 200 6145
+django.server INFO 2023-05-28 10:01:40,181 basehttp 1502 140382952163072 "GET /static/images/portfolio.png HTTP/1.1" 200 4171
+django.server INFO 2023-05-28 10:01:40,193 basehttp 1502 140382952163072 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 10:01:40,213 basehttp 1502 140382926800640 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:01:40,225 basehttp 1502 140383173347072 "GET /static/images/id-card.png HTTP/1.1" 200 6701
+django.server INFO 2023-05-28 10:01:40,245 basehttp 1502 140382926800640 "GET /static/images/qi-logo-yellow.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:01:40,257 basehttp 1502 140382935254784 "GET /static/images/money.png HTTP/1.1" 200 10976
+django.server INFO 2023-05-28 10:01:40,264 basehttp 1502 140382926800640 "GET /static/images/email.png HTTP/1.1" 200 5867
+django.server INFO 2023-05-28 10:01:40,271 basehttp 1502 140382926800640 "GET /static/images/pin.png HTTP/1.1" 200 6890
+django.server INFO 2023-05-28 10:01:40,295 basehttp 1502 140382952163072 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 10:01:40,296 basehttp 1502 140383173347072 "GET /static/images/right-arrow.png HTTP/1.1" 200 3022
+django.server INFO 2023-05-28 10:01:40,314 basehttp 1502 140382926800640 "GET /static/images/360.png HTTP/1.1" 200 10961
+django.server INFO 2023-05-28 10:01:40,359 basehttp 1502 140382935254784 "GET /static/images/web.png HTTP/1.1" 200 9337
+django.server INFO 2023-05-28 10:01:40,407 basehttp 1502 140382943708928 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 10:01:40,412 basehttp 1502 140383164892928 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 10:01:41,036 basehttp 1502 140382943708928 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 10:01:41,045 basehttp 1502 140383164892928 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 10:01:46,480 basehttp 1502 140383164892928 "GET / HTTP/1.1" 200 50814
+django.server INFO 2023-05-28 10:01:46,946 basehttp 1502 140382952163072 "GET /static/css/jquery.fullPage.css?v=0.99.8 HTTP/1.1" 200 5057
+django.server INFO 2023-05-28 10:01:46,965 basehttp 1502 140382952163072 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:01:46,983 basehttp 1502 140382952163072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 10:01:46,991 basehttp 1502 140382935254784 "GET /static/css/bubble.css?v=0.23 HTTP/1.1" 200 652
+django.server INFO 2023-05-28 10:01:47,001 basehttp 1502 140383164892928 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 10:01:47,017 basehttp 1502 140382952163072 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 10:01:47,021 basehttp 1502 140383173347072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 10:01:47,035 basehttp 1502 140382943708928 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 10:01:47,057 basehttp 1502 140382926800640 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 10:01:47,079 basehttp 1502 140382935254784 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 10:01:47,081 basehttp 1502 140382926800640 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 10:01:47,147 basehttp 1502 140382926800640 "GET /static/images/copy.png HTTP/1.1" 200 9123
+django.server INFO 2023-05-28 10:01:47,124 basehttp 1502 140382943708928 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 10:01:47,189 basehttp 1502 140382943708928 "GET /static/images/presentation.png HTTP/1.1" 200 10545
+django.server INFO 2023-05-28 10:01:47,206 basehttp 1502 140382952163072 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 10:01:47,230 basehttp 1502 140383173347072 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 10:01:47,232 basehttp 1502 140382935254784 "GET /static/images/business-card.png HTTP/1.1" 200 22344
+django.server INFO 2023-05-28 10:01:47,271 basehttp 1502 140383164892928 "GET /static/js/bubble.js HTTP/1.1" 200 397659
+django.server INFO 2023-05-28 10:01:47,600 basehttp 1502 140383164892928 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 10:01:48,104 basehttp 1502 140383164892928 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.utils.autoreload INFO 2023-05-28 10:03:05,747 autoreload 1502 140383303042880 /mnt/d/GithubApps/django_allauth/businesscard/views.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:03:20,606 autoreload 1537 140242991384384 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 10:03:46,740 basehttp 1537 140242853234432 "GET / HTTP/1.1" 200 50814
+django.server INFO 2023-05-28 10:03:48,172 basehttp 1537 140242853234432 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 10:03:48,186 basehttp 1537 140242844387072 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 10:03:48,238 basehttp 1537 140242853234432 "GET /static/css/jquery.fullPage.css?v=0.99.8 HTTP/1.1" 200 5057
+django.server INFO 2023-05-28 10:03:48,243 basehttp 1537 140242844387072 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 10:03:48,272 basehttp 1537 140242844387072 "GET /static/css/bubble.css?v=0.23 HTTP/1.1" 200 652
+django.server INFO 2023-05-28 10:03:48,359 basehttp 1537 140242853234432 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 10:03:48,517 basehttp 1537 140242844387072 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 10:03:48,521 basehttp 1537 140242853234432 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 10:03:48,577 basehttp 1537 140242627528448 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 10:03:48,594 basehttp 1537 140242619074304 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 10:03:48,616 basehttp 1537 140242610620160 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 10:03:48,630 basehttp 1537 140242853234432 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:03:48,693 basehttp 1537 140242853234432 "GET /static/images/copy.png HTTP/1.1" 200 9123
+django.server INFO 2023-05-28 10:03:48,786 basehttp 1537 140242627528448 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 10:03:48,814 basehttp 1537 140242844387072 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 10:03:48,817 basehttp 1537 140242610620160 "GET /static/images/business-card.png HTTP/1.1" 200 22344
+django.server INFO 2023-05-28 10:03:48,885 basehttp 1537 140242861688576 "GET /static/js/bubble.js HTTP/1.1" 200 397659
+django.server INFO 2023-05-28 10:03:48,890 basehttp 1537 140242619074304 "GET /static/images/presentation.png HTTP/1.1" 200 10545
+django.server INFO 2023-05-28 10:03:49,063 basehttp 1537 140242853234432 "GET /static/css/bootstrap.min.css.map HTTP/1.1" 200 431289
+django.server INFO 2023-05-28 10:03:49,452 basehttp 1537 140242853234432 "GET /static/js/bootstrap.bundle.min.js.map HTTP/1.1" 200 325834
+django.server INFO 2023-05-28 10:03:53,678 basehttp 1537 140242853234432 "GET / HTTP/1.1" 200 50814
+django.server INFO 2023-05-28 10:03:54,865 basehttp 1537 140242844387072 "GET /static/images/Burger_button.svg HTTP/1.1" 200 936
+django.server INFO 2023-05-28 10:03:54,872 basehttp 1537 140242627528448 "GET /static/images/profile.svg HTTP/1.1" 200 1056
+django.server INFO 2023-05-28 10:03:54,900 basehttp 1537 140242627528448 "GET /static/images/qi-logo.svg HTTP/1.1" 200 1027
+django.server INFO 2023-05-28 10:03:54,952 basehttp 1537 140242610620160 "GET /static/images/Search.svg HTTP/1.1" 200 981
+django.server INFO 2023-05-28 10:03:54,958 basehttp 1537 140242844387072 "GET /static/css/jquery.fullPage.css?v=0.99.8 HTTP/1.1" 200 5057
+django.server INFO 2023-05-28 10:03:54,981 basehttp 1537 140242627528448 "GET /static/css/bubble.css?v=0.23 HTTP/1.1" 200 652
+django.server INFO 2023-05-28 10:03:54,992 basehttp 1537 140242619074304 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 200 64322
+django.server INFO 2023-05-28 10:03:54,998 basehttp 1537 140242861688576 "GET /static/css/aos.css HTTP/1.1" 200 26053
+django.server INFO 2023-05-28 10:03:55,034 basehttp 1537 140242627528448 "GET /static/js/jquery-3.6.4.min.js HTTP/1.1" 200 89795
+django.server INFO 2023-05-28 10:03:55,050 basehttp 1537 140242853234432 "GET /static/css/bootstrap.min.css HTTP/1.1" 200 155845
+django.server INFO 2023-05-28 10:03:55,076 basehttp 1537 140242619074304 "GET /static/js/bootstrap.bundle.min.js HTTP/1.1" 200 78743
+django.server INFO 2023-05-28 10:03:55,105 basehttp 1537 140242861688576 "GET /static/js/link.js HTTP/1.1" 200 267
+django.server INFO 2023-05-28 10:03:55,108 basehttp 1537 140242627528448 "GET /static/js/aos.js HTTP/1.1" 200 14239
+django.server INFO 2023-05-28 10:03:55,178 basehttp 1537 140242861688576 "GET /static/images/copy.png HTTP/1.1" 200 9123
+django.server INFO 2023-05-28 10:03:55,181 basehttp 1537 140242853234432 "GET /static/images/business-card.png HTTP/1.1" 200 22344
+django.server INFO 2023-05-28 10:03:55,215 basehttp 1537 140242619074304 "GET /static/images/presentation.png HTTP/1.1" 200 10545
+django.server INFO 2023-05-28 10:03:55,234 basehttp 1537 140242610620160 "GET /static/js/jquery.fullPage.js HTTP/1.1" 200 111705
+django.server INFO 2023-05-28 10:03:55,325 basehttp 1537 140242844387072 "GET /static/js/bubble.js HTTP/1.1" 200 397659
+django.utils.autoreload INFO 2023-05-28 10:05:13,385 autoreload 1537 140242991384384 /mnt/d/GithubApps/django_allauth/businesscard/views.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:05:32,590 autoreload 1572 140407445849920 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 10:06:28,570 autoreload 1572 140407445849920 /mnt/d/GithubApps/django_allauth/businesscard/views.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:06:47,755 autoreload 1600 140250882836288 Watching for file changes with StatReloader
+django.utils.autoreload INFO 2023-05-28 10:07:14,040 autoreload 1600 140250882836288 /mnt/d/GithubApps/django_allauth/businesscard/views.py changed, reloading.
+django.utils.autoreload INFO 2023-05-28 10:07:30,875 autoreload 1628 140707370895168 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 10:07:38,113 basehttp 1628 140707241199360 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 10:08:54,012 basehttp 1628 140707241199360 "GET /requests/ HTTP/1.1" 200 18978
+django.server INFO 2023-05-28 10:08:57,181 basehttp 1628 140707241199360 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 10:09:01,270 basehttp 1628 140707241199360 "GET /orders/new/ HTTP/1.1" 200 40006
+django.server INFO 2023-05-28 10:09:14,998 basehttp 1628 140707241199360 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 10:09:16,529 basehttp 1628 140707241199360 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 10:09:39,822 basehttp 1628 140707241199360 "GET /orders/new/ HTTP/1.1" 200 17933
+django.utils.autoreload INFO 2023-05-28 10:34:26,041 autoreload 1940 140403656230720 Watching for file changes with StatReloader
+django.server INFO 2023-05-28 10:34:31,734 basehttp 1940 140403502352128 "GET /orders/new/ HTTP/1.1" 302 0
+django.server INFO 2023-05-28 10:34:32,581 basehttp 1940 140403502352128 "GET /accounts/login/?next=/orders/new/ HTTP/1.1" 200 1957
+django.server INFO 2023-05-28 10:37:15,737 basehttp 1940 140403502352128 "GET /accounts/microsoft/login/?process=login&next=%2Forders%2Fnew%2F HTTP/1.1" 200 795
+django.server INFO 2023-05-28 10:37:17,314 basehttp 1940 140403502352128 "POST /accounts/microsoft/login/?process=login&next=%2Forders%2Fnew%2F HTTP/1.1" 302 0
+django.server INFO 2023-05-28 10:37:48,136 basehttp 1940 140403502352128 "GET /accounts/microsoft/login/callback/?code=0.AQ8AaJoqxyIM70aYOE-1KsBTPTDMMFTkqYVPprYhpEnBnw4PAF4.AgABAAIAAAD--DLA3VO7QrddgJg7WevrAgDs_wUA9P9XlRcE-PwocFZ4f2jufZcQFEwJqFkBayuNYqy0UntvhZURSlLzuYgkELAbBwU6eWdEnFdKi_E3JeYfN-feX2lE5Ahi8hu5MdrmF8_eALb7jBicDDXGZ0oTDVYwMIPwRuM8ixB3vtlqiFOr2SXjsR1q6VGZ-3k8LEou91QvPMwb9GKEVYKk-ZD25hHgb3a_UNzWYw3p68o5EL7xDqRtMVtgh5Q7K26iIOI6aksTeFE3AUo3QprrRq0V5Vxn7C0sVhu3ajflyWSDNjq9a3OFna-6VblzLVy_5lbZP21taKuFZq0tL7i47lUStwQr3F41VDHlUJc_twNUxU3SBab1OhSxUQe9fC9aHjsuXim_1Fl9iu8lTjXMsHtfs9DXTb_TaDWVq5-CGBmZYD6n-NT_V38yk_FpldcuWv88vdgzHLe0EKobqnNBMt2L6Wrm7Mi6lRIYeclG6LJf5whzbUddzjNWprQzzQV2PTuW_fPqxdNHVN5RH7p11sqL1tjLbr8vdCnD6oQWnI2WINaArIt6u8L5mvSZn3RmG5ynaw_SQ4SOL-Z8a2rNwaCslrz6oYLwaBQw13-QORiDoI_9o2iXHIia8s6AZjIVkQnEeT3W6iQazyUN7IjIGTDxkZO5Pmxhhbw_66KrE5lTBl3eGYknYiaaQ-L4O4AZ3--rqqQhN5jgfZaw69rkQDRIZKj0R6PpuIrAo-13rikB-_JahW1CPM1SZg&state=zHv6ZLIOsfFi&session_state=92094f2c-959b-4b56-8c14-d020ade5a391 HTTP/1.1" 302 0
+django.server INFO 2023-05-28 10:37:49,132 basehttp 1940 140403502352128 "GET /orders/new/ HTTP/1.1" 200 16319
+django.server INFO 2023-05-28 10:37:50,688 basehttp 1940 140403502352128 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 304 0
+django.server INFO 2023-05-28 10:38:27,007 basehttp 1940 140403502352128 "GET /admin/ HTTP/1.1" 302 0
+django.server INFO 2023-05-28 10:38:27,380 basehttp 1940 140403502352128 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 2379
+django.server INFO 2023-05-28 10:38:32,031 basehttp 1940 140403502352128 "GET /orders/new/ HTTP/1.1" 200 13914
+django.server INFO 2023-05-28 10:39:16,208 basehttp 1940 140403502352128 "GET /admin/ HTTP/1.1" 200 11954
+django.server INFO 2023-05-28 10:39:21,270 basehttp 1940 140403502352128 "GET /admin/businesscard/zohotoken/ HTTP/1.1" 200 11320
+django.server INFO 2023-05-28 10:39:22,764 basehttp 1940 140403502352128 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+django.server INFO 2023-05-28 10:39:26,143 basehttp 1940 140403502352128 "GET /admin/businesscard/zohotoken/add/ HTTP/1.1" 200 11944
+django.server INFO 2023-05-28 10:39:27,400 basehttp 1940 140403502352128 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+django.server INFO 2023-05-28 10:39:36,045 basehttp 1940 140403502352128 "POST /admin/businesscard/zohotoken/add/ HTTP/1.1" 302 0
+django.server INFO 2023-05-28 10:39:36,466 basehttp 1940 140403502352128 "GET /admin/businesscard/zohotoken/ HTTP/1.1" 200 12722
+django.server INFO 2023-05-28 10:39:36,760 basehttp 1940 140403502352128 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+django.server INFO 2023-05-28 10:39:37,920 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 21996
+django.server INFO 2023-05-28 10:39:40,222 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 21996
+django.server INFO 2023-05-28 10:39:43,176 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 21996
+django.server INFO 2023-05-28 10:39:44,090 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 21996
+django.server INFO 2023-05-28 10:39:44,850 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 21996
+django.server INFO 2023-05-28 10:39:46,354 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 21996
+django.server INFO 2023-05-28 10:39:53,222 basehttp 1940 140403502352128 "GET /orders/new/ HTTP/1.1" 200 36642
+django.server INFO 2023-05-28 10:39:57,121 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 21996
+django.server INFO 2023-05-28 10:40:00,773 basehttp 1940 140403502352128 "GET /orders/new/ HTTP/1.1" 200 36642
+django.server INFO 2023-05-28 10:40:12,752 basehttp 1940 140403502352128 "POST /orders/new/ HTTP/1.1" 302 0
+django.server INFO 2023-05-28 10:40:17,562 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 23716
+django.server INFO 2023-05-28 10:40:20,870 basehttp 1940 140403502352128 "GET /requests/ HTTP/1.1" 200 16677
+django.server INFO 2023-05-28 10:40:27,274 basehttp 1940 140403502352128 "GET /orders/1/pdf/ HTTP/1.1" 200 28687
+django.server INFO 2023-05-28 10:40:41,500 basehttp 1940 140403502352128 "GET /orders/1/pdf/ HTTP/1.1" 200 28685
+django.server INFO 2023-05-28 11:06:24,803 basehttp 1940 140403502352128 "GET /orders/1/pdf/ HTTP/1.1" 200 28685
+django.server INFO 2023-05-28 11:07:44,496 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 11:07:44,532 basehttp 1940 140403502352128 "GET /static/css/index-ce0453.css?v=1.1.4 HTTP/1.1" 304 0
+django.server INFO 2023-05-28 11:07:46,057 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 11:07:46,935 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 11:07:51,369 basehttp 1940 140403502352128 "GET /orders/new/ HTTP/1.1" 200 39308
+django.server INFO 2023-05-28 11:07:58,061 basehttp 1940 140403502352128 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 11:10:57,236 basehttp 1940 140403502352128 "GET /admin/ HTTP/1.1" 200 12298
+django.server INFO 2023-05-28 11:11:03,936 basehttp 1940 140403502352128 "GET /admin/servicecenter/servicecenter/ HTTP/1.1" 200 13139
+django.server INFO 2023-05-28 11:11:04,260 basehttp 1940 140403502352128 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+django.server INFO 2023-05-28 11:11:05,363 basehttp 1940 140403502352128 "GET /admin/servicecenter/servicecenter/add/ HTTP/1.1" 200 18564
+django.server INFO 2023-05-28 11:11:05,622 basehttp 1940 140403502352128 "GET /admin/jsi18n/ HTTP/1.1" 200 3343
+django.server INFO 2023-05-28 11:17:21,481 basehttp 1940 140403420366592 "GET / HTTP/1.1" 200 22488
+django.server INFO 2023-05-28 11:17:23,601 basehttp 1940 140403420366592 "GET /requests/ HTTP/1.1" 200 16677
