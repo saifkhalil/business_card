@@ -1,55 +1,51 @@
-{% extends "layout.html" %}
-{% block content %}
-{% load static %}
-{% load socialaccount %}
-{% load getnames %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=0.99.8">
+{% extends "layout.html" %} {% block content %} {% load static %} {% load socialaccount %} {% load getnames %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery.fullPage.css' %}?v=1.4" />
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/bubble.css' %}?v=0.23">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bubble.css' %}?v=0.23" />
 <style>
-          *,
-      *::after,
-      *::before {
+    *,
+    *::after,
+    *::before {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-      }
-
-      h1 {
+    }
+    
+    h1 {
         font-size: 42px;
         margin-bottom: 20px;
-      }
-
-      .container {
+    }
+    
+    .container {
         max-width: 1200px;
         margin: auto;
-      }
-
-      .w-full {
+    }
+    
+    .w-full {
         width: 100%;
-      }
-
-      .h-full {
+    }
+    
+    .h-full {
         height: 93vh;
-      }
-
-      .blob-section {
+    }
+    
+    .blob-section {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         height: 100vh;
-      }
-
-      .content-container {
+    }
+    
+    .content-container {
         position: relative;
         z-index: 10;
-      }
-
-      .content-container p {
+    }
+    
+    .content-container p {
         width: 50%;
-      }
-
-      .blob-container {
+    }
+    
+    .blob-container {
         position: absolute;
         top: 0;
         left: 0;
@@ -57,90 +53,195 @@
         bottom: 0;
         height: 100%;
         max-height: 100%;
-      }
-
+    }
 </style>
 <div id="index" class="row">
-
-    <div class="col-12 section" id="home" >
+    <div class="col-12 section" id="home">
         <div class="container">
-          <div class="blob-div">
-            <ul class="main-nav">
-              <div class="active-highlight no-active"></div>
-            </ul>
-            <div class="top-bar bg-beige transparent">
-              <div id="barba-wrapper" aria-live="polite">
-                <div class="barba-container">
-                  <section class="blob-section">
-                    <div class="content-container">
-                        <div class="main-text">
-                            <h1 class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-3 sm:mt-16">Design</h1>
-                            <h1 href="" class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-2 sm:mt-16 typewrite" data-period="2000" data-type="[ &quot;What You Enjoy&quot;, &quot;What You Need&quot;, &quot;What You Love&quot;]"><span class="wrap">What Y</span></h1>
+            <div class="blob-div">
+                <ul class="main-nav">
+                    <div class="active-highlight no-active"></div>
+                </ul>
+                <div class="top-bar bg-beige transparent">
+                    <div id="barba-wrapper" aria-live="polite">
+                        <div class="barba-container">
+                            <section class="blob-section">
+                                <div class="content-container">
+                                    <div class="main-text">
+                                        <h1 class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-3 sm:mt-16">
+                                            Design
+                                        </h1>
+                                        <h1 href="" class="text-3xl xs:text-4xl lg:text-6xl font-medium mt-2 sm:mt-16 typewrite" data-period="2000" data-type='[ "What You Enjoy", "What You Need", "What You Love"]'>
+                                            <span class="wrap">What Y</span>
+                                        </h1>
 
-                            <a href="#services_list" class="link-button learn-more mb-5 mt-2"><span class="circle" aria-hidden="true"><span class="icon arrow"></span></span><span class="button-text">Get Started</span>
-                            </a>
+                                        <a href="#services_list" class="link-button learn-more mb-5 mt-2"><span class="circle" aria-hidden="true"><span class="icon arrow"></span></span><span class="button-text">Get Started</span>
+                    </a>
+                                    </div>
+                                </div>
+                                <div class="blob-container">
+                                    <canvas class="blob-canvas w-full h-full" style="cursor: grab" width="1065" height="862"></canvas>
+                                </div>
+                            </section>
                         </div>
                     </div>
-                    <div class="blob-container">
-                      <canvas class="blob-canvas w-full h-full" style="cursor: grab;" width="1065" height="862"></canvas>
-                    </div>
-                  </section>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-</div>
-    <div  class="col-12 section" id="services_list">
-        <div class="choose-service-page">
+    </div>
+    <div class="col-12 section blob-section" id="services_list">
+        <div class="choose-service-page  position-relative justify-center items-center h-screen">
             <div class="my-container">
+                <div class="row ">
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a onclick="redirect('{% if user.is_authenticated %}{% url 'new_bc' %}{% else %}{% provider_login_url 'microsoft' process='login'  %}{% endif %}')">
+                            <div class="service flex flex-col items-center gap-3 cursor-pointer">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service">
+                                    <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/business-card.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        Business Card
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a href="#">
+                            <div class="service flex flex-col items-center gap-3">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer`">
+                                    <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/design_library.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        Design Library
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a href="#">
+                            <div class="service flex flex-col items-center gap-3">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
+                                    <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/ui_ux.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        Ui / UX
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a href="#">
+                            <div class="service flex flex-col items-center gap-3">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
+                                    <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/esginature.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        E-signiture
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a href="#">
+                            <div class="service flex flex-col items-center gap-3">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
+                                    <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/presentation.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        Presentation
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a href="#">
+                            <div class="service flex flex-col items-center gap-3">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
+                                    <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/copy.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        Letter Head
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a onclick="redirect('{% url 'NewServiceCenterRequest' %}')">
+                            <div class="service flex flex-col items-center gap-3">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
+                                    <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/service_center.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        Service Center
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-6 col-md-3 col-ls-3">
+                        <a href="#">
+                            <div class="service flex flex-col items-center gap-3">
+                                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
+                                    <img alt="Other" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/other.png' %}" width="100px" />
+                                    <div class="text-base text-center pt-2 font-medium">
+                                        Other
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+                {% comment %}
                 <div class="carousel carousel-dark slide" data-bs-ride="carousel" id="carouselDark">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a onclick="redirect('{% if user.is_authenticated %}{% url 'new_bc' %}{% else %}{% provider_login_url 'microsoft' process='login'  %}{% endif %}')">
-                                <div class="service flex flex-col items-center gap-4">
+                                <div class="service flex flex-col items-center gap-3">
                                     <div class="service-img bg-white w-fit p-8 rounded-30 shadow-service">
-                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/business-card.png' %}" width="100px">
-                                        <div class="text-2xl sm:text-3xl font-medium">Business Card</div>
+                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/business-card.png' %}" width="100px" />
+                                        <div class="text-base font-medium">
+                                            Business Card
+                                        </div>
                                     </div>
-
                                 </div>
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="#">
-                                <div class="service flex flex-col items-center gap-4">
+                                <div class="service flex flex-col items-center gap-3">
                                     <div class="service-img bg-white w-fit p-8 rounded-30 shadow-service">
-                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/copy.png' %}" width="100px">
-                                        <div class="text-2xl sm:text-3xl font-medium">Letter Head</div>
+                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/copy.png' %}" width="100px" />
+                                        <div class="text-2xl sm:text-3xl font-medium">
+                                            Letter Head
+                                        </div>
                                     </div>
-
                                 </div>
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="#">
-                                <div class="service flex flex-col items-center gap-4">
+                                <div class="service flex flex-col items-center gap-3">
                                     <div class="service-img bg-white w-fit p-8 rounded-30 shadow-service">
-                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/presentation.png' %}" width="100px">
-                                        <div class="text-2xl sm:text-3xl font-medium">Presentation</div>
+                                        <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/presentation.png' %}" width="100px" />
+                                        <div class="text-2xl sm:text-3xl font-medium">
+                                            Presentation
+                                        </div>
                                     </div>
-
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselDark"
-                            type="button">
-                        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselDark"
-                            type="button">
-                        <span aria-hidden="true" class="carousel-control-next-icon"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselDark" type="button">
+            <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+                    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselDark" type="button">
+            <span aria-hidden="true" class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
                 </div>
+                {% endcomment %}
             </div>
         </div>
     </div>
@@ -153,10 +254,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.8.1/vendors/scrolloverflow.js"></script>
 
 <script>
-        $('#index').fullpage({
-        afterLoad: function(){
-	$('.fp-table.active .aos-init').addClass('aos-animate');
-},
-});
+    $("#index").fullpage({
+        afterLoad: function() {
+            $(".fp-table.active .aos-init").addClass("aos-animate");
+        },
+    });
 </script>
 {% endblock %}

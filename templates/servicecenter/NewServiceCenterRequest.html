@@ -2,7 +2,7 @@
 
 
 {% if user.is_authenticated %}
-    <div class="section h-screen position-relative justify-center items-center flex" id="bcard">
+    <div class="section h-screen position-relative justify-center  items-center flex" id="bcard">
         <div class="bcard-container flex-1">
             <div class="my-container">
                 <div class="bcard-box res-bcard row justify-content-between res-p">
@@ -47,31 +47,26 @@
                                         <input required id="height" name="height" type="number"
                                                placeholder="Service center front height"
                                                class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                               max="100" min="1" value="{{ form.height.value|default:1 }}">
+                                               max="100" min="1" value="{{ form.height.value|default:2 }}">
                                         <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
                                                 src="{% static 'images/height.png' %}" alt="Card" height="26px"
                                                 width="26px">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-md-12 col-sm-8 col-8 p-0">
-                                     <div class="mb-2">
+                                <div class="mb-2">
                                     <div class="input-field shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
                                         <input required id="width" name="width" type="number" placeholder="Service center front width"
                                                class="w-full pl-5 bg-inherit focus-visible:outline-none"
-                                               max="100" min="1" value="{{ form.width.value|default:3 }}">
+                                               max="100" min="1" value="{{ form.width.value|default:6 }}">
                                         <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;"><img
                                                 src="{% static 'images/width.png' %}"
                                                 alt="Card"
                                                 height="26px"
-                                                width="26px"></div>
+                                                width="26px">
+                                        </div>
                                     </div>
                                 </div>
-                                    </div>
-                                </div>
-
-
                                 {% if form.errors %}
                                 <div class="alert alert-error mt-3" role="alert">
                                     <p>Please check the below:</p>
@@ -84,7 +79,6 @@
                                     </ol>
                                 </div>
                                 {% endif %}
-
                                 <div class="mb-2">
                                     <button type="submit"
                                             class="input-field mb-2 mt-2 shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-qitext text-white scale-hover">
@@ -99,17 +93,50 @@
                         </form>
                             </div>
                     
-                    <div data-aos="zoom-in-up" data-aos-duration="1500" class="col-lg-7 col-md-7 col-sm-12 col-12 flex items-center flex-col">
-                        <div class="service_design w-full">
-                            <div class="card-text text-center"><p class="card-width-text text-white">3M</p></div>
-                            <div class="card-box shadow-xl rounded-3xl flex bg-qibg border-black border-2">
-                                <div class="row justify-content-around justify-center items-center w-full">
-                                <div class="col-3 qi-logo text-center justify-center items-center flex"><img src="{% static 'images/qi-logo.svg' %}" alt="Qi" width="112px" height="112px" class="res-img">
+                    <div data-aos="zoom-in-up" data-aos-duration="1500" class="col-lg-7 col-md-7 col-sm-12 col-12 flex items-center justify-content-center flex-col">
+                        <div class="service_design w-full flex">
+                            <div>                                <div class="card-text-height text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="16" height="22" viewBox="0 0 1000 1000" xml:space="preserve">
+                                    <g transform="matrix(142.1274 0 0 142.1274 569.0731 498.0357)" id="280664">
+                                    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-7.9996, -8)" d="M 12 8 a 0.5 0.5 0 0 1 -0.5 0.5 H 5.707 l 2.147 2.146 a 0.5 0.5 0 0 1 -0.708 0.708 l -3 -3 a 0.5 0.5 0 0 1 0 -0.708 l 3 -3 a 0.5 0.5 0 1 1 0.708 0.708 L 5.707 7.5 H 11.5 a 0.5 0.5 0 0 1 0.5 0.5 z" stroke-linecap="round"></path>
+                                    </g>
+                                    </svg>
+                                <div class="line-left"></div>
+                                <p class="card-height-text text-white">3M</p>
+                                <div class="line-right"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="16" height="22" viewBox="0 0 1000 1000" xml:space="preserve">
+                                    <g transform="matrix(142.6694 0 0 142.6694 427.0461 499.933)" id="932011">
+                                    <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-8.0004, -8)" d="M 4 8 a 0.5 0.5 0 0 1 0.5 -0.5 h 5.793 L 8.146 5.354 a 0.5 0.5 0 1 1 0.708 -0.708 l 3 3 a 0.5 0.5 0 0 1 0 0.708 l -3 3 a 0.5 0.5 0 0 1 -0.708 -0.708 L 10.293 8.5 H 4.5 A 0.5 0.5 0 0 1 4 8 z" stroke-linecap="round"/>
+                                    </g>
+                                    </svg>
+                            </div></div>
+                            <div>
+                                <div class="card-text text-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="16" height="22" viewBox="0 0 1000 1000" xml:space="preserve">
+                                        <g transform="matrix(142.1274 0 0 142.1274 569.0731 498.0357)" id="280664">
+                                        <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-7.9996, -8)" d="M 12 8 a 0.5 0.5 0 0 1 -0.5 0.5 H 5.707 l 2.147 2.146 a 0.5 0.5 0 0 1 -0.708 0.708 l -3 -3 a 0.5 0.5 0 0 1 0 -0.708 l 3 -3 a 0.5 0.5 0 1 1 0.708 0.708 L 5.707 7.5 H 11.5 a 0.5 0.5 0 0 1 0.5 0.5 z" stroke-linecap="round"></path>
+                                        </g>
+                                        </svg>
+                                    <div class="line-left"></div>
+                                    <p class="card-width-text text-white">3M</p>
+                                    <div class="line-right"></div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="16" height="22" viewBox="0 0 1000 1000" xml:space="preserve">
+                                        <g transform="matrix(142.6694 0 0 142.6694 427.0461 499.933)" id="932011">
+                                        <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-8.0004, -8)" d="M 4 8 a 0.5 0.5 0 0 1 0.5 -0.5 h 5.793 L 8.146 5.354 a 0.5 0.5 0 1 1 0.708 -0.708 l 3 3 a 0.5 0.5 0 0 1 0 0.708 l -3 3 a 0.5 0.5 0 0 1 -0.708 -0.708 L 10.293 8.5 H 4.5 A 0.5 0.5 0 0 1 4 8 z" stroke-linecap="round"/>
+                                        </g>
+                                        </svg>
                                 </div>
-                                <div class="col-8 qi-service-name text-center">
-                                    <div class="card-name font-roleway font-medium res-text hidden st:block">Customer Care Center</div>
+                                <div class="card-box shadow-xl rounded-3xl flex bg-qibg border-black border-2">
+                                    <div class="row justify-content-around justify-center items-center w-full">
+                                    <div class="col-2 qi-logo text-center justify-center items-center flex"><img src="{% static 'images/qi-logo.svg' %}" alt="Qi" width="112px" height="112px" class="res-img">
+                                    </div>
+                                    <div class="col-9 qi-service-name text-center">
+                                        <div class="card-name font-roleway font-medium res-text st:block">مركز خدمة الزبائن</div>
+                                    </div>
                                 </div>
                             </div>
+                            
+
                             </div>
 
                         </div>
@@ -202,34 +229,39 @@
         }
         let height = parseInt($('#height').val());
         let width=parseInt($('#width').val());
-        if (height <= 5 && width <= 6){
+        if (height <= 3 && width <= 3){
             width = width*100*window_ac;
             height = height*100*window_ac
         }
-        else if (height <= 5 && width > 6){
-            ar = width / 6;
-            width=600*window_ac;
+        else if (height <= 3 && width > 3){
+            ar = width / 3;
+            width=300*window_ac;
             height=(height / ar) * 100*window_ac;
         }
-        else if (height > 5 && width <= 5){
-            ar = height / 5;
+        else if (height > 3 && width <= 3){
+            ar = height / 3;
             width=(width / ar )*100*window_ac;
-            height=500*window_ac;
+            height=300*window_ac;
         }
-        else if (height > 5 && width > 5){
+        else if (height > 3 && width > 3){
             if (height > width){
-                ar = height / 5;
+                ar = height / 3;
                 width = (width / ar )*100*window_ac;
-                height = 500*window_ac;
+                height = 300*window_ac;
             }
             else {
-                ar = width / 6;
-                width = 600*window_ac;
+                ar = width / 3;
+                width = 300*window_ac;
                 height = (height / ar) * 100*window_ac;
             }
             }
-
+            var font_size = ((width/100) * 6)+'px';
+            var margin_left = -Math.abs(height) ;
             $('.card-width-text').text($('#width').val() + "M");
+            $('.card-height-text').text($('#height').val() + "M");
+            $('.card-name').css("fontSize", font_size);           
+            $('.card-text-height').width(height);           
+            $('.card-text-height').css('margin-left',margin_left);
             $('.card-text').width(width);
             $('.card-box').width(width);
             $('.card-box').height(height);
