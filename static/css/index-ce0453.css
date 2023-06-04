@@ -1317,6 +1317,54 @@ textarea::-ms-input-placeholder {
     color: #9ca3af
 }
 
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     opacity: 1;
     color: #9ca3af
@@ -2986,6 +3034,10 @@ body::-webkit-scrollbar-thumb {
     }
     .shadow-service {
         margin: 5px !important;
+    }
+    .res-center {
+        justify-content: unset !important;
+        align-items: unset !important;
     }
 }
 
