@@ -2,11 +2,11 @@
 
 
 {% if user.is_authenticated %}
-    <div class="section h-screen position-relative justify-center  items-center flex" id="bcard">
+    <div class="section h-70 position-relative justify-center  items-center flex" id="bcard">
         <div class="bcard-container flex-1">
             <div class="my-container">
-                <div class="bcard-box res-bcard row justify-content-between res-p">
-                    <div data-aos="fade-up" data-aos-duration="1500" class="col-lg-4 col-md-4 col-sm-12 col-12">
+                <div data-aos="fade-up" data-aos-duration="1500" class="bcard-box res-bcard row justify-content-between res-p">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                         <form action="" class="bform" method="post">
                             {% csrf_token %}
                             <p class="font-roleway font-semibold m-1 xl:my-3 font-size-res text-center">Enter The Required
@@ -93,7 +93,7 @@
                         </form>
                             </div>
                     
-                    <div data-aos="zoom-in-up" data-aos-duration="1500" class="col-lg-7 col-md-7 col-sm-12 col-12 flex items-center justify-content-center flex-col">
+                    <div class="col-lg-7 col-md-7 col-sm-12 col-12 flex items-center justify-content-center flex-col">
                         <div class="service_design w-full flex">
                             <div>                                <div class="card-text-height text-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="16" height="22" viewBox="0 0 1000 1000" xml:space="preserve">
