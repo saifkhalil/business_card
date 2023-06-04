@@ -166,7 +166,7 @@
                         </a>
                     </div>
                     <div class="col-6 col-sm-6 col-md-3 col-ls-3">
-                        <a onclick="redirect('{% url 'NewServiceCenterRequest' %}')">
+                        <a onclick="redirect('{% if user.is_authenticated %}{% url 'NewServiceCenterRequest' %}{% else %}{% provider_login_url 'microsoft' process='login'  %}{% endif %}')">
                             <div class="service flex flex-col items-center gap-3">
                                 <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
                                     <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/service_center.png' %}" width="100px" />
