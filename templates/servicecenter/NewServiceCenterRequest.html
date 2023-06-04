@@ -229,29 +229,29 @@
         }
         let height = parseInt($('#height').val());
         let width=parseInt($('#width').val());
-        if (height <= 3 && width <= 3){
+        if (height <= 5 && width <= 5){
             width = width*100*window_ac;
             height = height*100*window_ac
         }
-        else if (height <= 3 && width > 3){
-            ar = width / 3;
-            width=300*window_ac;
+        else if (height <= 5 && width > 5){
+            ar = width / 5;
+            width=500*window_ac;
             height=(height / ar) * 100*window_ac;
         }
-        else if (height > 3 && width <= 3){
-            ar = height / 3;
+        else if (height > 5 && width <= 5){
+            ar = height / 5;
             width=(width / ar )*100*window_ac;
-            height=300*window_ac;
+            height=500*window_ac;
         }
-        else if (height > 3 && width > 3){
+        else if (height > 5 && width > 5){
             if (height > width){
-                ar = height / 3;
+                ar = height / 5;
                 width = (width / ar )*100*window_ac;
-                height = 300*window_ac;
+                height = 500*window_ac;
             }
             else {
-                ar = width / 3;
-                width = 300*window_ac;
+                ar = width / 5;
+                width = 500*window_ac;
                 height = (height / ar) * 100*window_ac;
             }
             }
