@@ -295,18 +295,25 @@
             $('.card-box').width(1);
         }
     });
-    $('#phoneNumber').keyup(function() {
-        if ($('#phoneNumber').val() != '') {
-            $('#phoneNumbervalue').text($('#phoneNumber').val());
-            $('#phoneNumberValueAr').text($('#phoneNumber').val());
+
+    $('#service_center_name').keyup(function() {
+        var service_center_name_text = $('#service_center_name').val()
+        if (service_center_name_text != '') {
+            $('.card-name').text(service_center_name_text);
+            if (service_center_name_text.length > 15) {
+                if (window.innerWidth < 460) {
+                    $('.card-name').css('font-size','16px');
+                }else {
+                    $('.card-name').css('font-size','22px');
+                }
+            }else {
+                $('.card-name').css('font-size','40px');
+            }
+            
         } else {
-            $('#phoneNumbervalue').text({{data_response.Work_phone}});
-            $('#phoneNumberValueAr').text({{data_response.Work_phone}});
+            $('.card-name').text({{ form.service_center_name.value|default:'' }});
         }
     });
 
-    $('#flipCard').click(function() {
-        $('.flip-card').toggleClass('rotate-card');
-    });
 </script>
  {% endblock %}
