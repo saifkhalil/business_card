@@ -1437,6 +1437,102 @@ textarea::-ms-input-placeholder {
     color: #9ca3af
 }
 
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     opacity: 1;
     color: #9ca3af
@@ -2558,7 +2654,7 @@ video {
 }
 
 @media (min-width: 532px) {
-    ..res-p {
+    .res-p {
         padding-top: 0px;
     }
     .sm\:my-5 {
@@ -3110,6 +3206,9 @@ body::-webkit-scrollbar-thumb {
     .res-center {
         justify-content: unset !important;
         align-items: unset !important;
+    }
+    .card-name {
+        font-size: 23px !important;
     }
 }
 
