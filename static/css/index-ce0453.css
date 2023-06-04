@@ -1221,6 +1221,30 @@ textarea::-ms-input-placeholder {
     color: #9ca3af
 }
 
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+    opacity: 1;
+    color: #9ca3af
+}
+
 input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     opacity: 1;
     color: #9ca3af
@@ -2878,7 +2902,7 @@ body::-webkit-scrollbar-thumb {
     .my-container {
         padding: 0 20px;
         max-width: none;
-        margin: auto
+        margin-top: 10px;
     }
     .service-img {
         height: 140px !important;
