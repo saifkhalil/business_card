@@ -300,14 +300,31 @@
         var service_center_name_text = $('#service_center_name').val()
         if (service_center_name_text != '') {
             $('.card-name').text(service_center_name_text);
-            if (service_center_name_text.length > 15) {
+            if (service_center_name_text.length > 15 && service_center_name_text.length < 20) {
                 if (window.innerWidth < 600) {
-                    $('.card-name').css('font-size','16px !important');
+                    $('.card-name').css('font-size','22px');
+                    $('.res-img').css('width','40px');
                 }else {
-                    $('.card-name').css('font-size','22px !important');
+                    $('.card-name').css('font-size','30px');
+                    $('.res-img').css('width','60px');
+                }
+            } else if (service_center_name_text.length >= 20 &&  service_center_name_text.length < 30 ) {
+                if (window.innerWidth < 600) {
+                    $('.card-name').css('font-size','16px');
+                    $('.res-img').css('width','32px');
+                }else {
+                    $('.card-name').css('font-size','22px');
+                    $('.res-img').css('width','44px');
                 }
             }else {
-                $('.card-name').css('font-size','40px !important');
+                if (window.innerWidth < 600) {
+                $('.card-name').css('font-size','22px');
+                $('.res-img').css('width','80px');
+                }
+                else{
+                    $('.card-name').css('font-size','40px');
+                    $('.res-img').css('width','80px');
+                } 
             }
             
         } else {
