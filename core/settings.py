@@ -19,6 +19,9 @@ environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+PWA_SERVICE_WORKDER_PATH = os.path.join(
+    BASE_DIR, 'static/js', 'serviceworker.js')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -56,6 +59,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.microsoft',
     'log_viewer',
+    'pwa',
     # 'allauth.socialaccount.providers.zoho',
     # 'allauth.socialaccount.providers.google',
     'businesscard',
@@ -303,3 +307,36 @@ LOG_VIEWER_EXCLUDE_TEXT_PATTERN = None
 # Optionally you can set the next variables in order to customize the admin:
 # LOG_VIEWER_FILE_LIST_TITLE = "Custom title"
 # LOG_VIEWER_FILE_LIST_STYLES = "/static/css/my-custom.css"
+
+
+## PWA Configuration ##
+
+PWA_APP_NAME = 'Qi Creative'
+PWA_APP_DESCRIPTION = "Qi Creative"
+PWA_APP_THEME_COLOR = '#000000'
+PWA_APP_BACKGROUND_COLOR = '#f0cc00'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': 'static/images/qi.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': 'static/images/qi.png',
+        'sizes': '160x160'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': 'static/images/qi.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
