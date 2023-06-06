@@ -213,83 +213,83 @@ class IPAddressFilter(logging.Filter):
         return True
 
 
-LOGGING = {
+# LOGGING = {
 
-    'version': 1,
-    # 'filters': {
-    #     # Add an unbound RequestFilter.
-    #     'request': {
-    #         '()': 'django_requestlogging.logging_filters.RequestFilter',
-    #     },
-    # },
-    'loggers': {
-        'django': {
-            'handlers': ['log', 'info', 'warning', 'error', 'critical'],
-            'level': 'DEBUG',
-            # 'filters': ['request'],
-        }
-    },
-    'handlers': {
-        'log': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': './logs/log.log',
-            'formatter': 'verbose',
-            'when': 'D',  # specifies the interval
-            'interval': 1,  # defaults to 1, only necessary for other values
-            'backupCount': 5,  # how many backup file to keep, 5 days
-        },
-        'info': {
-            'level': 'INFO',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': './logs/info.log',
-            'formatter': 'verbose',
-            'when': 'D',  # specifies the interval
-            'interval': 1,  # defaults to 1, only necessary for other values
-            'backupCount': 5,  # how many backup file to keep, 5 days
-        },
-        'warning': {
-            'level': 'WARNING',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': './logs/warning.log',
-            'formatter': 'verbose',
-            'when': 'D',  # specifies the interval
-            'interval': 1,  # defaults to 1, only necessary for other values
-            'backupCount': 5,  # how many backup file to keep, 5 days
-        },
-        'error': {
-            'level': 'ERROR',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': './logs/error.log',
-            'formatter': 'verbose',
-            'when': 'D',  # specifies the interval
-            'interval': 1,  # defaults to 1, only necessary for other values
-            'backupCount': 5,  # how many backup file to keep, 5 days
-        },
-        'critical': {
-            'level': 'CRITICAL',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'filename': './logs/critical.log',
-            'formatter': 'verbose',
-            'when': 'D',  # specifies the interval
-            'interval': 1,  # defaults to 1, only necessary for other values
-            'backupCount': 5,  # how many backup file to keep, 5 days
-        }
+#     'version': 1,
+#     # 'filters': {
+#     #     # Add an unbound RequestFilter.
+#     #     'request': {
+#     #         '()': 'django_requestlogging.logging_filters.RequestFilter',
+#     #     },
+#     # },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['log', 'info', 'warning', 'error', 'critical'],
+#             'level': 'DEBUG',
+#             # 'filters': ['request'],
+#         }
+#     },
+#     'handlers': {
+#         'log': {
+#             'level': 'DEBUG',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             'filename': './logs/log.log',
+#             'formatter': 'verbose',
+#             'when': 'D',  # specifies the interval
+#             'interval': 1,  # defaults to 1, only necessary for other values
+#             'backupCount': 5,  # how many backup file to keep, 5 days
+#         },
+#         'info': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             'filename': './logs/info.log',
+#             'formatter': 'verbose',
+#             'when': 'D',  # specifies the interval
+#             'interval': 1,  # defaults to 1, only necessary for other values
+#             'backupCount': 5,  # how many backup file to keep, 5 days
+#         },
+#         'warning': {
+#             'level': 'WARNING',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             'filename': './logs/warning.log',
+#             'formatter': 'verbose',
+#             'when': 'D',  # specifies the interval
+#             'interval': 1,  # defaults to 1, only necessary for other values
+#             'backupCount': 5,  # how many backup file to keep, 5 days
+#         },
+#         'error': {
+#             'level': 'ERROR',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             'filename': './logs/error.log',
+#             'formatter': 'verbose',
+#             'when': 'D',  # specifies the interval
+#             'interval': 1,  # defaults to 1, only necessary for other values
+#             'backupCount': 5,  # how many backup file to keep, 5 days
+#         },
+#         'critical': {
+#             'level': 'CRITICAL',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             'filename': './logs/critical.log',
+#             'formatter': 'verbose',
+#             'when': 'D',  # specifies the interval
+#             'interval': 1,  # defaults to 1, only necessary for other values
+#             'backupCount': 5,  # how many backup file to keep, 5 days
+#         }
 
-    },
-    'formatters': {
-        'verbose': {
-            'format': '{name} {levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-        # 'request_format': {
-        #     'format': '%(remote_addr)s %(username)s "%(request_method)s '
-        #     '%(path_info)s %(server_protocol)s" %(http_user_agent)s '
-        #     '%(message)s %(asctime)s',
-        # },
+#     },
+#     'formatters': {
+#         'verbose': {
+#             'format': '{name} {levelname} {asctime} {module} {process:d} {thread:d} {message}',
+#             'style': '{',
+#         },
+#         # 'request_format': {
+#         #     'format': '%(remote_addr)s %(username)s "%(request_method)s '
+#         #     '%(path_info)s %(server_protocol)s" %(http_user_agent)s '
+#         #     '%(message)s %(asctime)s',
+#         # },
 
-    },
-}
+#     },
+# }
 
 
 LOG_VIEWER_FILES = ['critical', 'error', 'info', 'log', 'warning']
