@@ -4873,11 +4873,11 @@ mobile-size {
     height: 70vh;
 }
 
-.card-name {
+.card-name-service {
     font-family: Araboto;
     font-size: 40px;
 }
 
-.card-box {
+.card-box-service {
     transition: width 0.5s, height 0.5s;
 }
