@@ -8,142 +8,140 @@
   href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css" />
 <!-- filter options -->
 <div class="header mb-5">
-    <div class="mb-3">
-        <div class="row justify-content-around justify-content-center my-container">
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
-                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
-                    <h1 class="m-3">Total Requests</h1>
-                    <h1>{{total_requests}}</h1>
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col-5">
+          <form method="GET" id="filterform">
+            <div class="row g-3">
+              <div class="col-lg-2 col-sm-3 col-sx-3 flex items-center justify-center">
+                <h1>Requests</h1>
+              </div>
+              <div class="col-lg-4 col-sm-4 col-sx-4">
+                <div class="input-field id-input border-black border-1 text-dark rounded-3xl card-font flex items-center w-full">
+                  <select class="w-full card-number mx-1 bg-inherit focus-visible:outline-none text-dark" placeholder="select status" id="status"
+                    name="status" onchange="javascript:this.form.submit()">
+                      <option value=''>All</option>
+                    <option value='Pending'>Pending</option>
+                    <option value='Approved'>Approved</option>
+                    <option value='Reject'>Reject</option>
+                    <option value='In Production'>In Production</option>
+                    <option value='Done'>Done</option>
+                  </select>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
-                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
-                    <h1 class="m-3">Done Requests</h1>
-                    <h1>{{Done_requests}}</h1>
+                <div class="col-lg-4 col-sm-4 col-xs-4">
+                 <div class="input-field id-input border-black border-1 text-dark rounded-3xl card-font flex items-center w-full">
+                  <input type="text" class="w-full mx-1 bg-inherit focus-visible:outline-none text-dark" id="keywords" name="keywords" aria-describedby="Search by Employee ID, Full Name and Job Title">
+                  <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </div> 
                 </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
-                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
-                    <h1 class="m-3">Approved Requests</h1>
-                    <h1>{{Approved_requests}}</h1>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 m-3">
-                <div class="row p-3 justify-center text-center bg-qitext text-white rounded-3xl ">
-                    <h1 class="m-3">In Production Requests</h1>
-                    <h1>{{InProduction_requests}}</h1>
-                </div>
-            </div>
+              </div>
+
+
+          </form>
         </div>
-    </div>
-    <h3 class="message text-center text-3xl x2l:text-4xl font-extrabold font-roleway mb-5">All Service Center Orders</h3>
-    <div class="my-container lg:flex x2l:block justify-center">
-        <div class="orders-section pb-3 p-2 xl:p-10 lg:flex flex-col justify-center text-center bg-qitext text-white">
-
-        <div class="filtered">
-    <section class="main overlay-black">
-      <div class="container wrapper">
-
-        <form method="GET" id="filterform">
-          <div class="row g-3">
-              <div class="col-lg-6 col-sm-12 col-xs-12 mb-3">
-               <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                <input type="text" class="w-full pl-5 bg-inherit focus-visible:outline-none text-dark" id="keywords" name="keywords" aria-describedby="Search by Employee ID, Full Name and Job Title" placeholder="Search by Employee ID, Full Name and Job Title">
-               </div>
-            </div>
-              <div class="col-lg-2 col-sm-6 col-sx-6 mb-3">
-                  <div class="input-field id-input shadow-sm flex items-center w-full rounded-full px-2 py-2 bg-gray-100">
-                    <select class="w-full pl-5 bg-inherit focus-visible:outline-none text-dark" placeholder="select status" id="status"
-                      name="status" onchange="javascript:this.form.submit()">
-                        <option value=''>All</option>
-                      <option value='Pending'>Pending</option>
-                      <option value='Approved'>Approved</option>
-                      <option value='Reject'>Reject</option>
-                      <option value='In Production'>In Production</option>
-                      <option value='Done'>Done</option>
-                    </select>
-                  </div>
-              </div>
-          <div class="col-lg-2 col-sm-6 col-sx-6 align-self-end mb-3">
-              <div class="btn-group rounded-full" role="group">
-              <button type="submit" name="search" value="search" class="btn btn-warning">Search</button>
-              <button type="submit" name="clear" value="clear" class="btn btn-danger">Clear</button>
-              </div>
-
-        </form>
       </div>
-    </section>
-  </div>
-            <section class="company-jobs ptb80">
-                <div class="container">
-<!--                  <h4>We found {{ requests_count }} matches.</h4>-->
-                  <div class="table-responsive">
-                      <table class="table bg-qi table-hover responsive">
-                          <thead class="bg-qi-dark text-white">
-                              <tr>
-                                  <th>Order</th>
-                                  <th>Service center name</th>
-                                  <th>Full address</th>
-                                  <th>Status</th>
-                                  <th>Height</th>
-                                  <th>Width</th>
-                                  <th>Order Date</th>
-                                  <th>Action Date</th>
-                                  <th>Action</th>
-                                <th>Preview</th>
-                              </tr>
-                           </thead>
-                          <tbody>
-                          {% for req in page_obj %}
-                          <tr>
-                              <td><a class="a-underline" href="{% url 'ServiceCenterDetails' req.id %}">{{ req.id }}</a></td>
-                              <td>{{ req.service_center_name }}</td>
-                              <td>{{ req.full_address }}</td>
-                              <td><span class="badge bg-{% if req.status == 'Pending' %}warning{% elif req.status == 'Approved' %}success{% elif req.status == 'Reject' %}danger{% elif req.status == 'In Production' %}warning{% elif req.status == 'Done' %}info{% endif %}">{{ req.status }}</span></td>
-                              <td>{{ req.height }}</td>
-                              <td>{{ req.width }}</td>
-                              <td><p data-bs-toggle="tooltip" data-bs-placement="top" title="{{ req.created_at }}">{{ req.created_at|naturalday:'d-m-Y' }}</p></td>
-                              <td><p data-bs-toggle="tooltip" data-bs-placement="top" title="{{ req.status_change_at }}">{{ req.status_change_at|naturalday:'d-m-Y'|default:'' }}</p></td>
-                              <td>{% if req.status == 'Pending' %}<div class="btn-group rounded-full" role="group"><a class="btn btn-sm btn-outline-success" href="{% url 'CenterRequestApprove' req.id %}"><i class="bi bi-check-circle"></i></a><a class="btn btn-sm btn-outline-danger" href="{% url 'CenterRequestReject' req.id %}"><i class="bi bi-slash-circle"></i></a></div>{% elif req.status == 'Approved' %}<a class="btn btn-sm btn-outline-warning text-white" href="{% url 'CenterRequestInProduction' req.id %}"><i class="bi bi-printer"></i></a>{% elif req.status == 'In Production' %}<a class="btn btn-sm btn-outline-info text-white" href="{% url 'CenterRequestDone' req.id %}"><i class="bi bi-check2-circle"></i></a>{% endif %}</td>
-                              <td><a class="btn btn-sm btn-outline-danger" href="{% url 'pdf' req.id %}" target="_blank"><i class="bi bi-filetype-pdf"></i></a></td>
-                          </tr>
-                          {% endfor %}
-                          </tbody>
-                      </table>
-                  </div>
-                  <div class="row justify-content-center mt30 ">
-                    <nav aria-label="Page navigation ">
-                      <ul class="pagination justify-content-center flex-wrap mt-2 mb-4">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ page_obj.previous_page_number }}">«</a></li>
-                        {% else %}
-                            <li class="disabled page-item"><span class="btn btn-sm btn-light">&laquo;</span></li>
-                        {% endif %}
-                        {% for i in page_range|default_if_none:page_obj.paginator.get_elided_page_range %}
-                            {% if page_obj.number == i %}
-                                <li class="active page-item"><span class="btn btn-sm btn-light">{{ i }}</span>
-                                </li>
-                            {% else %}
-                                {% if i == page_obj.paginator.ELLIPSIS %}
-                                    <li class="page-item"><span class="btn btn-sm btn-light">{{ i }}</span></li>
-                                {% else %}
-                                    <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ i }}">{{ i }}</a></li>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if page_obj.has_next %}
-                            <li class="page-item"><a class="btn btn-sm btn-warning" href="?page={{ page_obj.next_page_number }}">»</a></li>
-                        {% else %}
-                            <li class="disabled page-item"><span class="btn btn-sm btn-light">&raquo;</span></li>
-                        {% endif %}
-                    </ul>
-                    </nav>
-                  </div>
-                </div>
-            </section>
-
+      <div class="col-7">
+        <div class="row justify-content-around justify-content-center my-container">
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+              <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
+                Total
+                <span class="badge text-dark">{{total_requests}}</span>
+              </li>  
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+              <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
+                Done
+                <span class="badge text-dark">{{Done_requests}}</span>
+              </li>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+              <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
+                Approved
+                <span class="badge text-dark">{{Approved_requests}}</span>
+              </li>  
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+              <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
+                Production
+                <span class="badge text-dark">{{InProduction_requests}}</span>
+              </li>    
+            </div>
         </div>
+      </div>
+
+      </div>
     </div>
+    <div class="container">
+      <div class="table-responsive rounded-3xl shadow-xl">
+          <table class="table bg-qi table-hover responsive m-0 card-font table-borderless">
+              <thead class="text-white">
+                  <tr>
+                      <th class="left">#</th>
+                      <th><i class="bi bi-file-text text-warning"></i> Service center name</th>
+                      <th><i class="bi bi-pin-map text-warning"></i> Full address</th>
+                      <th> <i class="bi bi-bounding-box-circles text-warning"></i> Size</th>
+                      <th><i class="bi bi-person-vcard text-warning"></i> CreatedBy</th>
+                      <th><i class="bi bi-envelope text-warning"></i> Email</th>
+                      <th><i class="bi bi-calendar3 text-warning"></i> Order Date</th>
+                      <th><i class="bi bi-arrow-left-right text-warning"></i> Status</th>
+                      <th><i class="bi bi-calendar3 text-warning"></i> Action Date</th>
+                      <th><i class="bi bi-chevron-double-down text-warning"></i> Action</th>
+                    <th class="right"><i class="bi bi-file-earmark-easel text-warning"></i> Preview</th>
+                  </tr>
+               </thead>
+              <tbody>
+              {% for req in page_obj %}
+              <tr>
+                  <td><a class="a-underline" href="{% url 'ServiceCenterDetails' req.id %}">{{ req.id }}</a></td>
+                  <td>{{ req.service_center_name }}</td>
+                  <td>{{ req.full_address }}</td>
+                  <td>{{ req.height }} x {{ req.width }} M</td>
+                  <td>{{ req.created_by }}</td>
+                  <td>{{ req.created_by.email }}</td>
+                  <td><p data-bs-toggle="tooltip" data-bs-placement="top" title="{{ req.created_at }}">{{ req.created_at|naturalday:'d-m-Y' }}</p></td>
+                  <td><span class="badge bg-{% if req.status == 'Pending' %}warning{% elif req.status == 'Approved' %}success{% elif req.status == 'Reject' %}danger{% elif req.status == 'In Production' %}warning{% elif req.status == 'Done' %}info{% endif %}">{{ req.status }}</span></td>
+                  <td><p data-bs-toggle="tooltip" data-bs-placement="top" title="{{ req.status_change_at }}">{{ req.status_change_at|naturalday:'d-m-Y'|default:'' }}</p></td>
+                  <td class="text-center">{% if req.status == 'Pending' %}<div class="btn-group rounded-full" role="group"><a class="icon-link mr-1 text-success" href="{% url 'CenterRequestApprove' req.id %}"><i class="bi bi-check-circle"></i></a><a class="icon-link text-danger" href="{% url 'CenterRequestReject' req.id %}"><i class="bi bi-slash-circle"></i></a></div>{% elif req.status == 'Approved' %}<a class="icon-link text-warning" href="{% url 'CenterRequestInProduction' req.id %}"><i class="bi bi-buildings"></i></a>{% elif req.status == 'In Production' %}<a class="icon-link text-success" href="{% url 'CenterRequestDone' req.id %}"><i class="bi bi-check2-circle"></i></a>{% endif %}</td>
+                  <td class="text-center"><a class="icon-link text-dangerr" href="{% url 'pdf' req.id %}" target="_blank"><i class="bi bi-filetype-pdf"></i></a></td>
+              </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+      </div>
+      <div class="row justify-content-center mt30 ">
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center flex-wrap mt-2 mb-4">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="badge text-dark" href="?page={{ page_obj.previous_page_number }}"><</a></li>
+            {% else %}
+                <li class="disabled page-item"><span class="badge text-dark"><</span></li>
+            {% endif %}
+            {% for i in page_range|default_if_none:page_obj.paginator.get_elided_page_range %}
+                {% if page_obj.number == i %}
+                    <li class="active page-item"><span class="badge text-dark page-number">{{ i }}</span>
+                    </li>
+                {% else %}
+                    {% if i == page_obj.paginator.ELLIPSIS %}
+                        <li class="page-item"><span class="badge text-dark page-number">{{ i }}</span></li>
+                    {% else %}
+                        <li class="page-item"><a class="badge text-dark" href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="badge text-dark" href="?page={{ page_obj.next_page_number }}">></a></li>
+            {% else %}
+                <li class="disabled page-item"><span class="badge text-dark">></span></li>
+            {% endif %}
+        </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
 </div>
 
 
