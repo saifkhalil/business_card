@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from servicecenter.views import NewServiceCenterRequest, request_list, CenterRequestApprove, CenterRequestDone, CenterRequestReject, CenterRequestInProduction, ServiceCenterDetails
 
 urlpatterns = [
-    path('', NewServiceCenterRequest, name='NewServiceCenterRequest'),
+    path('new/', NewServiceCenterRequest, name='NewServiceCenterRequest'),
     path('requests/', request_list, name='service_requests'),
     path('<int:brid>', login_required(ServiceCenterDetails),
          name='ServiceCenterDetails'),
