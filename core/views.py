@@ -1,12 +1,13 @@
 from allauth.socialaccount.models import SocialAccount
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from core.apis import get_zoho_data, zoho_login
 from django.shortcuts import render, redirect
 from businesscard.models import BusinessRequest
 from servicecenter.models import ServiceCenter
 
-def index(request):
+
+def orders_processor(request):
     Business_orders_count = None
     Service_orders_count = None
     if request.user.is_authenticated:
@@ -17,15 +18,17 @@ def index(request):
             Business_orders_count = None
         try:
             Service_orders_count = ServiceCenter.objects.filter(
-            status='Pending').count()
+                status='Pending').count()
         except ServiceCenter.DoesNotExist:
             Service_orders_count = None
-
-    context = {
+    return {
         'Business_orders_count': Business_orders_count,
         'Service_orders_count': Service_orders_count
     }
-    return render(request, 'index.html', context)
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 def profile(request):
@@ -47,6 +50,7 @@ def profile(request):
         'data_response': data_value
     }
     return render(request, 'profile.html', context)
+
 
 def logout_view(request):
     logout(request)
