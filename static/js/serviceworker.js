@@ -1,6 +1,5 @@
 var staticCacheName = 'qi-creative-v2' + new Date().getTime();
 var filesToCache = [
-    '/offline',
     '/static/css/aos.css',
     '/static/css/bootstrap.min.css.css',
     '/static/css/index-ce0453.css',
