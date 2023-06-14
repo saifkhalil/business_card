@@ -96,7 +96,7 @@
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a onclick="redirect('{% if user.is_authenticated %}{% url 'new_bc' %}{% else %}{% provider_login_url 'microsoft' process='login'  %}{% endif %}')">
               <div class="service flex flex-col items-center gap-3 cursor-pointer">
-                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service" data-tilt>
+                <div data-aos="zoom-in" class="service-img bg-white w-fit p-service rounded-30 shadow-service" data-tilt>
                   <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/business-card.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
                     Business Card
@@ -108,7 +108,7 @@
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a href="#">
               <div class="service flex flex-col items-center gap-3">
-                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer`" data-tilt>
+                <div data-aos="zoom-in" class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer`" data-tilt>
                   <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/design_library.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
                     Design Library
@@ -120,7 +120,7 @@
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a href="#">
               <div class="service flex flex-col items-center gap-3">
-                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
+                <div data-aos="zoom-in" class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
                   <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/ui_ux.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
                     Ui / UX
@@ -132,7 +132,7 @@
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a href="#">
               <div class="service flex flex-col items-center gap-3">
-                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
+                <div data-aos="zoom-in" class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
                   <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/esginature.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
                     E-signiture
@@ -144,7 +144,7 @@
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a href="#">
               <div class="service flex flex-col items-center gap-3">
-                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
+                <div data-aos="zoom-in" class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
                   <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/presentation.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
                     Presentation
@@ -156,7 +156,7 @@
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a href="#">
               <div class="service flex flex-col items-center gap-3">
-                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
+                <div data-aos="zoom-in" class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
                   <img alt="Letter Head" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/copy.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
                     Letter Head
@@ -167,7 +167,7 @@
           </div>
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a onclick="redirect('{% if user.is_authenticated %}{% url 'NewServiceCenterRequest' %}{% else %}{% provider_login_url 'microsoft' process='login'  %}{% endif %}')">
-              <div class="service flex flex-col items-center gap-3">
+              <div data-aos="zoom-in" class="service flex flex-col items-center gap-3">
                 <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer" data-tilt>
                   <img alt="Letter Head" class="img-service mx-auto d-block" height="100px" src="{% static 'images/service_center.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
@@ -180,7 +180,7 @@
           <div class="col-6 col-sm-6 col-md-3 col-ls-3">
             <a href="#">
               <div class="service flex flex-col items-center gap-3">
-                <div class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
+                <div data-aos="zoom-in" class="service-img bg-white w-fit p-service rounded-30 shadow-service cursor-pointer">
                   <img alt="Other" class="img-service mx-auto d-block img-invert" height="100px" src="{% static 'images/other.png' %}" width="100px" />
                   <div class="text-base text-center pt-2 font-medium">
                     Other
