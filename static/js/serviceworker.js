@@ -12,12 +12,14 @@ var filesToCache = [
     '/images/qi-logo-yellow.svg'
 ];
 
-self.addEventListener('install', function(event) {
+self.addEventListener("install", event => {
+    this.skipWaiting();
     event.waitUntil(
-        caches.open(staticCacheName).then(function(cache) {
+        caches.open(staticCacheName)
+        .then(cache => {
             return cache.addAll(filesToCache);
         })
-    );
+    )
 });
 
 self.addEventListener('activate', event => {
