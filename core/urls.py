@@ -24,9 +24,9 @@ def handler500(request, *args, **argv):
 
 
 urlpatterns = [
-    path('new/', index, name='home'),
+    path('', index, name='home'),
     path('admin/', admin.site.urls, name='admin'),
-    path('',include('pwa.urls')),
+    path('', include('pwa.urls')),
     path('rest-auth/', include('rest_auth.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/', login_required(profile), name='profile'),

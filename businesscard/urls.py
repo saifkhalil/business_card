@@ -21,7 +21,7 @@ urlpatterns = [
     path('orders/', BusinessRequestList, name='business_orders'),
     path('requests/', request_list, name='business_requests'),
     path('bcard/', pdf_preview, name='bcard'),
-    path('', login_required(NewBusinessRequest), name='new_bc'),
+    path('new/', login_required(NewBusinessRequest), name='new_bc'),
     path('<int:rid>/pdf/', generate_bcard, name='pdf'),
     path('<int:rid>/html/', GenerateHtml, name='html'),
     path('<int:brid>', login_required(BusinessRequestDetails),
