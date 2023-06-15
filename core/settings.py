@@ -370,15 +370,36 @@ PWA_APP_ICONS = [
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': 'static/images/qi_160.png',
+        'src': '/static/images/qi_160.png',
         'sizes': '160x160'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': 'static/images/qi-logo.png',
+        'src': '/static/images/qi-logo.png',
         'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
     }
+]
+PWA_APP_SHORTCUS = [
+    {
+        "name": "Home",
+        "url": "/",
+        "description": "Home Page"
+    },
+    {
+        "name": "Business Card",
+        "url": "/business_order/new/",
+        "description": "New Bisuness card order"
+    },
+    {
+        "name": "Service Center",
+        "url": "/service_order/new/",
+        "description": "New Service Center oreder"
+    }
+]
+PWA_APP_CATEGORIES = [
+    "photo",
+    "productivity",
 ]
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
