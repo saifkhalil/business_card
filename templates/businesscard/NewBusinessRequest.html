@@ -466,5 +466,8 @@
             }
         }
     });
+    if ('setAppBadge' in navigator) {
+        navigator.setAppBadge(5);
+      }
 </script>
 {% endif %} {% endblock %}

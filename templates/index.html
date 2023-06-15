@@ -257,5 +257,9 @@
       $(".fp-table.active .aos-init").addClass("aos-animate");
     },
   });
+
+  if ('setAppBadge' in navigator) {
+    navigator.clearAppBadge();
+  }
 </script>
 {% endblock %}
