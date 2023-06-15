@@ -324,7 +324,7 @@ PWA_SERVICE_WORKER_PATH = os.path.join(
 PWA_APP_NAME = 'Qi Creative'
 PWA_APP_DESCRIPTION = "Qi Creative"
 PWA_APP_THEME_COLOR = '#f0cc00'
-PWA_APP_BACKGROUND_COLOR = '#f0cc00'
+PWA_APP_BACKGROUND_COLOR = '#000000'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_SCOPE = '/'
 PWA_APP_ORIENTATION = 'any'
@@ -335,16 +335,37 @@ PWA_APP_ICONS = [
         "src": "/static/images/qi_160.png",
         "sizes": "160x160",
         "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "/static/images/qi_160.png",
+        "sizes": "160x160",
+        "type": "image/png",
+        "purpose": "any"
     },
     {
         "src": "/static/images/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "/static/images/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png",
+        "purpose": "any"
     },
     {
         "src": "/static/images/android-chrome-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "/static/images/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png",
+        "purpose": "any"
     }
 ]
 PWA_APP_ICONS_APPLE = [
