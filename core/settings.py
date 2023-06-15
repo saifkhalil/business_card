@@ -318,8 +318,7 @@ LOG_VIEWER_EXCLUDE_TEXT_PATTERN = None
 
 
 ## PWA Configuration ##
-PWA_SERVICE_WORKER_PATH = os.path.join(
-    BASE_DIR, 'static/js', 'serviceworker.js')
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
 
 PWA_APP_NAME = 'Qi Creative'
 PWA_APP_DESCRIPTION = "Qi Creative"
