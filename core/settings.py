@@ -334,38 +334,32 @@ PWA_APP_ICONS = [
     {
         "src": "/static/images/qi_160.png",
         "sizes": "160x160",
-        "type": "image/png",
-        "purpose": "maskable"
+        "type": "image/png"
     },
     {
         "src": "/static/images/qi_160.png",
         "sizes": "160x160",
-        "type": "image/png",
-        "purpose": "any"
+        "type": "image/png"
     },
     {
         "src": "/static/images/android-chrome-192x192.png",
         "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "maskable"
+        "type": "image/png"
     },
     {
         "src": "/static/images/android-chrome-192x192.png",
         "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "any"
+        "type": "image/png"
     },
     {
         "src": "/static/images/android-chrome-512x512.png",
         "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "maskable"
+        "type": "image/png"
     },
     {
         "src": "/static/images/android-chrome-512x512.png",
         "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any"
+        "type": "image/png"
     }
 ]
 PWA_APP_ICONS_APPLE = [
