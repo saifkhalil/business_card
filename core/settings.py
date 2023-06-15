@@ -332,25 +332,25 @@ PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = '#f0cc00'
 PWA_APP_ICONS = [
     {
-        "src": "static/images/manifest-icon-192.maskable.png",
+        "src": "static/images/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
     },
     {
-        "src": "static/images/manifest-icon-192.maskable.png",
+        "src": "static/images/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "maskable"
     },
     {
-        "src": "static/images/manifest-icon-512.maskable.png",
+        "src": "static/images/android-chrome-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"
     },
     {
-        "src": "static/images/manifest-icon-512.maskable.png",
+        "src": "static/images/android-chrome-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "maskable"
