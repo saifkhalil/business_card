@@ -1,6 +1,6 @@
 var staticCacheName = 'qi-creative-v2' + new Date().getTime();
 var filesToCache = [
-    '/'
+    ''
 ];
 
 self.addEventListener("install", event => {
