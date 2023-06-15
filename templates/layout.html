@@ -201,11 +201,6 @@
     AOS.init({
       duration: 1200,
     });
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function() {
-        navigator.serviceWorker.register("static/js/serviceworker.js");
-      });
-    }
   </script>
   <style type="text/css" data-typed-js-css="true">
     .typed-cursor {
