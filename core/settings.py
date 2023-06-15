@@ -320,14 +320,14 @@ LOG_VIEWER_EXCLUDE_TEXT_PATTERN = None
 ## PWA Configuration ##
 PWA_SERVICE_WORKER_PATH = os.path.join(
     BASE_DIR, 'static/js', 'serviceworker.js')
-
+PWA_APP_DEBUG_MODE = False
 PWA_APP_NAME = 'Qi Creative'
 PWA_APP_DESCRIPTION = "Qi Creative"
 PWA_APP_THEME_COLOR = '#f0cc00'
 PWA_APP_BACKGROUND_COLOR = '#000000'
 PWA_APP_DISPLAY = 'standalone'
 PWA_APP_SCOPE = '/'
-PWA_APP_ORIENTATION = 'any'
+PWA_APP_ORIENTATION = 'portrait'
 PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = '#f0cc00'
 PWA_APP_ICONS = [
