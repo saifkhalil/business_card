@@ -4,12 +4,11 @@ var filesToCache = [
     '/static/css/aos.css',
     '/static/css/bootstrap.min.css.css',
     '/static/css/index-ce0453.css',
-    '/images/Burger_button.svg',
-    '/images/Search.svg',
-    '/images/profile.svg',
-    '/images/qi-logo.svg',
-    '/images/profile.svg',
-    '/images/qi-logo-yellow.svg'
+    '/static/images/Search.svg',
+    '/static/images/profile.svg',
+    '/static/images/qi-logo.svg',
+    '/static/images/profile.svg',
+    '/static/images/qi-logo-yellow.svg'
 ];
 
 self.addEventListener("install", event => {
