@@ -332,25 +332,25 @@ PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = '#f0cc00'
 PWA_APP_ICONS = [
     {
-        "src": "/static/images/android-chrome-192x192.png",
+        "src": "static/images/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "any"
     },
     {
-        "src": "/static/images/android-chrome-192x192.png",
+        "src": "static/images/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
         "purpose": "maskable"
     },
     {
-        "src": "/static/images/android-chrome-512x512.png",
+        "src": "static/images/android-chrome-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "any"
     },
     {
-        "src": "/static/images/android-chrome-512x512.png",
+        "src": "static/images/android-chrome-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
         "purpose": "maskable"
@@ -358,13 +358,13 @@ PWA_APP_ICONS = [
 ]
 PWA_APP_ICONS_APPLE = [
     {
-        'src': '/static/images/qi_160.png',
+        'src': 'static/images/qi_160.png',
         'sizes': '160x160'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
     {
-        'src': '/static/images/qi-logo.png',
+        'src': 'static/images/qi-logo.png',
         'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
     }
 ]
