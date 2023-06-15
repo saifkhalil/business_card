@@ -332,28 +332,19 @@ PWA_APP_START_URL = '/'
 PWA_APP_STATUS_BAR_COLOR = '#f0cc00'
 PWA_APP_ICONS = [
     {
-        "src": "/static/images/android-chrome-192x192.png",
-        "sizes": "192x192",
+        "src": "/static/images/qi_160.png",
+        "sizes": "160x160",
         "type": "image/png",
-        "purpose": "any"
     },
     {
         "src": "/static/images/android-chrome-192x192.png",
         "sizes": "192x192",
         "type": "image/png",
-        "purpose": "maskable"
     },
     {
         "src": "/static/images/android-chrome-512x512.png",
         "sizes": "512x512",
         "type": "image/png",
-        "purpose": "any"
-    },
-    {
-        "src": "/static/images/android-chrome-512x512.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "maskable"
     }
 ]
 PWA_APP_ICONS_APPLE = [
