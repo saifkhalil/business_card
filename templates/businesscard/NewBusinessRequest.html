@@ -466,8 +466,11 @@
             }
         }
     });
-    if ('setAppBadge' in navigator) {
-        navigator.setAppBadge(5);
-      }
+    document.addEventListener("DOMContentLoaded", function(){
+        if ('setAppBadge' in navigator) {
+            navigator.setAppBadge(5);
+          }
+    });
+   
 </script>
 {% endif %} {% endblock %}

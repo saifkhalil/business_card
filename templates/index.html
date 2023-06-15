@@ -258,8 +258,10 @@
     },
   });
 
-  if ('setAppBadge' in navigator) {
-    navigator.clearAppBadge();
-  }
+  document.addEventListener("DOMContentLoaded", function() {
+    if ('setAppBadge' in navigator) {
+      navigator.clearAppBadge();
+    }
+  });
 </script>
 {% endblock %}

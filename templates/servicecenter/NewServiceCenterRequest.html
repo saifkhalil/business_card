@@ -331,8 +331,11 @@
             $('.card-name').text({{ form.service_center_name.value|default:'' }});
         }
     });
-    if ('setAppBadge' in navigator) {
-        navigator.setAppBadge(10);
-      }
+    document.addEventListener("DOMContentLoaded", function(){
+        if ('setAppBadge' in navigator) {
+            navigator.setAppBadge(10);
+          }
+    });
+   
 </script>
  {% endblock %}
