@@ -10,13 +10,13 @@
 <div class="header mb-5">
     <div class="container pt-5">
       <div class="row">
-        <div class="col-5">
+        <div class="col-lg-5 col-md-12 col-sm-12 mb-3">
           <form method="GET" id="filterform">
             <div class="row g-3">
-              <div class="col-lg-2 col-sm-3 col-sx-3 flex items-center justify-center">
+              <div class="col-lg-2 col-md-2 col-sm-3 col-sx-3 flex items-center justify-center">
                 <h1>Requests</h1>
               </div>
-              <div class="col-lg-4 col-sm-4 col-sx-4">
+              <div class="col-lg-5 col-md-5 col-sm-4 col-sx-4">
                 <div class="input-field id-input border-black border-1 text-dark rounded-3xl card-font flex items-center w-full">
                   <select class="w-full card-number mx-1 bg-inherit focus-visible:outline-none text-dark" placeholder="select status" id="status"
                     name="status" onchange="javascript:this.form.submit()">
@@ -29,7 +29,7 @@
                   </select>
                 </div>
             </div>
-                <div class="col-lg-4 col-sm-4 col-xs-4">
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-4">
                  <div class="input-field id-input border-black border-1 text-dark rounded-3xl card-font flex items-center w-full">
                   <input type="text" class="w-full mx-1 bg-inherit focus-visible:outline-none text-dark" id="keywords" name="keywords" aria-describedby="Search by Employee ID, Full Name and Job Title">
                   <div class="input-icon flex items-center justify-center bg-qibg p-2 rounded-full w-10" style="width: 40px;">
@@ -44,27 +44,27 @@
           </form>
         </div>
       </div>
-      <div class="col-7">
-        <div class="row justify-content-around justify-content-center my-container">
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+      <div class="col-lg-7 col-md-12 col-sm-12">
+        <div class="row justify-content-around justify-content-center">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
               <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
                 Total
                 <span class="badge text-dark">{{total_requests}}</span>
               </li>  
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
               <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
                 Done
                 <span class="badge text-dark">{{Done_requests}}</span>
               </li>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
               <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
                 Approved
                 <span class="badge text-dark">{{Approved_requests}}</span>
               </li>  
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 mb-3">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-6 mb-3">
               <li class="card-number pl-3 card-font d-flex mx-1 justify-content-between align-items-center border-black border-1 text-dark rounded-3xl">
                 Production
                 <span class="badge text-dark">{{InProduction_requests}}</span>
