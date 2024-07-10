@@ -15,14 +15,14 @@ import os
 from pathlib import Path
 import environ
 env = environ.Env()
-environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 PWA_SERVICE_WORKDER_PATH = os.path.join(
     BASE_DIR, 'static/js', 'serviceworker.js')
 
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -188,8 +188,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'zoho': {
         'APP': {
-            'client_id': '1000.N1NW70D9NXQ6VUFA09AIGJ67000B2Y',
-            'secret': '18e44e8054855307367ae86fe198344e82543eb12f',
+            'client_id': env('zoho_client_id'),
+            'secret': env('zoho_secret'),
 
         }
     }

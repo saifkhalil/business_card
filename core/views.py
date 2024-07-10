@@ -28,6 +28,10 @@ def orders_processor(request):
 
 
 def index(request):
+    if request.user:
+        print(request.user)
+    else:
+        print('not user')
     return render(request, 'index.html')
 
 
