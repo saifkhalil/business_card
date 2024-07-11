@@ -35,4 +35,5 @@ urlpatterns = [
     path('logs/', include('log_viewer.urls')),
     path('business_order/', include('businesscard.urls'), name='businesscard'),
     path('service_order/', include('servicecenter.urls'), name='servicecenter'),
+    path('guideline/', include('guideline.urls'), name='guideline'),
 ]

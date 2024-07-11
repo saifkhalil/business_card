@@ -16,7 +16,7 @@ from pathlib import Path
 import environ
 env = environ.Env()
 
-envr: str = "DOCKER"
+envr: str = "LOCAL"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'allauth',
     'allauth.account',
+    'ckeditor',
+    'easy_thumbnails',
     # 'rest_auth.registration',
     # 'wkhtmltopdf',
     'allauth.socialaccount',
@@ -67,6 +69,7 @@ INSTALLED_APPS = [
     'businesscard',
     'servicecenter',
     'accounts',
+    'guideline',
 ]
 
 MIDDLEWARE = [
@@ -110,11 +113,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+        'NAME': env(f'{envr}_DB_NAME'),
+        'USER': env(f'{envr}_DB_USER'),
+        'PASSWORD': env(f'{envr}_DB_PASSWORD'),
+        'HOST': env(f'{envr}_DB_HOST'),
+        'PORT': env(f'{envr}_DB_PORT'),
     }
 }
 
@@ -178,7 +181,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 SITE_ID = 1
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https" if envr == "PROD" else 'http'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = env(envr+'_HTTP_PROTOCOL')
 
 SOCIALACCOUNT_PROVIDERS = {
     'microsoft': {
@@ -438,3 +441,5 @@ PWA_APP_CATEGORIES = [
 ]
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
+
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
