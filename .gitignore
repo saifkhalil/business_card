@@ -9,6 +9,7 @@ db_old.sqlite3
 __pycache__/
 media/*
 logs/*
+packages/
 
 # If you are using PyCharm #
 # User-specific stuff
