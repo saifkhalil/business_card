@@ -7,7 +7,8 @@ db.sqlite3
 db_old.sqlite3
 *pdf.html
 __pycache__/
-media/
+media/*
+logs/*
 
 # If you are using PyCharm #
 # User-specific stuff
@@ -23,7 +24,6 @@ core/.env
 uvenv/
 env/
 venv/
-**/migrations/
 
 # Visual Studio Code #
 .vscode/*
