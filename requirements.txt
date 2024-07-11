@@ -19,7 +19,7 @@ django-extensions==3.2.1
 django-log-viewer==1.1.7
 django-oauth-toolkit==2.2.0
 django-phonenumber-field==7.0.2
-django-rest-auth==0.9.5
+django-pwa
 djangorestframework==3.14.0
 fonttools==4.39.3
 html5lib==1.1
@@ -65,3 +65,4 @@ wkhtmltopdf==0.2
 wrapt==1.15.0
 xhtml2pdf==0.2.9
 zopfli==0.2.2
+psycopg2-binary

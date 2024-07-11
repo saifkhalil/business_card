@@ -16,6 +16,7 @@ from pathlib import Path
 import environ
 env = environ.Env()
 
+envr: str = "DOCKER"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +33,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['172.18.223.248', 'localhost',
+ALLOWED_HOSTS = ['creative.qi.iq', '172.18.223.248', 'localhost',
                  'saifk.pythonanywhere.com', '127.0.0.1']
 
 # Application definition
@@ -48,13 +49,13 @@ INSTALLED_APPS = [
     "django_extensions",
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
+    # 'rest_auth',
     'phonenumber_field',
     'django.contrib.sites',
     'oauth2_provider',
     'allauth',
     'allauth.account',
-    'rest_auth.registration',
+    # 'rest_auth.registration',
     # 'wkhtmltopdf',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.microsoft',
@@ -62,6 +63,7 @@ INSTALLED_APPS = [
     'pwa',
     # 'allauth.socialaccount.providers.zoho',
     # 'allauth.socialaccount.providers.google',
+    'core',
     'businesscard',
     'servicecenter',
     'accounts',
@@ -105,24 +107,24 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': env('DB_NAME'),
-#         'USER': env('DB_USER'),
-#         'PASSWORD': env('DB_PASSWORD'),
-#         'HOST': env('DB_HOST'),
-#         'PORT': env('DB_PORT'),
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -176,6 +178,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 SITE_ID = 1
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https" if envr == "PROD" else 'http'
 
 SOCIALACCOUNT_PROVIDERS = {
     'microsoft': {
@@ -183,14 +186,12 @@ SOCIALACCOUNT_PROVIDERS = {
             'TENANT': env('microsoft_TENANT'),
             'client_id': env('microsoft_client_id'),
             'secret': env('microsoft_secret'),
-
         }
     },
     'zoho': {
         'APP': {
             'client_id': env('zoho_client_id'),
             'secret': env('zoho_secret'),
-
         }
     }
 }
