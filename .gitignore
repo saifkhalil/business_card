@@ -35,3 +35,4 @@ venv/
 .history
 /media/
 /logs/
+/.idea/django_allauth.iml
