@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Guidelines</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Create Guidelines</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ guidelines_form.as_p }}
+        <h3>Logos</h3>
+        {{ logo_formset.management_form }}
+        {% for form in logo_formset %}
+            <div class="formset-row">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="button" class="add-form-row" data-formset="logo">Add another Logo</button>
+
+        <h3>Colour Palettes</h3>
+        {{ colourpalette_formset.management_form }}
+        {% for form in colourpalette_formset %}
+            <div class="formset-row">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="button" class="add-form-row" data-formset="colourpalette">Add another Colour Palette</button>
+
+        <h3>Typography</h3>
+        {{ typography_formset.management_form }}
+        {% for form in typography_formset %}
+            <div class="formset-row">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="button" class="add-form-row" data-formset="typography">Add another Typography</button>
+
+        <h3>Graphic Styles</h3>
+        {{ graphicstyle_formset.management_form }}
+        {% for form in graphicstyle_formset %}
+            <div class="formset-row">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="button" class="add-form-row" data-formset="graphicstyle">Add another Graphic Style</button>
+
+        <h3>Tone of Voices</h3>
+        {{ toneofvoice_formset.management_form }}
+        {% for form in toneofvoice_formset %}
+            <div class="formset-row">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="button" class="add-form-row" data-formset="toneofvoice">Add another Tone of Voice</button>
+
+        <h3>Photography</h3>
+        {{ photography_formset.management_form }}
+        {% for form in photography_formset %}
+            <div class="formset-row">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="button" class="add-form-row" data-formset="photography">Add another Photography</button>
+
+        <h3>Applications</h3>
+        {{ application_formset.management_form }}
+        {% for form in application_formset %}
+            <div class="formset-row">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        <button type="button" class="add-form-row" data-formset="application">Add another Application</button>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+<script>
+$(document).ready(function(){
+    function updateFormsetIndexes(formset) {
+        formset.find('.formset-row').each(function(index, element) {
+            $(element).find(':input').each(function(i, input) {
+                const name = $(input).attr('name').replace(/-\d+-/, `-${index}-`);
+                const id = `id_${name}`;
+                $(input).attr({'name': name, 'id': id});
+            });
+        });
+    }
+
+    $('.add-form-row').click(function() {
+        const formset = $(this).data('formset');
+        const formsetDiv = $(`#id_${formset}-TOTAL_FORMS`).parent();
+        const totalForms = parseInt($(`#id_${formset}-TOTAL_FORMS`).val(), 10);
+        const newForm = formsetDiv.find('.formset-row:first').clone(true).get(0);
+
+        $(newForm).find(':input').each(function() {
+            const name = $(this).attr('name').replace(/-\d+-/, `-${totalForms}-`);
+            const id = `id_${name}`;
+            $(this).attr({'name': name, 'id': id}).val('');
+        });
+
+        formsetDiv.find('.formset-row:last').after(newForm);
+        $(`#id_${formset}-TOTAL_FORMS`).val(totalForms + 1);
+        updateFormsetIndexes(formsetDiv);
+    });
+});
+</script>
+</body>
+</html>

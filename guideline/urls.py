@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import guidelines_add_view
+from .views import create_guidelines, index
 
 urlpatterns = [
-    path('new/', guidelines_add_view, name='add_guidelines'),
+    path('new/', create_guidelines, name='add_guidelines'),
+    path('', index, name='add_guidelines'),
     # Add more URLs as needed
 ]

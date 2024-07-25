@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 from django.shortcuts import render
+from django.conf import settings
+from django.conf.urls.static import static
 
 from core.views import (
     profile,
@@ -37,3 +39,5 @@ urlpatterns = [
     path('service_order/', include('servicecenter.urls'), name='servicecenter'),
     path('guideline/', include('guideline.urls'), name='guideline'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

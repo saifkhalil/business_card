@@ -1,0 +1,240 @@
+<!-- templates/guidelines.html -->
+
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>Qi Guidelines</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/guidelines_styles.css' %}">
+</head>
+<body>
+    <div class="main">
+        <!-- Introduction -->
+        <section id="home" class="section">
+        <img class="logo" src="{% static 'images/QiLogo.svg' %}">
+        <h1 class="title b-250">Brand</h1>
+        <h1 class="title b-150">Guidelines</h1>
+        <svg class="title b-70" width="150" height="50">
+        <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+    </svg>
+        </section>
+        <!-- Introduction -->
+        <section id="introduction">
+            <img class="logo" src="{% static 'images/QiLogo.svg' %}">
+            <h2 class="title-l t-12">Introduction</h2>
+            <div class="intro-body bg-yellow-50">
+                <div class="content">{{ guidelines.Introduction|safe }}</div>
+            </div>
+
+        </section>
+
+        <!-- Logos -->
+        <section id="logos" class="header bg-orange">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+            <h1 class="title b-150">Logo</h1>
+        <svg class="title b-70" width="150" height="50">
+        <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+    </svg>
+        </section>
+        {% for logo in guidelines.Logo.all %}
+        <section class="subsection">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+            <h2 class="title">{{ logo.Title }}</h2>
+            <div class="content">{{ logo.Description|safe }}</div>
+            <img class="logo-images" src="{{ logo.Image.url }}" alt="Logo Image">
+        </section>
+        {% endfor %}
+        <!-- Colour Palette -->
+            <section id="colour-palette" class="header bg-orange">
+                <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h1 class="title b-200">Colour</h1>
+                <h1 class="title b-100">Palette</h1>
+                <svg class="title b-70" width="150" height="50">
+                <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+                </svg>
+            </section>
+        {% for palette in guidelines.ColourPalette.all %}
+            <section class="subsection">
+                <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h2 class="title">{{ palette.Title }}</h2>
+                <div class="content">{{ palette.Description|safe }}</div>
+                <div class="colors">
+                    {% for color in palette.Colors.all %}
+                    <div class="color-rec">
+                        <div class="colors-rec-m" style="background-color: rgb({{ color.RGB }})">
+                        <p {% if color.RGB == "255,255,255" %} class="text-black" {% else %} class="text-white" {% endif %}>{{ color.Title }}</p>
+                        <br>
+                        <p {% if color.RGB == "255,255,255" %} class="text-black" {% else %} class="text-white" {% endif %}>PMS: {{ color.PMS|default:'' }}</p>
+                        <p {% if color.RGB == "255,255,255" %} class="text-black" {% else %} class="text-white" {% endif %}>CMYK: {{ color.CMYK|default:'' }}</p>
+                        <p {% if color.RGB == "255,255,255" %} class="text-black" {% else %} class="text-white" {% endif %}>RGB: {{ color.RGB|default:'' }}</p>
+                        <p {% if color.RGB == "255,255,255" %} class="text-black" {% else %} class="text-white" {% endif %}>HEX: {{ color.HEX|default:'' }}</p>
+                    </div>
+                        {% if color.RGB == '255,255,255' %} {% else %}
+                        <div class="colors-rec-s">
+                        <div class="colors-trans" style="background-color: rgba({{ color.RGB }},0.8)">80%</div>
+                        <div class="colors-trans" style="background-color: rgba({{ color.RGB }},0.6)">60%</div>
+                        <div class="colors-trans" style="background-color: rgba({{ color.RGB }},0.4)">40%</div>
+                        <div class="colors-trans" style="background-color: rgba({{ color.RGB }},0.2)">20%</div>
+                        <div class="colors-trans" style="background-color: rgba({{ color.RGB }},0.05)">5%</div>
+                    </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </section>
+{% endfor %}
+        <!-- Typography -->
+            <section id="typography" class="header bg-orange">
+                <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h1 class="title b-150">Typography</h1>
+                <svg class="title b-70" width="150" height="50">
+                <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+                </svg>
+            </section>
+        <div id="typography-items">
+            {% for typography in guidelines.Typography.all %}
+                <section class="subsection">
+                    <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                    <h2 class="title">{{ typography.Title }}</h2>
+                    <h2 class="subtitle">{{ typography.Language }}</h2>
+                    <div class="content">{{ typography.Description|safe }}</div>
+                    <div class="items">
+                        <div class="inline">
+                            <p class="w3">Typeface</p>
+                            <h1 class="w7 f-50"><strong>{{ typography.Typeface }}</strong></h1>
+                        </div>
+                        <div class="inline">
+                            <p class="w3">Regular</p>
+                            <h1 class="w7 f-15">{{ typography.Regular|safe }}</h1>
+                        </div>
+                        <div class="inline">
+                            <p class="w3"><strong>Bold</strong></p>
+                            <h1 class="w7 f-15">{{ typography.Bold|safe }}</h1>
+                        </div>
+                        <div class="inline f-8">
+                            <div class="w25 al-e">
+                                <p class="fw-bold">Type Weights:</p>
+                                <p>{{ typography.TypeWeights|safe }}</p>
+                            </div>
+                            <div class="w25 al-e">
+                                <p class="fw-bold">Kerning & Tracking:</p>
+                                <p> {{ typography.KerningTracking|safe }}</p>
+                            </div>
+                            <div class="w25 al-e">
+                                <p class="fw-bold">Leading:</p>
+                                <p> {{ typography.Leading|safe }}</p>
+                            </div>
+                            <div class="w25 al-e">
+                                <p class="fw-bold">Type Colour:</p>
+                                <p> {{ typography.TypeColour|safe }}</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </section>
+                 <section class="subsection">
+                    <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                    <h2 class="title">Typography Improper Use</h2>
+                    <h2 class="subtitle">{{ typography.Language }}</h2>
+                    <div class="content">{{ typography.ImproperUse|safe }}</div>
+                     <img class="typography-image" src="{{ typography.ImproperUseImage.url }}" alt="Image">
+                 </section>
+            {% endfor %}
+        </div>
+
+        <!-- Graphic Styles -->
+        <section id="GraphicStyles" class="header bg-orange">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h1 class="title b-200">Graphic</h1>
+                <h1 class="title b-100">Styles</h1>
+                <svg class="title b-50" width="150" height="50">
+        <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+    </svg>
+        </section>
+            {% for graphic_style in guidelines.GraphicStyle.all %}
+        <section class="subsection">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+            <h2 class="title">{{ graphic_style.Title }}</h2>
+            <div class="content">{{ graphic_style.Description|safe }}</div>
+            <img class="logo-images" src="{{ graphic_style.Images.url }}" alt="Graphic Style Image">
+        </section>
+            {% endfor %}
+
+        <!-- Tone of Voice -->
+                <section id="tone-of-voice" class="header bg-orange">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h1 class="title b-200">Tone</h1>
+                <h1 class="title b-100">of Voice</h1>
+                <svg class="title b-50" width="150" height="50">
+        <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+    </svg>
+        </section>
+        {% for tone in guidelines.ToneOfVoice.all %}
+            {% if tone.IsActive == True %}
+            <section id="tone-of-voice-items">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+            <h2 class="title">Tone of Voice</h2>
+            <div class="intro-body bg-yellow-100">
+                <div class="content text-white f-45 full-width mt-5">{{ tone.Description|safe }}</div>
+            </div>
+            </section>
+            {% endif %}
+        {% endfor %}
+        <!-- Photography -->
+                        <section id="photography" class="header bg-orange">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h1 class="title b-200">Photo</h1>
+                <h1 class="title b-100">graphy</h1>
+                <svg class="title b-50" width="150" height="50">
+        <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+    </svg>
+        </section>
+            {% for photograph in guidelines.Photography.all %}
+                <section class="subsection">
+                    <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                    <h2 class="title">{{ photograph.Title }}</h2>
+                    <div class="content">{{ photograph.Description|safe }}</div>
+                    <img class="logo-images" src="{{ photograph.Images.url }}" alt="Graphic Style Image">
+                </section>
+            {% endfor %}
+
+        <!-- Applications -->
+        <section id="applications" class="header bg-orange">
+            <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h1 class="title b-150">Applications</h1>
+                <svg class="title b-50" width="150" height="50">
+                    <rect class="rec" x="0" y="0" width="150" height="30" rx="15" ry="15" style="fill:black;" />
+                </svg>
+        </section>
+
+        {% for application in guidelines.Application.all %}
+        {% if application.IsActive == True %}
+
+                    <section id="subsection" class="bg-gray">
+                <h2 class="essentials"><strong>Qi</strong> Brand Essentials</h2>
+                <h2 class="title">{{ application.Title }}</h2>
+            <div class="intro-body text-center">
+                <img class="applications-images" src="{{ application.Images.url }}" alt="Graphic Style Image">
+            </div>
+            </section>
+
+        {% endif %}
+        {% endfor %}
+
+                <!-- Introduction -->
+        <section id="ContactUs" class="section">
+            <img class="logo" src="{% static 'images/QiLogo.svg' %}">
+            <h2 class="title-l f-7 t-12"><strong>Contact us.</strong></h2>
+            <h2 class="title-l f-7 t-15">If you have questions on working with our brand or</h2>
+            <h2 class="title-l f-7 t-17">implementing these guidelines, don’t hesitate to ask:</h2>
+            <br>
+            <h2 class="title-l f-7 t-19"><strong>qi.iq</strong></h2>
+
+        </section>
+    </div>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

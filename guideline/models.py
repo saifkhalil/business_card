@@ -93,11 +93,12 @@ class LogoSection(TimeStampedModel):
 
 class Logo(TimeStampedModel):
     id = models.AutoField(primary_key=True, )
+    Title = models.CharField(
+        max_length=250, blank=False, null=False, verbose_name='Title')
     Description = RichTextField(default='',
                                     blank=False, null=False, verbose_name='Description')
     Image = ThumbnailerImageField(
         upload_to='logo_images', blank=False, null=False, verbose_name='Image')
-    guidelines = models.ForeignKey('Guidelines', on_delete=models.CASCADE, blank=True, null=True, related_name='logos')
 
 
 
@@ -110,8 +111,10 @@ class ColourPaletteSection(TimeStampedModel):
     CMYK = CMYKField(blank=True, null=True, verbose_name='CMYK')
     RGB = RGBField(blank=True, null=True, verbose_name='RGB')
     HEX = HEXField(blank=True, null=True, verbose_name='HEX')
-    ColourPalette = models.ForeignKey(to='ColourPalette', on_delete=models.CASCADE, blank=True, null=True, verbose_name='ColourPalette')
     IsActive = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.Title
 
 class ColourPalette(TimeStampedModel):
     id = models.AutoField(primary_key=True, )
@@ -119,8 +122,10 @@ class ColourPalette(TimeStampedModel):
         max_length=250, blank=False, null=False, verbose_name='Title')
     Description = RichTextField(default='',
                                     blank=False, null=False, verbose_name='Description')
-    guidelines = models.ForeignKey('Guidelines', on_delete=models.CASCADE, blank=True, null=True, related_name='colour_palette_sections')
+    Colors = models.ManyToManyField(ColourPaletteSection, blank=True, verbose_name='Colors')
 
+    def __str__(self):
+        return self.Title
 
 ## Typography Models ##
 
@@ -146,6 +151,12 @@ class Typography(TimeStampedModel):
     Language = models.ForeignKey('Language', on_delete=models.CASCADE)
     TypeWeights = RichTextField(default='',
                                     blank=True, null=True, verbose_name='Type Weights')
+    Typeface = models.CharField(
+        max_length=250, blank=False, null=False, verbose_name='Typeface')
+    Regular = RichTextField(default='',
+                                    blank=True, null=True, verbose_name='Regular')
+    Bold = RichTextField(default='',
+                                    blank=True, null=True, verbose_name='Bold')
     KerningTracking = RichTextField(default='',
                                     blank=True, null=True, verbose_name='Kerning & Tracking')
     Leading = RichTextField(default='',
@@ -154,9 +165,14 @@ class Typography(TimeStampedModel):
                                     blank=True, null=True, verbose_name='Type Colour')
     ImproperUse = RichTextField(default='',
                                     blank=True, null=True, verbose_name='Improper Use')
-
+    ImproperUseImage = ThumbnailerImageField(
+        upload_to='logo_images', blank=True, null=True, verbose_name='Improper Use Image')
     Texts = models.ForeignKey(to='Texts', on_delete=models.CASCADE, blank=True, null=True, verbose_name='Texts')
-    guidelines = models.ForeignKey('Guidelines', on_delete=models.CASCADE, blank=True, null=True, related_name='typographies')
+
+    def __str__(self):
+        return self.Title
+    class Meta:
+        ordering = ['id']
 
 ## Graphic Style Models ##
 class GraphicStyle(TimeStampedModel):
@@ -165,13 +181,16 @@ class GraphicStyle(TimeStampedModel):
         max_length=250, blank=False, null=False, verbose_name='Title')
     Description = RichTextField(default='',
                                     blank=False, null=False, verbose_name='Description')
-    Image = ThumbnailerImageField(
-        upload_to='logo_images', blank=False, null=False, verbose_name='Image')
-    Usage = RichTextField(default='',
-                                    blank=False, null=False, verbose_name='Usage')
-    Images = models.ForeignKey(to='ImageList', on_delete=models.CASCADE, blank=True, null=True, verbose_name='Image List')
-    guidelines = models.ForeignKey('Guidelines', on_delete=models.CASCADE, blank=True, null=True, related_name='graphic_styles')
+    Logo = ThumbnailerImageField(
+        upload_to='logo_images', blank=True, null=True, verbose_name='Logo')
+    Images = ThumbnailerImageField(
+        upload_to='logo_images', blank=True, null=True, verbose_name='Images')
 
+    def __str__(self):
+        return self.Title
+
+    class Meta:
+        ordering = ['id']
 
 ## Tone of Voice Models ##
 class ToneOfVoice(TimeStampedModel):
@@ -179,21 +198,26 @@ class ToneOfVoice(TimeStampedModel):
     Description = RichTextField(default='',
                                     blank=False, null=False, verbose_name='Description')
     IsActive = models.BooleanField(default=False)
-    guidelines = models.ForeignKey('Guidelines', on_delete=models.CASCADE, blank=True, null=True, related_name='tone_of_voices')
 
+    class Meta:
+        ordering = ['id']
 
 ## Photo graphy Models ##
-
 class Photography(TimeStampedModel):
     id = models.AutoField(primary_key=True, )
     Title = models.CharField(
         max_length=250, blank=False, null=False, verbose_name='Title')
     Description = RichTextField(default='',
                                     blank=False, null=False, verbose_name='Description')
-    Images = models.ForeignKey(to='ImageList', on_delete=models.CASCADE, blank=True, null=True, verbose_name='Images')
+    Images = ThumbnailerImageField(
+        upload_to='logo_images', blank=True, null=True, verbose_name='Images')
     IsActive = models.BooleanField(default=False)
-    guidelines = models.ForeignKey('Guidelines', on_delete=models.CASCADE, blank=True, null=True, related_name='photographies')
 
+    def __str__(self):
+        return self.Title
+
+    class Meta:
+        ordering = ['id']
 
 ## Applications Models ##
 
@@ -201,15 +225,27 @@ class Application(TimeStampedModel):
     id = models.AutoField(primary_key=True, )
     Title = models.CharField(
         max_length=250, blank=False, null=False, verbose_name='Title')
-    Images = models.ForeignKey(to='ImageList', on_delete=models.CASCADE, blank=True, null=True, verbose_name='Images')
+    Images = ThumbnailerImageField(
+        upload_to='logo_images', blank=True, null=True, verbose_name='Images')
     IsActive = models.BooleanField(default=False)
-    guidelines = models.ForeignKey('Guidelines', on_delete=models.CASCADE, blank=True, null=True, related_name='applications')
+
+    def __str__(self):
+        return self.Title
+
+    class Meta:
+        ordering = ['id']
 
 ## Guideline Model ##
 class Guidelines(TimeStampedModel):
     id = models.AutoField(primary_key=True, )
-    Introduction = models.CharField(
-        max_length=250, blank=False, null=False, verbose_name='Introduction')
-
+    Introduction = RichTextField(default='',
+                                    blank=False, null=False, verbose_name='Description')
+    Logo = models.ManyToManyField(Logo, blank=True, verbose_name='Logo')
+    ColourPalette = models.ManyToManyField(ColourPalette, blank=True, verbose_name='Colour Palette')
+    Typography = models.ManyToManyField(Typography, blank=True, verbose_name='Typography')
+    GraphicStyle = models.ManyToManyField(GraphicStyle, blank=True, verbose_name='Graphic Style')
+    ToneOfVoice = models.ManyToManyField(ToneOfVoice, blank=True, verbose_name='Tone Of Voice')
+    Photography = models.ManyToManyField(Photography, blank=True, verbose_name='Photography')
+    Application = models.ManyToManyField(Application, blank=True, verbose_name='Applications')
 
 

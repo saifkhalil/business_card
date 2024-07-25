@@ -1,0 +1,208 @@
+/* static/css/guidelines_styles.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.section {
+    margin-bottom: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+}
+
+.title {
+    margin: 20px 0;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.b-250 {
+    font-size: 2.5em;
+}
+
+.b-150 {
+    font-size: 1.5em;
+}
+
+.b-100 {
+    font-size: 1em;
+}
+
+.b-70 {
+    font-size: 0.7em;
+}
+
+.rec {
+    display: inline-block;
+}
+
+.header {
+    padding: 40px 0;
+    background-color: #ff8c00;
+    color: white;
+}
+
+.bg-orange {
+    background-color: #ff8c00;
+    color: white;
+}
+
+.bg-yellow-50 {
+    background-color: #ffffe0;
+    color: black;
+}
+
+.essentials {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.content {
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.colors, .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.color-rec {
+    margin: 20px;
+}
+
+.colors-rec-m {
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.text-black {
+    color: black;
+}
+
+.text-white {
+    color: white;
+}
+
+.colors-rec-s {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.colors-trans {
+    padding: 10px;
+    width: 80px;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.inline {
+    display: inline-block;
+    margin: 0 20px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.f-50 {
+    font-size: 50px;
+}
+
+.f-15 {
+    font-size: 15px;
+}
+
+.f-8 {
+    font-size: 8px;
+}
+
+.w25 {
+    width: 25%;
+}
+
+.al-e {
+    text-align: end;
+}
+
+.logo-images, .typography-image, .graphic-styles, .photo-image, .tone-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+    .inline {
+        display: block;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .w25 {
+        width: 100%;
+    }
+
+    .al-e {
+        text-align: center;
+    }
+
+    .colors-rec-s {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .colors-trans {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .b-250 {
+        font-size: 2em;
+    }
+
+    .b-150 {
+        font-size: 1.2em;
+    }
+
+    .b-100 {
+        font-size: 0.8em;
+    }
+
+    .b-70 {
+        font-size: 0.5em;
+    }
+
+    .title {
+        font-size: 1.2em;
+    }
+}
